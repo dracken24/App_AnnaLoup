@@ -1,12 +1,41 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FindYourPath.Views.Agenda" Title="Agenda">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Page Agenda" FontSize="Title"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+             xmlns:controls="clr-namespace:XamForms.Controls;assembly=XamForms.Controls.Calendar"
+             x:Class="FindYourPath.Views.Agenda"
+             BackgroundColor="LightBlue">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5*" />
+        </Grid.RowDefinitions>
+
+        <controls:Calendar 
+            Grid.Row="0"
+            x:Name="calendar"
+            Padding="50,10,50,10"
+            SelectedBorderWidth="4"
+            DisabledBorderColor="Black"
+            ShowNumberOfWeek="false"
+            StartDay="Sunday"
+            WeekdaysTextColor="Black"
+            TitleLabelTextColor="Black"
+            TitleLeftArrowTextColor="Black"
+            TitleRightArrowTextColor="Black"
+            TitleLeftArrowBackgroundColor="#cccccc"
+            TitleRightArrowBackgroundColor="#cccccc"
+            SpecialDates="{Binding Dates}"/>
+
+        <Button 
+            Grid.Row="1"
+            x:Name="addEventButton" 
+            Text="Add Event" 
+            Clicked="OnAddEventButtonClicked"/>
+
+        <ListView 
+            Grid.Row="2"
+            x:Name="eventList"/>
+    </Grid>
+
 </ContentPage>

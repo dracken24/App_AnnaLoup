@@ -10,10 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace FindYourPath.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class Encore : ContentPage
+	public partial class Welcome : ContentPage
 	{
-		public Encore()
+		public Welcome()
 		{
+			Title = "Accueil";
 			InitializeComponent();
 		}
 	}

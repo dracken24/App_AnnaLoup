@@ -1,15 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FindYourPath.DataBase.LoginPage">
+             x:Class="FindYourPath.DataBase.LoginPage"
+             BackgroundColor="#ccccff" >
+    
     <ContentPage.Content>
         
         <StackLayout Padding="30">
-            <Label Text="Login" HorizontalOptions="CenterAndExpand" FontSize="Large" />
-            <Entry x:Name="UsernameEntry" Placeholder="Username" />
-            <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" />
+            <Label Text="Login" HorizontalOptions="CenterAndExpand" FontSize="Large" TextColor="Black" />
+            <Entry x:Name="UsernameEntry" Placeholder="Username" PlaceholderColor="Black" BackgroundColor="LightBlue" TextColor="Black" />
+            <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" PlaceholderColor="Black" BackgroundColor="LightBlue" TextColor="Black" />
             <Button Text="Log In" Clicked="OnLoginButtonClicked" />
+            <Button Text="Create Account" Clicked="OnCreateAccountButtonClicked" />
         </StackLayout>
         
     </ContentPage.Content>
+    
 </ContentPage>

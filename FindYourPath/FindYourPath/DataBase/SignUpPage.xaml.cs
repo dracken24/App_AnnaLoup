@@ -17,6 +17,8 @@ namespace FindYourPath.DataBase
 			InitializeComponent();
 		}
 
+		
+
 		async void OnSignUpButtonClicked(object sender, EventArgs e)
 		{
 			var username = UsernameEntry.Text;
@@ -39,7 +41,8 @@ namespace FindYourPath.DataBase
 				await App.UserService.SaveUserAsync(newUser);
 
 				// Naviguer vers la page de profil après l'inscription.
-				await Navigation.PushAsync(new MainPage());
+				// await Navigation.PushAsync(new MainPage());
+				await ((App)Application.Current).NavigateToMainPage();
 			}
 			else
 			{

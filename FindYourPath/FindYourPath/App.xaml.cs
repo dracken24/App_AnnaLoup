@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Threading.Tasks;
 
 namespace FindYourPath
 {
@@ -17,9 +18,15 @@ namespace FindYourPath
 			InitializeComponent();
 
 			dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Users.db3");
+
 			// main page start program
-			// MainPage = new LoginPage();
-			MainPage = new NavigationPage(new LoginPage());
+			MainPage = new LoginPage();
+		}
+
+		public async Task NavigateToMainPage()
+		{
+			MainPage = new AppShell();
+			await Shell.Current.GoToAsync("//main"); // Go to the main page after login
 		}
 
 		public static UserService UserService

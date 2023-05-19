@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,7 +29,8 @@ namespace FindYourPath.DataBase
 			if (IsValidLogin(username, password))
 			{
 				// Naviguer vers la page de profil si la connexion est valide.
-				await Navigation.PushModalAsync(new NavigationPage(new MainPage()));
+				// await Navigation.PushAsync(new AppShell());
+				await ((App)Application.Current).NavigateToMainPage();
 			}
 			else
 			{
@@ -42,6 +44,11 @@ namespace FindYourPath.DataBase
 			// Cette fonction est un exemple et doit être remplacée par une vérification réelle.
 
 			return !string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password);
+		}
+
+		void OnCreateAccountButtonClicked(object sender, EventArgs e)
+		{
+			Navigation.PushModalAsync(new SignUpPage());
 		}
 	}
 }
