@@ -4,7 +4,7 @@
              x:Class="FindYourPath.Views.Ressources" Title="Ressources">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Page Ressources"
+            <Label Text="Page Ressources" FontSize="Title"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>

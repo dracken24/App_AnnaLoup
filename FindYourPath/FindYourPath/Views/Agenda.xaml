@@ -4,7 +4,7 @@
              x:Class="FindYourPath.Views.Agenda" Title="Agenda">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Page Agenda"
+            <Label Text="Page Agenda" FontSize="Title"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>

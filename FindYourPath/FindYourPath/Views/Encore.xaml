@@ -4,7 +4,7 @@
              x:Class="FindYourPath.Views.Encore" Title="Encore">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Page Encore"
+            <Label Text="Page Encore" FontSize="Title"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>

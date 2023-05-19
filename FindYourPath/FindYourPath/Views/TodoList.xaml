@@ -4,7 +4,7 @@
              x:Class="FindYourPath.Views.TodoList" Title="Todo List">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Page Todo Liste"
+            <Label Text="Page Todo Liste" FontSize="Title"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>

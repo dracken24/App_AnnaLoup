@@ -16,6 +16,16 @@ namespace FindYourPath
 		{
 			InitializeComponent();
 		}
+		//public MainPage()
+		//{
+		//	InitializeComponent();
+			// Ajoutez ici toutes les pages que vous voulez dans vos onglets.
+		//	Children.Add(new PersonnalInfos { Title = "Profile" });
+		//	Children.Add(new Agenda { Title = "Agenda" });
+		//	Children.Add(new TodoList { Title = "Todo List" });
+		//	Children.Add(new Encore { Title = "Encore" });
+		//	Children.Add(new Ressources { Title = "Ressources" });
+		//}
 
 		// On click, go to PersonnalInfos page
 		private void ProfileClicked(object sender, EventArgs e)
