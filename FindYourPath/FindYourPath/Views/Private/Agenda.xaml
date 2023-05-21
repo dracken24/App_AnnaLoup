@@ -1,8 +1,7 @@
 ﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:XamForms.Controls;assembly=XamForms.Controls.Calendar"
-             x:Class="FindYourPath.Views.Agenda"
-             BackgroundColor="LightBlue">
+             x:Class="FindYourPath.Views.Agenda">
 
     <Grid>
         <Grid.RowDefinitions>

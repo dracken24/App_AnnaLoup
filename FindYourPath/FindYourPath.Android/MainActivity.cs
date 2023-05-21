@@ -7,7 +7,7 @@ using Android.OS;
 
 namespace FindYourPath.Droid
 {
-    [Activity(Label = "Find Your Path", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
+    [Activity(Icon = "@drawable/liberty_logo_purple", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -25,4 +25,14 @@ namespace FindYourPath.Droid
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
+
+	[Activity(Icon = "@mipmap/logo", Theme = "@style/LoadScreen", MainLauncher = true, NoHistory = true)]
+	public class SplashActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+	{
+		protected override void OnResume()
+		{
+			base.OnResume();
+			StartActivity(typeof(MainActivity));
+		}
+	}
 }

@@ -3,16 +3,31 @@
        xmlns:views="clr-namespace:FindYourPath.Views"
        x:Class="FindYourPath.AppShell">
 
+    <!-- Ajout de ressources pour les styles -->
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="#ccccff" />
+                <Setter Property="Shell.ForegroundColor" Value="Color.White" />
+                <Setter Property="Shell.TitleColor" Value="#006666" />
+                <Setter Property="Shell.DisabledColor" Value="Color.Red" />
+                <Setter Property="Shell.UnselectedColor" Value="Color.Gray" />
+            </Style>
+            <Style TargetType="Tab" BasedOn="{StaticResource BaseStyle}" />
+        </ResourceDictionary>
+    </Shell.Resources>
+
     <Shell.FlyoutHeader>
         <Label Text="Menu" 
                VerticalOptions="CenterAndExpand" 
                HorizontalOptions="CenterAndExpand" />
     </Shell.FlyoutHeader>
 
+    <!-- Liste des onglets -->
     <Shell.Items>
         <Tab Title="Espace Public" Icon="icon1.png" Route="main">
             <ShellContent Title="General" ContentTemplate="{DataTemplate views:Welcome}" />
-            <ShellContent Title="Resources" ContentTemplate="{DataTemplate views:Resources}" />
+            <ShellContent Title="Resources" ContentTemplate="{DataTemplate views:PublicRessources}" />
         </Tab>
         <Tab Title="Espace Privé" Icon="icon2.png">
             <ShellContent Title="Agenda" ContentTemplate="{DataTemplate views:Agenda}" />

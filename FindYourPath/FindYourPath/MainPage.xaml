@@ -1,13 +1,5 @@
 ﻿<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FindYourPath.MainPage"
-            xmlns:views="clr-namespace:FindYourPath.Views">
-    
-    <!-- Ajoutez ici vos pages. -->
-    <views:Profile Title="Profile" />
-    <views:Resources Title="Resources" />
-    <views:Agenda Title="Agenda" />
-    <views:Welcome Title="Encore" />
-    <views:TodoList Title="TodoList" />
-    
+             x:Class="FindYourPath.MainPage">
+
 </TabbedPage>
