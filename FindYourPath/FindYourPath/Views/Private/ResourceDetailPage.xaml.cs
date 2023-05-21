@@ -15,10 +15,10 @@ namespace FindYourPath.Views
 			Content = new StackLayout
 			{
 				Children = {
-					new Label { Text = "Nom          : " + resource.Name, TextColor = Color.Black },
-					new Label { Text = "Adresse    : " + resource.Address, TextColor = Color.Black },
-					new Label { Text = "Telephone: " + resource.PhoneNumber, TextColor = Color.Black },
-					new Label { Text = "Type          : " + resource.PhoneNumber, TextColor = Color.Black },
+					new Label { Text = "Nom          : " + resource.Name, TextColor = Color.FromHex("#006666") },
+					new Label { Text = "Adresse    : " + resource.Address, TextColor = Color.FromHex("#006666") },
+					new Label { Text = "Telephone: " + resource.PhoneNumber, TextColor = Color.FromHex("#006666") },
+					new Label { Text = "Type          : " + resource.PhoneNumber, TextColor = Color.FromHex("#006666") },
 				}
 			};
 		}

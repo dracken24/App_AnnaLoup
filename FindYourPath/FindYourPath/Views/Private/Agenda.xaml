@@ -5,36 +5,49 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="5*" />
+            <RowDefinition Height="6*" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="5*" />
+            <RowDefinition Height="4*" />
         </Grid.RowDefinitions>
 
-        <controls:Calendar 
-            Grid.Row="0"
-            x:Name="calendar"
-            Padding="50,10,50,10"
-            SelectedBorderWidth="4"
-            DisabledBorderColor="Black"
-            ShowNumberOfWeek="false"
-            StartDay="Sunday"
-            WeekdaysTextColor="Black"
-            TitleLabelTextColor="Black"
-            TitleLeftArrowTextColor="Black"
-            TitleRightArrowTextColor="Black"
-            TitleLeftArrowBackgroundColor="#cccccc"
-            TitleRightArrowBackgroundColor="#cccccc"
-            SpecialDates="{Binding Dates}"/>
+        <Frame BorderColor="#006666" 
+                   CornerRadius="5" 
+                   HasShadow="True" 
+                   BackgroundColor="LightBlue" 
+                   Padding="0">
+            <StackLayout>
+            
+                <controls:Calendar 
+                    Grid.Row="0"
+                    x:Name="calendar"
+                    Padding="50,10,50,10"
+                    SelectedBorderWidth="4"
+                    ShowNumberOfWeek="false"
+                    StartDay="Sunday"
+                    WeekdaysTextColor="#006666"
+                    TitleLabelTextColor="#006666"
+                    TitleLeftArrowTextColor="#006666"
+                    TitleRightArrowTextColor="#006666"
+                    TitleLeftArrowBackgroundColor="#cccccc"
+                    TitleRightArrowBackgroundColor="#cccccc"
+                    DatesTextColor="#006666"
+                    SpecialDates="{Binding Dates}"/>
 
-        <Button 
-            Grid.Row="1"
-            x:Name="addEventButton" 
-            Text="Add Event" 
-            Clicked="OnAddEventButtonClicked"/>
+                <Button 
+                    Grid.Row="1"
+                    x:Name="addEventButton" 
+                    Text="Add Event" 
+                    Clicked="OnAddEventButtonClicked"
+                    TextColor="#006666"/>
 
+            </StackLayout>
+        </Frame>
+        
         <ListView 
             Grid.Row="2"
-            x:Name="eventList"/>
+            x:Name="eventList"
+            BackgroundColor="#ccccff"
+            />
     </Grid>
 
 </ContentPage>

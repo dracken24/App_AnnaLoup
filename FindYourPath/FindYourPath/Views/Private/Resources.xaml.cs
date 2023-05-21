@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using Xamarin.Forms;
 
 namespace FindYourPath.Views
@@ -33,6 +34,7 @@ namespace FindYourPath.Views
 			nameEntry.Text = string.Empty;
 			addressEntry.Text = string.Empty;
 			phoneEntry.Text = string.Empty;
+			type.Text = string.Empty;
 		}
 
 		private async void OnItemTapped(object sender, ItemTappedEventArgs e)
