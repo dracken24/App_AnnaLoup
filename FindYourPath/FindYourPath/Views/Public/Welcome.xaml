@@ -2,27 +2,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FindYourPath.Views.Welcome">
 
-    <StackLayout VerticalOptions="Start" 
-                 HorizontalOptions="CenterAndExpand">
+    <ScrollView>
+        <StackLayout VerticalOptions="Start" 
+                     HorizontalOptions="CenterAndExpand">
 
-        <Label Text="Bienvenue sur Freedom!"
-               FontSize="Title"
-               TextColor="#006666"
-               HorizontalOptions="CenterAndExpand"
-               VerticalOptions="Start" />
-        <Label FontSize="16"
-               TextColor="#006666"
-               HorizontalOptions="CenterAndExpand"
-               VerticalOptions="Start"
-               Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Auctor augue mauris augue neque gravida in. Egestas sed tempus urna et pharetra. Sem fringilla ut morbi tincidunt augue interdum. Vitae suscipit tellus mauris a diam maecenas sed enim. Lorem sed risus ultricies tristique nulla aliquet. Tempor orci eu lobortis elementum nibh. Quis commodo odio aenean sed adipiscing diam donec adipiscing tristique. Nulla facilisi etiam dignissim diam quis enim lobortis. Amet nisl purus in mollis nunc sed id. Placerat vestibulum lectus mauris ultrices."/>
+            <Label Text="Bienvenue sur Freedom!"
+                   FontSize="Title"
+                   TextColor="#006666"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="Start" />
+            
+            <Label FontSize="16"
+                   TextColor="#006666"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="Start"
+                   Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Auctor augue mauris augue neque gravida in. Egestas sed tempus urna et pharetra. Sem fringilla ut morbi tincidunt augue interdum. Vitae suscipit tellus mauris a diam maecenas sed enim. Lorem sed risus ultricies tristique nulla aliquet. Tempor orci eu lobortis elementum nibh. Quis commodo odio aenean sed adipiscing diam donec adipiscing tristique. Nulla facilisi etiam dignissim diam quis enim lobortis. Amet nisl purus in mollis nunc sed id. Placerat vestibulum lectus mauris ultrices."/>
 
-        <Label FontSize="16"
-               TextColor="#006666"
-               HorizontalOptions="CenterAndExpand"
-               VerticalOptions="Start"
-               Text="Proin sagittis nisl rhoncus mattis rhoncus urna neque viverra justo. Diam sollicitudin tempor id eu nisl nunc. Sagittis nisl rhoncus mattis rhoncus urna neque. In ornare quam viverra orci sagittis eu volutpat odio. Tempor id eu nisl nunc mi ipsum faucibus. Eget nunc lobortis mattis aliquam faucibus purus in massa tempor. Non curabitur gravida arcu ac. Vel eros donec ac odio tempor orci. Quis hendrerit dolor magna eget est lorem ipsum dolor sit. Viverra orci sagittis eu volutpat odio facilisis mauris. Nec feugiat nisl pretium fusce id. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. A arcu cursus vitae congue mauris rhoncus aenean vel elit."/>
+            <Label FontSize="16"
+                   TextColor="#006666"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="Start"
+                   Text="Proin sagittis nisl rhoncus mattis rhoncus urna neque viverra justo. Diam sollicitudin tempor id eu nisl nunc. Sagittis nisl rhoncus mattis rhoncus urna neque. In ornare quam viverra orci sagittis eu volutpat odio. Tempor id eu nisl nunc mi ipsum faucibus. Eget nunc lobortis mattis aliquam faucibus purus in massa tempor. Non curabitur gravida arcu ac. Vel eros donec ac odio tempor orci. Quis hendrerit dolor magna eget est lorem ipsum dolor sit. Viverra orci sagittis eu volutpat odio facilisis mauris. Nec feugiat nisl pretium fusce id. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. A arcu cursus vitae congue mauris rhoncus aenean vel elit."/>
+            
+            <Label FontSize="16"
+                   TextColor="#006666"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="Start"
+                   Text="At auctor urna nunc id cursus metus aliquam. Sed enim ut sem viverra. Nam aliquam sem et tortor. Nec feugiat in fermentum posuere urna nec tincidunt praesent semper. Porttitor leo a diam sollicitudin. Nec sagittis aliquam malesuada bibendum arcu vitae elementum. Arcu odio ut sem nulla. Magnis dis parturient montes nascetur ridiculus mus. Ante in nibh mauris cursus mattis. Diam in arcu cursus euismod quis viverra nibh. In fermentum et sollicitudin ac orci phasellus egestas tellus. Pulvinar proin gravida hendrerit lectus. Pellentesque elit eget gravida cum. Posuere urna nec tincidunt praesent semper feugiat nibh sed. Feugiat sed lectus vestibulum mattis ullamcorper velit sed. In pellentesque massa placerat duis. Rhoncus aenean vel elit scelerisque mauris. Vitae auctor eu augue ut lectus arcu bibendum at."/>
 
-    </StackLayout>
+        </StackLayout>
+    </ScrollView>
 
 </ContentPage>
     

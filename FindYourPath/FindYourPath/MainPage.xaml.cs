@@ -14,7 +14,7 @@ namespace FindYourPath
 	{
 		public MainPage()
 		{
-			// Ajoutez ici toutes les pages que vous voulez dans vos onglets.
+			/* Ajoutez ici toutes les pages que vous voulez dans vos onglets.
 			Children.Add(new Welcome { Title = "General" });
 			Children.Add(new Agenda { Title = "Agenda" });
 			Children.Add(new TodoList { Title = "Todo List" });
@@ -22,7 +22,7 @@ namespace FindYourPath
 			Children.Add(new Profile { Title = "Profile" });
 
 			// Cacher la barre de navigation pour cette page
-			NavigationPage.SetHasNavigationBar(this, false);
+			NavigationPage.SetHasNavigationBar(this, false);*/
 		}
 	}
 }

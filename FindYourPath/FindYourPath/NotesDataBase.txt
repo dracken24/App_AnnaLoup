@@ -1,0 +1,195 @@
+﻿ Voici une vue d'ensemble des étapes que vous devrez suivre pour mettre en place une base de données
+ pour la gestion des mots de passe et la sauvegarde des informations liées au compte utilisateur.
+ Notez que c'est une vue d'ensemble très générale, chaque étape peut nécessiter une recherche et un
+ apprentissage plus approfondis. Vous devrez également tenir compte des lois et règlements concernant
+ le stockage des données personnelles.
+
+1:	Choisissez votre système de gestion de base de données (SGBD) : Vous devez d'abord choisir le SGBD que 
+	vous allez utiliser. SQLite, MySQL, PostgreSQL sont des options 
+	populaires pour les serveurs de base de données.
+
+2:	Installez et configurez votre SGBD : Une fois que vous avez choisi votre SGBD, vous devez l'installer 
+	sur l'ordinateur qui hébergera la base de données. Vous devrez probablement également le configurer 
+	pour qu'il démarre au démarrage de l'ordinateur et qu'il accepte les connexions depuis l'extérieur 
+	(si nécessaire).
+
+3:	Concevez votre schéma de base de données : Avant de commencer à utiliser votre base de données, vous 
+	devez concevoir son schéma. Cela signifie que vous devez décider quelles tables vous aurez, quelles 
+	colonnes chaque table aura, et comment ces tables se relieront les unes aux autres. Par exemple, vous 
+	pourriez avoir une table Users avec des colonnes pour username, hashed_password, email, etc.
+
+4:	Mettez en place la sécurité de la base de données : C'est une étape très importante. Vous devez vous 
+	assurer que votre base de données est sécurisée. Cela signifie qu'elle doit être protégée par un mot 
+	de passe, qu'elle ne doit accepter les connexions que depuis des adresses IP de confiance, et qu'elle 
+	doit être mise à jour régulièrement. Pour le stockage des mots de passe, n'oubliez pas de les hacher 
+	en utilisant une fonction de hachage robuste comme bcrypt.
+
+5:	Créez une API pour interagir avec votre base de données : Plutôt que de permettre à votre application 
+	de se connecter directement à votre base de données, il est généralement préférable de créer une API 
+	qui se situe entre votre application et votre base de données. Cette API recevra les demandes de votre 
+	application (par exemple, "créer un nouvel utilisateur", "vérifier le mot de passe de cet utilisateur") 
+	et interagira avec la base de données en conséquence.
+
+6:	Connectez votre application à votre API : Une fois que votre API est en place, vous pouvez la connecter 
+	à votre application. Cela signifie que lorsque votre application doit interagir avec la base de 
+	données (par exemple, pour créer un nouvel utilisateur), elle envoie une requête à votre API, qui 
+	gère ensuite l'interaction avec la base de données.
+
+7:	Testez votre système : Après avoir mis en place votre système de base de données, votre API et les 
+	connexions de votre application, vous devez le tester pour vous assurer qu'il fonctionne correctement.
+	Cela pourrait impliquer de créer des comptes d'utilisateur, de vérifier que les mots de passe sont 
+	correctement
+
+========================================================================================================
+
+2:	Installez et configurez votre SGBD: MySQL :
+	MySQL est largement utilisé et supporté. Voici les étapes générales pour installer et configurer MySQL
+	sur un système Windows:
+
+	1:	Téléchargez l'installateur de MySQL Community Server: Vous pouvez le télécharger à partir du site
+		officiel de MySQL. Assurez-vous de choisir la version qui correspond à votre système d'exploitation
+		et à votre configuration de système (32 bits ou 64 bits).
+
+	2:	Exécutez l'installateur: Une fois le téléchargement terminé, exécutez l'installateur. Pendant le
+		processus d'installation, vous aurez le choix entre plusieurs types d'installation. Pour une installation
+		de base, choisissez l'installation "Server only".
+
+	3:	A:	Configurez l'instance MySQL: Après l'installation, l'installateur devrait lancer l'outil de
+		configuration de MySQL. Suivez les étapes à l'écran pour configurer votre instance MySQL. Voici quelques
+		points à noter:
+
+		B:	Type et mise en réseau: Choisissez "Standalone MySQL Server/Classic MySQL Replication" pour le
+		type de configuration. Pour le type de réseau, vous pouvez généralement laisser l'option par défaut
+		("Developer Machine").
+
+		C:	Authentification: Choisissez l'option "Use Strong Password Encryption".
+
+		D:	Compte root et mot de passe: Vous devrez créer un mot de passe pour le compte "root". Ce compte
+			a tous les droits sur la base de données, alors assurez-vous de choisir un mot de passe fort. Notez
+			ce mot de passe et gardez-le dans un endroit sûr, vous en aurez besoin plus tard.
+
+		E:	Services Windows: Assurez-vous que "Configure MySQL Server as a Windows Service" est
+			sélectionné. Vous pouvez également laisser "Start the MySQL Server at System Startup" sélectionné
+			pour que MySQL démarre automatiquement lorsque vous démarrez votre ordinateur.
+
+	4:	Terminez l'installation et la configuration: Une fois que vous avez terminé la configuration,
+		l'installateur terminera le processus d'installation. Vous devriez maintenant avoir MySQL installé
+		sur votre ordinateur.
+
+	5:	Vérifiez l'installation: Vous pouvez vérifier que MySQL fonctionne en ouvrant une invite de
+		commande et en tapant mysql -u root -p. Vous devrez entrer le mot de passe du compte root que vous
+		avez créé pendant l'installation. Si MySQL est correctement installé, vous devriez voir un prompt
+		MySQL (mysql>).
+
+Note:	N'oubliez pas que MySQL doit être correctement sécurisé, surtout si vous prévoyez d'autoriser les
+		connexions depuis l'extérieur. Cela pourrait impliquer la mise en place d'un pare-feu, la limitation des
+		adresses IP qui peuvent se connecter, et la création de comptes d'utilisateur MySQL spécifiques pour votre
+		application (plutôt que d'utiliser le compte root pour tout).
+
+
+========================================================================================================
+========================================================================================================
+
+Service de Oracle Cloud Infrastructure (OCI): Location espace base de donnee et +:
+---------------------------------------------------------------------------------
+
+Oracle Cloud Infrastructure (OCI), également connu sous le nom de Oracle Cloud, est une suite de services
+cloud proposée par Oracle Corporation. Ceux-ci comprennent des services de calcul (instances de machine
+virtuelle, conteneurs, etc.), de stockage (disques, objets, fichiers, etc.), de bases de données, de mise
+en réseau, de sécurité et de gestion des données, entre autres.
+
+Les utilisateurs peuvent louer l'accès à des serveurs virtuels, des réseaux, du stockage et des services
+de bases de données, ce qui leur permet de construire et de déployer des applications et des services à
+une grande échelle sans avoir à gérer l'infrastructure sous-jacente.
+
+Voici quelques-uns des principaux services offerts par Oracle Cloud Infrastructure:
+
+- Compute: Fournit des instances de machine virtuelle et bare metal dans diverses configurations de CPU,
+de mémoire et de réseau.
+
+- Storage: Fournit plusieurs options de stockage, comme le stockage d'objets pour les données non
+structurées, le stockage de blocs pour les bases de données et les systèmes de fichiers, et le stockage
+de fichiers pour les charges de travail partagées.
+
+- Networking: Fournit des services de mise en réseau comme les réseaux virtuels cloud, les équilibreurs
+de charge, les VPN et les connexions dédiées à faible latence.
+
+- Database: Offre une gamme de solutions de bases de données, y compris la base de données Oracle autonome,
+MySQL, NoSQL et d'autres options.
+
+- Edge Services: Comprend le service DNS, le service de mise en réseau de contenu et la protection DDoS.
+
+- Identity and Security: Fournit des services pour gérer et contrôler l'accès aux ressources, ainsi que
+pour protéger les données et les applications.
+
+C'est une alternative à d'autres plateformes de cloud public comme Amazon Web Services (AWS), Google
+Cloud Platform (GCP) et Microsoft Azure. OCI peut être utilisé pour héberger des applications web, des
+analyses de données, des applications d'entreprise, et pour une variété d'autres utilisations dans le
+domaine des TI.
+
+--------------------------------------------------------------------------------------------------------
+
+Comme tu veux mettre en place une base de données MySQL pour ton application, tu pourrais considérer
+l'utilisation du service "Database" d'Oracle Cloud Infrastructure. En particulier, tu pourrais envisager
+d'utiliser le service "MySQL Database Service" qui est une base de données MySQL entièrement gérée.
+
+Cependant, il y a quelques autres éléments à considérer pour la gestion de ton projet dans l'ensemble.
+Voici quelques services d'Oracle Cloud Infrastructure qui pourraient être pertinents :
+
+- Compute: Ce service pourrait être utilisé pour héberger ton serveur d'application si tu prévois d'avoir
+un serveur backend pour ton application.
+
+- Storage: Si ton application doit stocker des fichiers ou d'autres données non structurées, tu pourrais
+avoir besoin d'utiliser les services de stockage d'OCI.
+
+- Networking: Les services de mise en réseau d'OCI sont nécessaires pour connecter tes ressources dans
+le cloud et pour les rendre accessibles à tes utilisateurs.
+
+- Identity and Security: Tu devrais certainement envisager d'utiliser ces services pour gérer l'accès
+à tes ressources dans le cloud et pour protéger les données de tes utilisateurs.
+
+Enfin, il convient de noter que le choix du fournisseur de services cloud dépend de nombreux facteurs,
+y compris les coûts, les compétences de ton équipe, les exigences spécifiques de ton projet, et plus
+encore. Il serait bon d'évaluer les offres de différents fournisseurs de services cloud (comme Amazon
+Web Services, Google Cloud Platform, Microsoft Azure, etc.) avant de prendre une décision finale.
+
+--------------------------------------------------------------------------------------------------------
+
+Voici comment vous pouvez procéder pour créer et gérer votre base de données MySQL dans Visual Studio en
+utilisant Entity Framework :
+
+1:	Assurez-vous que vous avez installé les packages NuGet nécessaires pour Entity Framework. Vous pouvez le
+	faire en ouvrant votre solution dans Visual Studio, en cliquant avec le bouton droit sur le projet principal
+	(probablement le projet contenant vos modèles de données) et en sélectionnant "Gérer les packages NuGet".
+	Recherchez les packages "EntityFramework" et "MySql.Data.EntityFramework" et installez-les dans votre projet.
+
+2:	Définissez vos modèles de données en utilisant des classes C#. Par exemple, vous pouvez créer une class
+	Utilisateur qui représente un utilisateur de votre application avec des propriétés telles que Id, Nom,
+	Email, etc. Vous pouvez également définir des relations entre les entités à l'aide d'annotations ou de
+	Fluent API.
+
+3:	Créez une classe de contexte de base de données en dérivant de la classe DbContext d'Entity Framework.
+	Cette classe représente votre contexte de base de données et vous permet d'interagir avec la base de
+	données. Dans cette classe, vous devez définir un constructeur qui prend le nom de la connexion à la
+	base de données MySQL, ainsi que des propriétés DbSet pour chaque entité que vous souhaitez mapper à
+	une table dans la base de données.
+
+4:	Configurez votre chaîne de connexion à la base de données MySQL dans le fichier de configuration de
+	votre application (app.config ou web.config). Assurez-vous que la chaîne de connexion est correctement
+	formatée et contient les informations d'identification et l'emplacement de votre serveur MySQL.
+
+5:	Exécutez les commandes de migration pour créer la base de données et les tables correspondantes. Ouvrez
+	la "Package Manager Console" dans Visual Studio en allant dans "Outils" -> "Gestionnaire de packages
+	NuGet" -> "Console du gestionnaire de packages". Assurez-vous que le projet de démarrage est défini sur
+	votre projet principal, puis exécutez la commande Enable-Migrations pour activer les migrations dans
+	votre projet. Ensuite, vous pouvez exécuter la commande Add-Migration InitialMigration pour créer une
+	migration initiale basée sur vos classes de modèle de données. Enfin, exécutez la commande Update-Database
+	pour appliquer la migration et créer la base de données.
+
+Une fois que vous avez suivi ces étapes, Entity Framework créera et gérera automatiquement votre base de
+données MySQL en fonction de vos modèles de données. Vous pouvez utiliser les méthodes fournies par
+Entity Framework pour effectuer des opérations CRUD (Create, Read, Update, Delete) sur votre base de
+données.
+
+========================================================================================================
+========================================================================================================
