@@ -1,11 +1,8 @@
-﻿/*
-using GoogleApi.Entities.Search.Common;
+﻿using GoogleApi.Entities.Search.Common;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Data.Entity;
 using Microsoft.EntityFrameworkCore;
-using System.Data.Entity.ModelConfiguration;
 
 namespace FindYourPath.DataBase
 {
@@ -14,11 +11,12 @@ namespace FindYourPath.DataBase
 		public DbSet<User> Utilisateurs { get; set; }
 		// Ajoutez d'autres DbSet pour vos autres entités
 
-		public MyDbContext() : base("NomDeConnexionMySQL")
+		public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
 		{
+
 		}
 
-		protected override void OnModelCreating(DbModelBuilder modelBuilder)
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			base.OnModelCreating(modelBuilder);
 
@@ -26,4 +24,3 @@ namespace FindYourPath.DataBase
 		}
 	}
 }
-*/
