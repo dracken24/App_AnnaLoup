@@ -193,3 +193,59 @@ données.
 
 ========================================================================================================
 ========================================================================================================
+
+voici une liste des commandes SQL les plus couramment utilisées dans MySQL :
+
+1. `SHOW DATABASES;` - Affiche toutes les bases de données sur le serveur MySQL.
+
+2. `CREATE DATABASE nom_de_base;` - Crée une nouvelle base de données.
+
+3. `DROP DATABASE nom_de_base;` - Supprime une base de données.
+
+4. `USE nom_de_base;` - Sélectionne une base de données pour les commandes suivantes.
+
+5. `SHOW TABLES;` - Affiche toutes les tables dans la base de données sélectionnée.
+
+6. `DESCRIBE nom_de_table;` - Affiche la structure de la table spécifiée.
+
+7. Création de tables :
+   ```mysql
+   CREATE TABLE nom_de_table (
+       colonne1 type_de_donnee,
+       colonne2 type_de_donnee,
+       ...
+   );
+   ```
+
+8. Suppression de tables : `DROP TABLE nom_de_table;`
+
+9. Insertion de données :
+   ```mysql
+   INSERT INTO nom_de_table (colonne1, colonne2, ...) VALUES (valeur1, valeur2, ...);
+   ```
+
+10. Sélection de données : `SELECT * FROM nom_de_table;` - Affiche toutes les données de la table spécifiée.
+
+11. Sélection de données avec des conditions : 
+    ```mysql
+    SELECT * FROM nom_de_table WHERE colonne = valeur;
+    ```
+
+12. Mise à jour de données :
+    ```mysql
+    UPDATE nom_de_table SET colonne = nouvelle_valeur WHERE condition;
+    ```
+
+13. Suppression de données :
+    ```mysql
+    DELETE FROM nom_de_table WHERE condition;
+    ```
+
+14. Création d'un index : 
+    ```mysql
+    CREATE INDEX nom_de_index ON nom_de_table (colonne);
+    ```
+
+15. Suppression d'un index : `DROP INDEX nom_de_index ON nom_de_table;`
+
+Ces commandes sont les bases pour interagir avec une base de données MySQL. Bien sûr, il y a beaucoup plus de commandes et d'options pour chaque commande, mais cette liste devrait vous aider à démarrer.

@@ -22,5 +22,16 @@ namespace FindYourPath.DataBase
 
 			// Configurez vos relations et autres configurations de modèle ici
 		}
+
+		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+		{
+			if (!optionsBuilder.IsConfigured)
+			{
+				string connectionString = "server=VotreServeur;database=VotreBaseDeDonnees;uid=VotreUtilisateur;password=VotreMotDePasse;";
+				optionsBuilder.UseMySQL(connectionString);
+			}
+			base.OnConfiguring(optionsBuilder);
+		}
+
 	}
 }
