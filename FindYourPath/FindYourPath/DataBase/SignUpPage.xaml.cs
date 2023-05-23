@@ -46,6 +46,9 @@ namespace FindYourPath.DataBase
 					Console.WriteLine("1111111111111111111111111111111111111111111111111111111111111111111111111111");
 					Console.WriteLine(ex.ToString());
 					Console.WriteLine("1111111111111111111111111111111111111111111111111111111111111111111111111111");
+
+					await DisplayAlert("Error", "Invalid connexion", "OK");
+					return;
 				}
 
 				Console.WriteLine("222");
@@ -78,6 +81,11 @@ namespace FindYourPath.DataBase
 			// Cette fonction est un exemple et doit être remplacée par une vérification réelle.
 
 			return !string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(email);
+		}
+
+		void OnBackButtonClicked(object sender, EventArgs e)
+		{
+			Navigation.PopModalAsync();
 		}
 	}
 }

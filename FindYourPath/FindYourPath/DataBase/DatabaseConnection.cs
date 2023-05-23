@@ -29,8 +29,8 @@ public class DatabaseConnection
 		Console.WriteLine("22222222222222222222222222222222222222222222222222222222222222222222222222222222");
 		server = "localhost";
 		database = "my_database";
-		uid = "root";
-		password = "Soulsister24.";
+		uid = "Bob";
+		password = "Serpents24.";
 
 		string connectionString;
 		connectionString = "SERVER=" + server + ";" + "DATABASE=" +
@@ -52,6 +52,36 @@ public class DatabaseConnection
 		if (connection.State == System.Data.ConnectionState.Open)
 			connection.Close();
 	}
+
+	public bool VerifyUser(string username, string password)
+{
+	try
+	{
+		OpenConnection();
+
+		string query = "SELECT COUNT(*) FROM Users WHERE username=@username AND password=@password"; // Remplacez "Users" par le nom réel de votre table, et "username" et "password" par les noms de vos colonnes
+
+		using (MySqlCommand cmd = new MySqlCommand(query, connection))
+		{
+			cmd.Parameters.AddWithValue("@username", username);
+			cmd.Parameters.AddWithValue("@password", password); // Assurez-vous que le mot de passe est correctement haché / crypté selon votre logique
+
+			int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+			return (count > 0);
+		}
+	}
+	catch (Exception ex)
+	{
+		// Log or handle the exception
+		Console.WriteLine(ex.ToString());
+		return false;
+	}
+	finally
+	{
+		CloseConnection();
+	}
+}
 
 	// Execute a query
 	public void ExecuteQuery(string query)

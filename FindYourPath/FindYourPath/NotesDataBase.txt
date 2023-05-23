@@ -249,3 +249,8 @@ voici une liste des commandes SQL les plus couramment utilisées dans MySQL :
 15. Suppression d'un index : `DROP INDEX nom_de_index ON nom_de_table;`
 
 Ces commandes sont les bases pour interagir avec une base de données MySQL. Bien sûr, il y a beaucoup plus de commandes et d'options pour chaque commande, mais cette liste devrait vous aider à démarrer.
+
+
+-------------------------------------------------------
+Add:	INSERT INTO Users (username, email, password) VALUES ('test_user', 'test_user@example.com', 'test_password');
+Check:	SELECT * FROM Users WHERE username = 'test_user';

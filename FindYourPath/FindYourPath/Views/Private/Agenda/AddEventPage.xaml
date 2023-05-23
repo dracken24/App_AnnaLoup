@@ -1,0 +1,43 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FindYourPath.Views.AddEventPage"
+             Title="Add Event">
+
+    <StackLayout Padding="20">
+
+        <!-- Title for Calendar event -->
+        <Entry x:Name="titleEntry"
+               Placeholder="Event Title"
+               TextColor="#006666" />
+
+        <!-- Start time and date -->
+        <Label Text="Start Date"
+               TextColor="#006666"/>
+        <DatePicker x:Name="startDatePicker"/>
+
+        <Label Text="Start Time"
+               TextColor="#006666"/>
+        <TimePicker x:Name="startTimePicker"/>
+
+        <!-- End time and date -->
+        <Label Text="End Date"
+               TextColor="#006666"/>
+        <DatePicker x:Name="endDatePicker"/>
+
+        <Label Text="End Time"
+               TextColor="#006666"/>
+        <TimePicker x:Name="endTimePicker"/>
+
+        <!-- Description -->
+        <Editor x:Name="descriptionEditor" 
+                Placeholder="Description"
+                TextColor="#006666"/>
+
+        <Button x:Name="saveButton" 
+                Text="Save Event" 
+                Clicked="OnSaveButtonClicked"/>
+
+    </StackLayout>
+
+</ContentPage>
+

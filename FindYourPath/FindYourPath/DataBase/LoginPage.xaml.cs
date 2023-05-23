@@ -23,20 +23,44 @@ namespace FindYourPath.DataBase
 			var username = UsernameEntry.Text;
 			var password = PasswordEntry.Text;
 
+			Console.WriteLine("In Login");
+
 			// Insérer ici le code pour vérifier les informations de connexion.
 			// Cela pourrait être une demande à un service Web ou une vérification dans une base de données locale.
 
-			if (IsValidLogin(username, password))
+			try
 			{
-				// Naviguer vers la page de profil si la connexion est valide.
-				// await Navigation.PushAsync(new AppShell());
-				await ((App)Application.Current).NavigateToMainPage();
+				// Check if user exist
+				if (IsValidLogin(username, password))
+				{
+					// Naviguer vers la page de profil si la connexion est valide.
+					// await Navigation.PushAsync(new AppShell());
+
+					await ((App)Application.Current).NavigateToMainPage();
+				}
+				else
+				{
+					await DisplayAlert("Error", "Invalid username or password", "OK");
+				}
 			}
-			else
+			catch (Exception ex)
 			{
-				await DisplayAlert("Error", "Invalid username or password", "OK");
+				Console.WriteLine("44444444444444444444444444444444444444444444444444444444444444444444444444444");
+				Console.WriteLine(ex.ToString());
+				Console.WriteLine("44444444444444444444444444444444444444444444444444444444444444444444444444444");
 			}
 		}
+
+		/*
+		bool	IsValidLogin(string username, string password)
+		{
+			Console.WriteLine("Verify User: " + username);
+			Console.WriteLine("Verify Pass: " + password);
+
+			var dbConnection = new DatabaseConnection();
+			return dbConnection.VerifyUser(username, password);
+		}
+		*/
 
 		bool IsValidLogin(string username, string password)
 		{

@@ -4,8 +4,10 @@
              x:Class="FindYourPath.DataBase.SignUpPage"
              BackgroundColor="#ccccff">
     <ContentPage.Content>
-        
+
         <StackLayout Padding="30">
+            <Button Text="Back" Clicked="OnBackButtonClicked" TextColor="#006666"  />
+
             <Label Text="Sign Up" HorizontalOptions="CenterAndExpand" FontSize="Large" TextColor="#006666" />
             <!-- Username -->
             <Frame BorderColor="#006666" 

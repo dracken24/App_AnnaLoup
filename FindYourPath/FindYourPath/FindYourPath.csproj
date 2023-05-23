@@ -22,6 +22,8 @@
 		<PackageReference Include="MySql.Data.EntityFramework" Version="8.0.33" />
 		<PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.22" />
 		<PackageReference Include="MySqlConnector" Version="2.2.6" />
+		<PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="21.2.6" />
+		<PackageReference Include="Syncfusion.Xamarin.SfSchedule" Version="21.2.6" />
 		<PackageReference Include="System.Data.Common" Version="4.3.0" />
 		<PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
 		<PackageReference Include="System.Data.SQLite" Version="1.0.117" />
@@ -65,7 +67,7 @@
     <Compile Update="Views\Private\Profile.xaml.cs">
       <DependentUpon>Profile.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Private\Resources.xaml.cs">
+    <Compile Update="Views\Private\Ressources\Resources.xaml.cs">
       <DependentUpon>Resources.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Public\Welcome.xaml.cs">
@@ -87,10 +89,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Private\Agenda.xaml">
+    <EmbeddedResource Update="Views\Private\Agenda\AddEventPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Private\ResourceDetailPage.xaml">
+    <EmbeddedResource Update="Views\Private\Agenda\Agenda.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Private\Ressources\ResourceDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Public\PublicRessources.xaml">
@@ -102,7 +107,7 @@
     <EmbeddedResource Update="Views\Private\Profile.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Private\Resources.xaml">
+    <EmbeddedResource Update="Views\Private\Ressources\Resources.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Private\TodoList.xaml">
