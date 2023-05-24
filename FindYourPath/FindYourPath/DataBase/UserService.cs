@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using MySqlConnector;
 
-
 public class UserService
 {
 	readonly SQLiteAsyncConnection _database;
@@ -32,9 +31,7 @@ public class UserService
 
 	public Task<User> GetUserAsync(int id)
 	{
-		return _database.Table<User>()
-						.Where(i => i.Id == id)
-						.FirstOrDefaultAsync();
+		return _database.Table<User>().Where(i => i.Id == id).FirstOrDefaultAsync();
 	}
 
 	public Task<int> SaveUserAsync(User user)
@@ -97,5 +94,4 @@ public class UserService
 
 		dbConn.CloseConnection();  // Close the connection
 	}
-
 }

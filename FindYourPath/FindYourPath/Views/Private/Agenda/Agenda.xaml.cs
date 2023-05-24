@@ -28,7 +28,7 @@ namespace FindYourPath.Views
 
 		private void OnAddEventButtonClicked(object sender, EventArgs e)
 		{
-			
+
 			// Ouvrez ici votre page ou votre fenêtre de dialogue pour ajouter un événement
 			Navigation.PushAsync(new AddEventPage(appointments));
 		}
@@ -40,18 +40,12 @@ namespace FindYourPath.Views
 			eventList.ItemsSource = eventsForDay;
 		}
 
-		/*
-		private void OnDateClicked(object sender, EventArgs e)
+		private void OnEventTapped(object sender, ItemTappedEventArgs e)
 		{
-			var calendar = sender as SfCalendar;
-			var selectedDate = schedule.SelectedDate;
-			if (selectedDate.HasValue)
-			{
-				var eventsForDay = GetEventsForDay(selectedDate.Value);
-				eventList.ItemsSource = eventsForDay;
-			}
+			var selectedEvent = e.Item as ScheduleAppointment;
+			Navigation.PushAsync(new EventDetailPage(selectedEvent));
 		}
-		*/
+
 
 		private List<ScheduleAppointment> GetEventsForDay(DateTime date)
 		{
@@ -63,3 +57,71 @@ namespace FindYourPath.Views
 		}
 	}
 }
+
+/*
+using FindYourPath.Services;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using Xamarin.Forms;
+
+namespace FindYourPath.Views
+{
+	public partial class Agenda : ContentPage
+	{
+		// Create a collection to store your events.
+		private ObservableCollection<Google.Apis.Calendar.v3.Data.Event> events;
+
+		public Agenda()
+		{
+			InitializeComponent();
+
+			Title = "Agenda";
+
+			// Initialize the collection.
+			events = new ObservableCollection<Google.Apis.Calendar.v3.Data.Event>();
+
+			// Get the events from Google Calendar
+			GetGoogleEvents();
+		}
+
+		private void OnAddEventButtonClicked(object sender, EventArgs e)
+		{
+			// Open here your page or dialog to add an event
+			Navigation.PushAsync(new AddEventPage(events));
+		}
+
+		private void OnEventTapped(object sender, ItemTappedEventArgs e)
+		{
+			var selectedEvent = e.Item as Google.Apis.Calendar.v3.Data.Event;
+			Navigation.PushAsync(new EventDetailPage(selectedEvent));
+		}
+
+		private async void GetGoogleEvents()
+		{
+			// Implement the logic to retrieve the events from Google Calendar.
+		}
+	}
+}
+*/
+
+
+
+/*
+ * Veuillez noter que vous aurez besoin de credentials.json pour l'authentification
+ * OAuth avec Google API. Vous pouvez obtenir ce fichier en créant un projet sur Google
+ * Cloud Console et en activant l'API Google Calendar pour votre projet.
+
+Aussi, dans le cadre de votre application Xamarin, vous devrez manipuler l'authentification
+OAuth d'une manière qui fonctionne bien avec les appareils mobiles. Vous pouvez utiliser
+des bibliothèques comme Xamarin.Auth pour aider à cela.
+
+Enfin, ce code doit être exécuté de manière asynchrone. Cela signifie que vous devrez
+probablement ajuster la façon dont votre application gère le chargement et la mise à
+jour des événements pour s'assurer que l'interface utilisateur reste réactive pendant
+que ces opérations sont en cours.
+
+Le fichier credentials.json est très sensible et doit être sécurisé. Ne le partagez
+jamais publiquement et ne le stockez pas dans votre code source.
+ */

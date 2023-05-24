@@ -50,3 +50,41 @@ namespace FindYourPath.Views
 		}
 	}
 }
+
+/*
+using Google.Apis.Calendar.v3.Data;
+using System;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+using FindYourPath.Services;
+using Syncfusion.SfSchedule.XForms;
+using System.Collections.ObjectModel;
+
+namespace FindYourPath.Views
+{
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+	public partial class AddEventPage : ContentPage
+	{
+		ObservableCollection<Google.Apis.Calendar.v3.Data.Event> events;
+		private AgendaService agendaService;
+
+		public AddEventPage(ObservableCollection<Google.Apis.Calendar.v3.Data.Event> events)
+		{
+			InitializeComponent();
+			this.events = events;
+			this.agendaService = new AgendaService("your_api_key"); // replace with your Google API Key
+		}
+
+		private async void OnSaveButtonClicked(object sender, EventArgs e)
+		{
+			var startDateTime = startDatePicker.Date + startTimePicker.Time;
+			var endDateTime = endDatePicker.Date + endTimePicker.Time;
+
+			var newEvent = agendaService.CreateEvent(startDateTime, endDateTime, titleEntry.Text, descriptionEditor.Text);
+			await agendaService.AddEvent("primary", newEvent);
+
+			Navigation.PopAsync();
+		}
+	}
+}
+*/

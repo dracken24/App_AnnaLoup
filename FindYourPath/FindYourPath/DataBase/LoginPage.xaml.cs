@@ -51,7 +51,7 @@ namespace FindYourPath.DataBase
 			}
 		}
 
-		/*
+/*		
 		bool	IsValidLogin(string username, string password)
 		{
 			Console.WriteLine("Verify User: " + username);
@@ -60,12 +60,11 @@ namespace FindYourPath.DataBase
 			var dbConnection = new DatabaseConnection();
 			return dbConnection.VerifyUser(username, password);
 		}
-		*/
+*/		
 
 		bool IsValidLogin(string username, string password)
 		{
-			// Insérer ici le code pour vérifier les informations de connexion.
-			// Cette fonction est un exemple et doit être remplacée par une vérification réelle.
+			// doit être remplacée par une vérification réelle.
 
 			return !string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password);
 		}
