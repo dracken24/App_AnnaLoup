@@ -25,17 +25,11 @@ namespace FindYourPath.DataBase
 
 			Console.WriteLine("In Login");
 
-			// Insérer ici le code pour vérifier les informations de connexion.
-			// Cela pourrait être une demande à un service Web ou une vérification dans une base de données locale.
-
 			try
 			{
 				// Check if user exist
-				if (IsValidLogin(username, password))
+				if (await IsValidLogin(username, password))  // utilise maintenant await
 				{
-					// Naviguer vers la page de profil si la connexion est valide.
-					// await Navigation.PushAsync(new AppShell());
-
 					await ((App)Application.Current).NavigateToMainPage();
 				}
 				else
@@ -45,29 +39,28 @@ namespace FindYourPath.DataBase
 			}
 			catch (Exception ex)
 			{
-				Console.WriteLine("44444444444444444444444444444444444444444444444444444444444444444444444444444");
 				Console.WriteLine(ex.ToString());
-				Console.WriteLine("44444444444444444444444444444444444444444444444444444444444444444444444444444");
 			}
 		}
 
-/*		
-		bool	IsValidLogin(string username, string password)
+	
+		async Task<bool> IsValidLogin(string username, string password)
 		{
 			Console.WriteLine("Verify User: " + username);
 			Console.WriteLine("Verify Pass: " + password);
 
-			var dbConnection = new DatabaseConnection();
-			return dbConnection.VerifyUser(username, password);
+			var userService = new UserService(App.DatabasePath);
+			return await userService.VerifyUserAsync(username, password);
 		}
-*/		
 
-		bool IsValidLogin(string username, string password)
+/*		
+		async Task<bool> IsValidLogin(string username, string password)
 		{
 			// doit être remplacée par une vérification réelle.
 
 			return !string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password);
 		}
+*/		
 
 		void OnCreateAccountButtonClicked(object sender, EventArgs e)
 		{

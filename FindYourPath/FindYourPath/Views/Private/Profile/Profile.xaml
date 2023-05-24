@@ -6,6 +6,48 @@
 
     <ScrollView>
         <Frame BorderColor="#006666" 
+           CornerRadius="20" 
+           HasShadow="True" 
+           Padding="0">
+            <StackLayout Spacing="20" Padding="20">
+                <Image x:Name="profileImage" 
+                   Source="Scrat_02.jpg"
+                   WidthRequest="200"
+                   HeightRequest="200"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Start"
+                   Aspect="AspectFill"
+                   Margin="5"
+                   BackgroundColor="#006666"/>
+
+                <Label Text="Scrat Oak" 
+                   FontAttributes="Bold" 
+                   FontSize="24"
+                   HorizontalOptions="Center"
+                   TextColor="Black" />
+
+                <Label Text="Somwere in a tree" 
+                   HorizontalOptions="Center"
+                   TextColor="Black" />
+
+                <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center"
+                         Spacing="10">
+                    <Image Source="phone_icon.png"
+                       HeightRequest="20"
+                       WidthRequest="20"/>
+                    <Label Text="1 888 ILoveNuts"
+                       HorizontalOptions="Center"
+                       TextColor="Black" />
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </ScrollView>
+</ContentPage>
+
+    <!--
+     <ScrollView>
+        <Frame BorderColor="#006666" 
                    CornerRadius="5" 
                    HasShadow="True" 
                    BackgroundColor="LightBlue" 
@@ -34,4 +76,5 @@
     </ScrollView>
 
 </ContentPage>
+    -->
     

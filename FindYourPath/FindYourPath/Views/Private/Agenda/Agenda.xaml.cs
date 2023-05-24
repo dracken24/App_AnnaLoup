@@ -28,9 +28,15 @@ namespace FindYourPath.Views
 
 		private void OnAddEventButtonClicked(object sender, EventArgs e)
 		{
+			// Récupérer la date sélectionnée
+			var selectedDate = schedule.SelectedDate;
+			if (!selectedDate.HasValue)
+			{
+				selectedDate = DateTime.Now;
+			}
 
 			// Ouvrez ici votre page ou votre fenêtre de dialogue pour ajouter un événement
-			Navigation.PushAsync(new AddEventPage(appointments));
+			Navigation.PushAsync(new AddEventPage(appointments, selectedDate.Value));
 		}
 
 		private void OnDateClicked(object sender, CellTappedEventArgs e)
@@ -57,55 +63,6 @@ namespace FindYourPath.Views
 		}
 	}
 }
-
-/*
-using FindYourPath.Services;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using Xamarin.Forms;
-
-namespace FindYourPath.Views
-{
-	public partial class Agenda : ContentPage
-	{
-		// Create a collection to store your events.
-		private ObservableCollection<Google.Apis.Calendar.v3.Data.Event> events;
-
-		public Agenda()
-		{
-			InitializeComponent();
-
-			Title = "Agenda";
-
-			// Initialize the collection.
-			events = new ObservableCollection<Google.Apis.Calendar.v3.Data.Event>();
-
-			// Get the events from Google Calendar
-			GetGoogleEvents();
-		}
-
-		private void OnAddEventButtonClicked(object sender, EventArgs e)
-		{
-			// Open here your page or dialog to add an event
-			Navigation.PushAsync(new AddEventPage(events));
-		}
-
-		private void OnEventTapped(object sender, ItemTappedEventArgs e)
-		{
-			var selectedEvent = e.Item as Google.Apis.Calendar.v3.Data.Event;
-			Navigation.PushAsync(new EventDetailPage(selectedEvent));
-		}
-
-		private async void GetGoogleEvents()
-		{
-			// Implement the logic to retrieve the events from Google Calendar.
-		}
-	}
-}
-*/
-
 
 
 /*

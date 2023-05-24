@@ -32,36 +32,3 @@ namespace FindYourPath.Views
 		}
 	}
 }
-
-
-/*
-using Google.Apis.Calendar.v3.Data;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-namespace FindYourPath.Views
-{
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class EventDetailPage : ContentPage
-	{
-		public EventDetailPage(Event @event)
-		{
-			Title = "Détail de l'événement";
-
-			var subjectLabel = new Label { Text = $"Sujet: {@event.Summary}" };
-			var startTimeLabel = new Label { Text = $"Heure de début: {@event.Start.DateTime}" };
-			var endTimeLabel = new Label { Text = $"Heure de fin: {@event.End.DateTime}" };
-			var notesLabel = new Label { Text = $"Notes: {@event.Description}" };
-
-			var stackLayout = new StackLayout
-			{
-				Children = { subjectLabel, startTimeLabel, endTimeLabel, notesLabel },
-				Padding = new Thickness(20)
-			};
-
-			Content = stackLayout;
-		}
-	}
-}
-*/
-

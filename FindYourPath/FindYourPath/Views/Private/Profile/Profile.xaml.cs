@@ -19,9 +19,9 @@ namespace FindYourPath.Views
 			Title = "Profile";
 
 			// Mettez à jour ces valeurs avec les informations de l'utilisateur.
-			nameLabel.Text = "Scrat Oak";
-			addressLabel.Text = "Somwere in a tree";
-			phoneLabel.Text = "1 888 ILoveNuts";
+			//nameLabel.Text = "Scrat Oak";
+			//addressLabel.Text = "Somwere in a tree";
+			//phoneLabel.Text = "1 888 ILoveNuts";
 
 			// Et la photo de profil. 
 			// Vous pouvez utiliser une URL ou un chemin de fichier local ici.

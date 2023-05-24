@@ -3,36 +3,19 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MySqlConnector;
+using FindYourPath.DataBase;
 
 public class UserService
 {
 	readonly SQLiteAsyncConnection _database;
-	private DatabaseConnection dbConn;
 
 	public UserService(string dbPath)
 	{
-		Console.WriteLine("AAA");
 		_database = new SQLiteAsyncConnection(dbPath);
 		_database.CreateTableAsync<User>().Wait();
-
-		dbConn = new DatabaseConnection();
 	}
 
-	public UserService()
-	{
-		Console.WriteLine("YYY");
-		dbConn = new DatabaseConnection();
-	}
-
-	public Task<List<User>> GetUsersAsync()
-	{
-		return _database.Table<User>().ToListAsync();
-	}
-
-	public Task<User> GetUserAsync(int id)
-	{
-		return _database.Table<User>().Where(i => i.Id == id).FirstOrDefaultAsync();
-	}
+	// ... (autres méthodes) ...
 
 	public Task<int> SaveUserAsync(User user)
 	{
@@ -46,52 +29,34 @@ public class UserService
 		}
 	}
 
-	public Task<int> DeleteUserAsync(User user)
+	public async Task AddUser(string username, string email, string password)
 	{
-		return _database.DeleteAsync(user);
+		var newUser = new User { Username = username, Email = email, Password = password };
+		await SaveUserAsync(newUser);
 	}
 
-	public void GetUsers()
+	public async Task<bool> VerifyUserAsync(string username, string password)
 	{
-		var connection = dbConn.OpenConnection();
+		// Get the user with the given username
+		var user = await _database.Table<User>().Where(u => u.Username == username).FirstOrDefaultAsync();
 
-		string query = "SELECT * FROM users";
-		MySqlCommand cmd = new MySqlCommand(query, connection);
-
-		// Execute the command and get the results
-		MySqlDataReader dataReader = cmd.ExecuteReader();
-
-		// Read the results
-		while (dataReader.Read())
+		// If no such user exists, return false
+		if (user == null)
 		{
-			Console.WriteLine(dataReader["username"] + ": " + dataReader["email"]);
+			return false;
 		}
 
-		// Close the connection
-		dbConn.CloseConnection();
+		// Compare the password with the one in the database
+		// NOTE: This assumes that the password in the database is stored in plaintext. 
+		// In a real application, you should NEVER store passwords in plaintext. 
+		// You should store a hash of the password and compare that instead.
+		if (user.Password == password)
+		{
+			return true;
+		}
+
+		// If the passwords do not match, return false
+		return false;
 	}
 
-	// Add an user to database
-	public void AddUser(string username, string email, string password)
-	{
-		Console.WriteLine("ADD USER");
-		var connection = dbConn.OpenConnection();
-
-		string query = "INSERT INTO users (username, email, password) VALUES (@username, @email, @password)";
-		MySqlCommand cmd = new MySqlCommand(query, connection);
-
-		// TODO: for debug, erase
-		Console.WriteLine("User  : " + username);
-		Console.WriteLine("Email : " + email);
-		Console.WriteLine("Pass  : " + password);
-
-		// Use parameters to prevent SQL injections
-		cmd.Parameters.AddWithValue("@username", username);
-		cmd.Parameters.AddWithValue("@email", email);
-		cmd.Parameters.AddWithValue("@password", password); // consider hashing the password before storing
-
-		cmd.ExecuteNonQuery();  // Execute the command
-
-		dbConn.CloseConnection();  // Close the connection
-	}
 }
