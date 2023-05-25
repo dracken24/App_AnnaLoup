@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FindYourPath.Views.Private.Profile;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,20 +13,37 @@ namespace FindYourPath.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Profile : ContentPage
 	{
+		private ProfileViewModel viewModel;
+
 		public Profile()
 		{
 			InitializeComponent();
+			ProfileViewModel viewModel = new ProfileViewModel { Name = "Scrat Oak", Address = "1424 Somwere in a big lost tree", Email = "ILoveNuts@iceage.cold", Phone = "1-888-ILoveNuts" };
 
-			Title = "Profile";
+			this.viewModel = viewModel;
 
-			// Mettez à jour ces valeurs avec les informations de l'utilisateur.
-			//nameLabel.Text = "Scrat Oak";
-			//addressLabel.Text = "Somwere in a tree";
-			//phoneLabel.Text = "1 888 ILoveNuts";
+			nameLabel.SetBinding(Label.TextProperty, new Binding("Name", source: viewModel));
+			addressLabel.SetBinding(Label.TextProperty, new Binding("Address", source: viewModel));
+			emailLabel.SetBinding(Label.TextProperty, new Binding("Email", source: viewModel));
+			phoneLabel.SetBinding(Label.TextProperty, new Binding("Phone", source: viewModel));
+			// Do the same for addressLabel, emailLabel, and phoneLabel
+		}
 
-			// Et la photo de profil. 
-			// Vous pouvez utiliser une URL ou un chemin de fichier local ici.
-			profileImage.Source = "Scrat_02.jpg";
+		public Profile(ProfileViewModel viewModel)
+		{
+			InitializeComponent();
+			this.viewModel = viewModel;
+
+			nameLabel.SetBinding(Label.TextProperty, new Binding("Name", source: viewModel));
+			addressLabel.SetBinding(Label.TextProperty, new Binding("Address", source: viewModel));
+			emailLabel.SetBinding(Label.TextProperty, new Binding("Email", source: viewModel));
+			phoneLabel.SetBinding(Label.TextProperty, new Binding("Phone", source: viewModel));
+			// Do the same for addressLabel, emailLabel, and phoneLabel
+		}
+
+		public async void UpdateProfileInfos(object sender, EventArgs e)
+		{
+			await Navigation.PushAsync(new ChangeProfilInfos(viewModel));
 		}
 	}
 }

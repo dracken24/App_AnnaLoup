@@ -5,6 +5,7 @@ using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Threading.Tasks;
+using GoogleApi.Entities.Maps.StreetView.Request.Enums;
 
 namespace FindYourPath
 {

@@ -3,78 +3,197 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FindYourPath.Views.Profile"
              Title="Profile">
-
+    
     <ScrollView>
         <Frame BorderColor="#006666" 
-           CornerRadius="20" 
-           HasShadow="True" 
-           Padding="0">
-            <StackLayout Spacing="20" Padding="20">
-                <Image x:Name="profileImage" 
-                   Source="Scrat_02.jpg"
-                   WidthRequest="200"
-                   HeightRequest="200"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Start"
-                   Aspect="AspectFill"
-                   Margin="5"
-                   BackgroundColor="#006666"/>
+               CornerRadius="20" 
+               HasShadow="True" 
+               Padding="0"
+               BackgroundColor="LightBlue">
+            
+            <Grid Padding="20">
+                <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*" />
+                        <ColumnDefinition Width="6*" />
+                    </Grid.ColumnDefinitions>
 
-                <Label Text="Scrat Oak" 
-                   FontAttributes="Bold" 
-                   FontSize="24"
-                   HorizontalOptions="Center"
-                   TextColor="Black" />
+                <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                <!-- Photo de profil -->
+                    <Frame BorderColor="#006666" 
+                           CornerRadius="10" 
+                           HasShadow="True" 
+                           BackgroundColor="LightCyan" 
+                           Padding="0"
+                           WidthRequest="200"
+                           HeightRequest="200">
 
-                <Label Text="Somwere in a tree" 
-                   HorizontalOptions="Center"
-                   TextColor="Black" />
+                        <Image x:Name="profileImage" 
+                           Source="Scrat_02.jpg"
+                           WidthRequest="180"
+                           HeightRequest="180"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Start"
+                           Aspect="AspectFill"
+                           Grid.Row="0"
+                           Grid.ColumnSpan="2"
+                           Margin="10" />
+
+                    </Frame>
+                </StackLayout>
+
+                
+
+                <!-- Labels de gauche -->
+
+                <StackLayout Grid.Row="1" Grid.Column="0">
+
+                    <Frame BorderColor="#006666" 
+                           CornerRadius="10" 
+                           HasShadow="True" 
+                           Padding="0"
+                           BackgroundColor="LightCyan">
+                        
+                        <StackLayout>
+
+                            <StackLayout Orientation="Horizontal"
+                                         HorizontalOptions="Start"
+                                         Spacing="10">
+                                <Image Source="name_logo.png"
+                                       HeightRequest="30"
+                                       WidthRequest="30"/>
+                                <Label Text="Nom" 
+                                       FontAttributes="Bold"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Start"
+                                       TextColor="#006666"
+                                       FontSize="16" />
+                            </StackLayout>
+
+                            <StackLayout Orientation="Horizontal"
+                                         HorizontalOptions="Start"
+                                         Spacing="10"
+                                         HeightRequest="50">
+                                <Image Source="adresse_logo.png"
+                                       HeightRequest="30"
+                                       WidthRequest="30"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Start"/>
+                                <Label Text="Adresse" 
+                                       FontAttributes="Bold"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Start"
+                                       TextColor="#006666"
+                                       FontSize="16"/>
+                            </StackLayout>
+
+                            <StackLayout Orientation="Horizontal"
+                                         HorizontalOptions="Start"
+                                         Spacing="10">
+                                <Image Source="email_logo.png"
+                                       HeightRequest="30"
+                                       WidthRequest="30"/>
+                                <Label Text="e-mail"
+                                       FontAttributes="Bold"
+                                       HorizontalOptions="Start"
+                                       TextColor="#006666"
+                                       FontSize="16"/>
+                            </StackLayout>
+
+                            <StackLayout Orientation="Horizontal"
+                                         HorizontalOptions="Start"
+                                         Spacing="10">
+                                <Image Source="phone_logo.png"
+                                       HeightRequest="30"
+                                       WidthRequest="30"/>
+                                <Label Text="Telephone"
+                                       FontAttributes="Bold"
+                                       HorizontalOptions="Start"
+                                       TextColor="#006666"
+                                       FontSize="16"/>
+                            </StackLayout>
+                            
+                        </StackLayout>
+                        
+                    </Frame>
+                    
+                </StackLayout>
+
+                <!-- Labels de droite -->
+                <StackLayout Grid.Row="1" Grid.Column="1">
+                    <Frame BorderColor="#006666" 
+                           CornerRadius="10" 
+                           HasShadow="True" 
+                           Padding="0"
+                           BackgroundColor="LightCyan">
+                <StackLayout>
 
                 <StackLayout Orientation="Horizontal"
-                         HorizontalOptions="Center"
-                         Spacing="10">
-                    <Image Source="phone_icon.png"
-                       HeightRequest="20"
-                       WidthRequest="20"/>
-                    <Label Text="1 888 ILoveNuts"
-                       HorizontalOptions="Center"
-                       TextColor="Black" />
+                                 HorizontalOptions="Start"
+                                 Spacing="10">
+                        <Image Source=""
+                               HeightRequest="30"
+                               WidthRequest="0"/>
+                        <Label x:Name="nameLabel" 
+                           FontSize="16"
+                           HorizontalOptions="Start"
+                           TextColor="#006666" />
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="Start"
+                                 Spacing="10">
+                        <Image Source=""
+                               HeightRequest="50"
+                               WidthRequest="0"/>
+                        <Label x:Name="addressLabel" 
+                           FontSize="16"
+                           HorizontalOptions="Start"
+                           TextColor="#006666" />
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="Start"
+                                 Spacing="10">
+                        <Image Source=""
+                               HeightRequest="30"
+                               WidthRequest="0"/>
+                        <Label x:Name="emailLabel" 
+                           FontSize="16"
+                           HorizontalOptions="Start"
+                           TextColor="#006666" />
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="Start"
+                                 Spacing="10">
+                        <Image Source=""
+                               HeightRequest="30"
+                               WidthRequest="0"/>
+                        <Label x:Name="phoneLabel" 
+                           FontSize="16"
+                           HorizontalOptions="Start"
+                           TextColor="#006666" />
+                    </StackLayout>
+
+                        </StackLayout>
+                    </Frame>
                 </StackLayout>
-            </StackLayout>
-        </Frame>
-    </ScrollView>
-</ContentPage>
 
-    <!--
-     <ScrollView>
-        <Frame BorderColor="#006666" 
-                   CornerRadius="5" 
-                   HasShadow="True" 
-                   BackgroundColor="LightBlue" 
-                   Padding="0">
-            
-        <StackLayout Padding="20">
-            <Image x:Name="profileImage" 
-                   Source="Scrat_02.jpg"
-                   WidthRequest="200"
-                   HeightRequest="200"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Start"
-                   Margin="5" />
+                <!-- Bouton change profil infos -->
+                <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" >
+                    <Button Text="Update infos" Clicked="UpdateProfileInfos" TextColor="#006666" />
+                </StackLayout>
 
-            <Label Text="Nom" FontAttributes="Bold" TextColor="Black" />
-            <Label x:Name="nameLabel" TextColor="Black" />
-
-            <Label Text="Adresse" FontAttributes="Bold" TextColor="Black" />
-            <Label x:Name="addressLabel" TextColor="Black" />
-
-            <Label Text="Téléphone" FontAttributes="Bold" TextColor="Black" />
-            <Label x:Name="phoneLabel" TextColor="Black" />
-        </StackLayout>
+            </Grid>
         </Frame>
         
+        
     </ScrollView>
-
 </ContentPage>
-    -->
     
+
