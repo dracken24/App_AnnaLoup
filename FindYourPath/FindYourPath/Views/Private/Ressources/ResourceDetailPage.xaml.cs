@@ -12,7 +12,7 @@ namespace FindYourPath.Views
 		public ResourceDetailPage(CommunityResource resource)
 		{
 			Title = resource.Name;
-			
+
 			Content = new StackLayout
 			{
 				Children = {
@@ -22,7 +22,7 @@ namespace FindYourPath.Views
 					new Label { Text = "Type          : " + resource.PhoneNumber, TextColor = Color.FromHex("#006666") },
 				}
 			};
-			
+
 		}
 	}
 }
