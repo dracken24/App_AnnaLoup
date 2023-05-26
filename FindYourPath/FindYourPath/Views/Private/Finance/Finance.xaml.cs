@@ -10,13 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace FindYourPath.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class PublicRessources : ContentPage
+	public partial class Finance : ContentPage
 	{
-		public PublicRessources()
+		public Finance()
 		{
 			InitializeComponent();
-
-			Title = "Ressources Publique";
 		}
 	}
 }

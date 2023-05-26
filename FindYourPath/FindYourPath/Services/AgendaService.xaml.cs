@@ -53,7 +53,7 @@ namespace FindYourPath.Services
 		public ScheduleAppointment ConvertGoogleEventToScheduleAppointment(Google.Apis.Calendar.v3.Data.Event googleEvent)
 		{
 			// Création d'un nouvel événement ScheduleAppointment
-			var newEvent = new ScheduleAppointment()
+			ScheduleAppointment newEvent = new ScheduleAppointment()
 			{
 				Subject = googleEvent.Summary,
 				StartTime = Convert.ToDateTime(googleEvent.Start.DateTimeRaw),

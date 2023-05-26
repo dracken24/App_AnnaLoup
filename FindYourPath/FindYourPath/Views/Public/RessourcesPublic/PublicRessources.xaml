@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FindYourPath.Views.PublicRessources">
+
+    <ScrollView>
+        <Frame BorderColor="#006666" 
+               CornerRadius="10" 
+               HasShadow="True" 
+               Padding="0"
+               BackgroundColor="LightBlue">
+
+            <Grid Padding="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="6*" />
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                    <!-- Texte au haut -->
+                    <Frame BorderColor="#006666" 
+                           CornerRadius="10" 
+                           HasShadow="True" 
+                           BackgroundColor="LightCyan" 
+                           Padding="0"
+                           HeightRequest="150">
+
+                        <ScrollView>
+                            <StackLayout>
+
+                                <Label Text="Ressources Publiques"
+                                   FontSize="Title"
+                                   TextColor="#006666"
+                                   HorizontalOptions="CenterAndExpand"
+                                   VerticalOptions="Start" />
+
+                                <Label FontSize="16"
+                                       TextColor="#006666"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="Start"
+                                       Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Et malesuada fames ac turpis egestas. Montes nascetur ridiculus mus mauris vitae ultricies leo integer malesuada. Ut venenatis tellus in metus vulputate eu scelerisque. Quisque egestas diam in arcu cursus euismod. Quam elementum pulvinar etiam non quam lacus. Magna ac placerat vestibulum lectus. Leo in vitae turpis massa sed elementum tempus egestas. Est ultricies integer quis auctor elit sed vulputate mi sit. Non odio euismod lacinia at quis risus sed vulputate odio. Odio eu feugiat pretium nibh ipsum consequat nisl. Viverra nam libero justo laoreet. Velit scelerisque in dictum non consectetur a erat."/>
+                            
+                            </StackLayout>
+                        </ScrollView>
+                    </Frame>
+                </StackLayout>
+
+                <!-- Labels de gauche, Villes -->
+
+                <StackLayout Grid.Row="1" Grid.Column="0">
+
+                    <Frame BorderColor="#006666" 
+                           CornerRadius="10" 
+                           HasShadow="True" 
+                           Padding="0"
+                           BackgroundColor="LightCyan"
+                           HeightRequest="160">
+
+                        <ScrollView>
+                            <StackLayout>
+                        
+                                <StackLayout Orientation="Horizontal"
+                                             HorizontalOptions="Start"
+                                             Spacing="10">
+                                
+                                    <Image Source="earth_logo.png"
+                                           HeightRequest="30"
+                                           WidthRequest="30"/>
+                                
+                                    <Label Text="  Villes" 
+                                           FontAttributes="Bold"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"
+                                           TextColor="#006666"
+                                           FontSize="16" />
+
+                                </StackLayout>
+                            
+                                    <!-- Bouton choise city -->
+                                <StackLayout Spacing="-5">
+                                
+                                    <Button Text="Quebec"
+                                            FontSize="12"
+                                            Clicked="OnQuebecClicked"
+                                            TextColor="#006666" HeightRequest="35" />
+                            
+                                    <Button Text="Montreal"
+                                            FontSize="12"
+                                            Clicked="OnMontrealClicked"
+                                            TextColor="#006666" HeightRequest="35" />
+                            
+                                    <Button Text="Outaouais"
+                                            FontSize="12"
+                                            Clicked="OnOutaouaisClicked"
+                                            TextColor="#006666" HeightRequest="35" />
+
+                                    <Button Text="Autres regions"
+                                            FontSize="12"
+                                            Clicked="OnOtherClicked"
+                                            TextColor="#006666" HeightRequest="35" />
+                                
+                                    <Button Text="Test"
+                                            FontSize="12"
+                                            TextColor="#006666" HeightRequest="35" />
+                                
+                                </StackLayout>
+                            </StackLayout>
+                        </ScrollView>
+
+                    </Frame>
+
+                </StackLayout>
+
+                <!-- Labels de droite, Types de ressources -->
+                <StackLayout Grid.Row="1" Grid.Column="1">
+                    <Frame BorderColor="#006666" 
+                           CornerRadius="10" 
+                           HasShadow="True" 
+                           Padding="0"
+                           BackgroundColor="LightCyan"
+                           HeightRequest="160">
+
+                        <StackLayout HorizontalOptions="Center">
+                            <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="Start"
+                                 Spacing="10">
+
+                                <Grid Padding="5">
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="2*" />
+                                        <RowDefinition Height="10*" />
+                                    </Grid.RowDefinitions>
+
+                                    <StackLayout Grid.Row="0">
+
+                                        <Label Text="Type de Ressources" 
+                                               FontAttributes="Bold"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"
+                                               TextColor="#006666"
+                                               FontSize="16" />
+                                        <Image Source=""
+                                               HeightRequest="30"
+                                               WidthRequest="0"/>
+                                        
+                                    </StackLayout>
+                                    
+                                    <StackLayout Grid.Row="1">
+
+                                        <ListView x:Name="resourcesListView" 
+                                                  ItemSelected="OnResourceSelected" 
+                                                  HorizontalOptions="Start"
+                                                  RowHeight="30">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextCell Text="{Binding Name}" />
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                        
+                                    </StackLayout>
+
+                                </Grid>
+
+                            </StackLayout>
+                        </StackLayout>
+                        
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" >
+                    <!-- Bloc bas de page -->
+                    <Frame BorderColor="#006666" 
+                           CornerRadius="10" 
+                           HasShadow="True" 
+                           BackgroundColor="LightCyan" 
+                           Padding="0"
+                           HeightRequest="400">
+
+                            <StackLayout>
+
+                                <Label Text="Liste des organismes"
+                                   FontSize="Title"
+                                   TextColor="#006666"
+                                   HorizontalOptions="CenterAndExpand"
+                                   VerticalOptions="Start" />
+
+                                <StackLayout >
+                                    <ListView x:Name="bottomListView"
+                                              HorizontalOptions="CenterAndExpand"
+                                              VerticalOptions="Start"
+                                              RowHeight="40" />
+                                </StackLayout>
+                            </StackLayout>
+                            
+                    </Frame>
+                </StackLayout>
+
+            </Grid>
+        </Frame>
+
+    </ScrollView>
+</ContentPage>

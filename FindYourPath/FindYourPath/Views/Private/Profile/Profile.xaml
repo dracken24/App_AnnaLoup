@@ -6,7 +6,7 @@
     
     <ScrollView>
         <Frame BorderColor="#006666" 
-               CornerRadius="20" 
+               CornerRadius="10" 
                HasShadow="True" 
                Padding="0"
                BackgroundColor="LightBlue">

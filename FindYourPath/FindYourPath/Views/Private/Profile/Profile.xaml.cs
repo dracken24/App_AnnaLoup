@@ -26,7 +26,6 @@ namespace FindYourPath.Views
 			addressLabel.SetBinding(Label.TextProperty, new Binding("Address", source: viewModel));
 			emailLabel.SetBinding(Label.TextProperty, new Binding("Email", source: viewModel));
 			phoneLabel.SetBinding(Label.TextProperty, new Binding("Phone", source: viewModel));
-			// Do the same for addressLabel, emailLabel, and phoneLabel
 		}
 
 		public Profile(ProfileViewModel viewModel)
@@ -38,12 +37,12 @@ namespace FindYourPath.Views
 			addressLabel.SetBinding(Label.TextProperty, new Binding("Address", source: viewModel));
 			emailLabel.SetBinding(Label.TextProperty, new Binding("Email", source: viewModel));
 			phoneLabel.SetBinding(Label.TextProperty, new Binding("Phone", source: viewModel));
-			// Do the same for addressLabel, emailLabel, and phoneLabel
 		}
 
 		public async void UpdateProfileInfos(object sender, EventArgs e)
 		{
 			await Navigation.PushAsync(new ChangeProfilInfos(viewModel));
+			Console.WriteLine("NAME: " + viewModel.Name);
 		}
 	}
 }
