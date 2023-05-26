@@ -10,7 +10,7 @@
                Padding="0"
                BackgroundColor="LightBlue">
 
-            <Grid Padding="20">
+            <Grid Padding="15">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
