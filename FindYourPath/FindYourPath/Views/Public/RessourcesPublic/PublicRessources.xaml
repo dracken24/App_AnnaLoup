@@ -27,7 +27,7 @@
                            CornerRadius="10" 
                            HasShadow="True" 
                            BackgroundColor="LightCyan" 
-                           Padding="0"
+                           Padding="15"
                            HeightRequest="150">
 
                         <ScrollView>

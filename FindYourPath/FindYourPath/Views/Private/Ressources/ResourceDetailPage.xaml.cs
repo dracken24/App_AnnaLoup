@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -11,18 +12,14 @@ namespace FindYourPath.Views
 
 		public ResourceDetailPage(CommunityResource resource)
 		{
+			InitializeComponent();
+
 			Title = resource.Name;
 
-			Content = new StackLayout
-			{
-				Children = {
-					new Label { Text = "Nom          : " + resource.Name, TextColor = Color.FromHex("#006666") },
-					new Label { Text = "Adresse    : " + resource.Address, TextColor = Color.FromHex("#006666") },
-					new Label { Text = "Telephone: " + resource.PhoneNumber, TextColor = Color.FromHex("#006666") },
-					new Label { Text = "Type          : " + resource.PhoneNumber, TextColor = Color.FromHex("#006666") },
-				}
-			};
-
+			nameLabel.Text = $"Nom           : {resource.Name}";
+			addressLabel.Text = $"Adresse     : {resource.Address}";
+			phoneLabel.Text = $"Téléphone : {resource.PhoneNumber}";
+			typeLabel.Text = $"Type           : {resource.Type}";
 		}
 	}
 }

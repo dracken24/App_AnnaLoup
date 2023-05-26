@@ -5,7 +5,7 @@
         <Frame BorderColor="#006666" 
                            CornerRadius="10" 
                            HasShadow="True" 
-                           Padding="0"
+                           Padding="15"
                            BackgroundColor="LightBlue">
             <StackLayout>
                 <Label  Text="Change Profile Infos"
@@ -17,7 +17,7 @@
                 <Frame BorderColor="#006666" 
                            CornerRadius="10" 
                            HasShadow="True" 
-                           Padding="0"
+                           Padding="15"
                            BackgroundColor="LightCyan">
                     <StackLayout>
                 
