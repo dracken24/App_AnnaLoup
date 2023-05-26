@@ -27,7 +27,7 @@
                         <Frame BorderColor="#006666" 
                                CornerRadius="10" 
                                HasShadow="True" 
-                               BackgroundColor="LightCyan" 
+                               BackgroundColor="White" 
                                Padding="1">
 
                             <StackLayout>

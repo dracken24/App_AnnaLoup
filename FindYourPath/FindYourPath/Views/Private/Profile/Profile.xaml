@@ -56,7 +56,8 @@
                            CornerRadius="10" 
                            HasShadow="True" 
                            Padding="0"
-                           BackgroundColor="LightCyan">
+                           BackgroundColor="LightCyan"
+                           HeightRequest="350">
                         
                         <StackLayout>
 
@@ -129,7 +130,8 @@
                            CornerRadius="10" 
                            HasShadow="True" 
                            Padding="0"
-                           BackgroundColor="LightCyan">
+                           BackgroundColor="LightCyan"
+                           HeightRequest="350">
                 <StackLayout>
 
                 <StackLayout Orientation="Horizontal"
