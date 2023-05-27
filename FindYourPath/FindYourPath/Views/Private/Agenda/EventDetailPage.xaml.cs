@@ -1,4 +1,5 @@
-﻿using Syncfusion.SfSchedule.XForms;
+﻿using FindYourPath.Views.Private.Agenda.SaveAgenda;
+using Syncfusion.SfSchedule.XForms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace FindYourPath.Views
 {
 	public partial class EventDetailPage : ContentPage
 	{
-		public EventDetailPage(ScheduleAppointment appointment)
+		public EventDetailPage(MyScheduleAppointment appointment)
 		{
 			InitializeComponent();
 			Title = "Détail de l'événement";

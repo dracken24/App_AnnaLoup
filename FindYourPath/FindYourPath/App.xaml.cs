@@ -40,12 +40,13 @@ namespace FindYourPath
 				if (_databasePath == null)
 				{
 					var dbName = "MyDb.db3";
+
 					#if __IOS__
-					string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "..", "Library");
+						string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "..", "Library");
 					_databasePath = Path.Combine(folderPath, dbName);
-					#else
-					// This will work for Android and UWP.
-					_databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), dbName);
+						#else
+						// This will work for Android and UWP.
+						_databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), dbName);
 					#endif
 				}
 				return _databasePath;

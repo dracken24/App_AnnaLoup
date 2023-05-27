@@ -1,9 +1,12 @@
-﻿using Syncfusion.SfCalendar.XForms;
+﻿using FindYourPath.Views.Private.Agenda.SaveAgenda;
+using SQLite;
+using Syncfusion.SfCalendar.XForms;
 using Syncfusion.SfSchedule.XForms;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace FindYourPath.Views
@@ -11,7 +14,9 @@ namespace FindYourPath.Views
 	public partial class Agenda : ContentPage
 	{
 		// Créez une collection pour stocker vos événements.
-		private ObservableCollection<ScheduleAppointment> appointments;
+		private ObservableCollection<MyScheduleAppointment> appointments;
+		// Pour sauvegerder les infos sur la database
+		private EventService eventService;
 
 		public Agenda()
 		{
@@ -19,11 +24,32 @@ namespace FindYourPath.Views
 
 			Title = "Agenda";
 
-			// Initialisez la collection.
-			appointments = new ObservableCollection<ScheduleAppointment>();
-
-			// Liez la collection d'événements à votre SfSchedule.
+			eventService = new EventService(App.DatabasePath);
+			appointments = new ObservableCollection<MyScheduleAppointment>();
 			schedule.DataSource = appointments;
+			//InitializeEventService();
+		}
+
+		public async Task InitializeAsync()
+		{
+			try
+			{
+				await eventService.InitializeAsync();
+				await LoadEventsFromDatabase();
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.StackTrace);
+			}
+		}
+
+		private async Task LoadEventsFromDatabase()
+		{
+			var events = await Task.Run(() => eventService.GetEventsAsync());
+			foreach (var e in events)
+			{
+				appointments.Add(e);
+			}
 		}
 
 		private void OnAddEventButtonClicked(object sender, EventArgs e)
@@ -35,8 +61,8 @@ namespace FindYourPath.Views
 				selectedDate = DateTime.Now;
 			}
 
-			// Ouvrez ici votre page ou votre fenêtre de dialogue pour ajouter un événement
-			Navigation.PushAsync(new AddEventPage(appointments, selectedDate.Value));
+			Navigation.PushAsync(new AddEventPage(appointments, selectedDate.Value, eventService));
+
 		}
 
 		private void OnDateClicked(object sender, CellTappedEventArgs e)
@@ -48,13 +74,15 @@ namespace FindYourPath.Views
 
 		private void OnEventTapped(object sender, ItemTappedEventArgs e)
 		{
-			var selectedEvent = e.Item as ScheduleAppointment;
+			var selectedEvent = e.Item as MyScheduleAppointment;
 			Navigation.PushAsync(new EventDetailPage(selectedEvent));
 		}
 
 
-		private List<ScheduleAppointment> GetEventsForDay(DateTime date)
+		private List<MyScheduleAppointment> GetEventsForDay(DateTime date)
 		{
+			appointments = appointments ?? new ObservableCollection<MyScheduleAppointment>();
+
 			var eventsForDay = appointments.Where(appointment =>
 				appointment.StartTime.Date <= date.Date &&
 				appointment.EndTime.Date >= date.Date).ToList();
