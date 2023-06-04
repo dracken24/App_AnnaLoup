@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using MySqlConnector;
-using FindYourPath.DataBase;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.Net.Http;
@@ -22,12 +20,9 @@ public class UserService
 
 	public async Task AddUser(JObject paramJson)
 	{
-		//var httpClient = new HttpClient();
-
-		Console.Write("------------------------------BBBBBBBBBBBBB------------------------------\n");
+		// Envoie les request par .json au fichiers.php du server TODO: Changer lien selon le server
 		var content = new StringContent(JsonConvert.SerializeObject(paramJson), Encoding.UTF8, "application/json");
-
-		var response = await _httpClient.PostAsync("http://dracken24.duckdns.org/apiAnnaLoup/actions/createAccount.php", content);
+		var response = await _httpClient.PostAsync(_connectionString + "/createAccount.php", content);
 
 		if (response.IsSuccessStatusCode)
 		{
@@ -45,18 +40,15 @@ public class UserService
 		else
 		{
 			// Gérer l'erreur ici
-			// Console.Write("------------------------------CANT CONNECT------------------------------");
 			throw new Exception($"Une erreur est survenue lors de la création de votre compte: {response.StatusCode}");
 		}
-		Console.Write("------------------------------CCCCCCCCCCCC------------------------------\n");
 	}
 
 	public async Task<bool> VerifyUserAsync(JObject paramJson)
 	{
+		// Envoie les request par .json au fichiers.php du server TODO: Changer lien selon le server
 		var content = new StringContent(JsonConvert.SerializeObject(paramJson), Encoding.UTF8, "application/json");
-
-		var response = await _httpClient.PostAsync("http://dracken24.duckdns.org/apiAnnaLoup/actions/connectUser.php", content);
-		Console.WriteLine("JSON REQUEST: " + response.Content.ReadAsStringAsync());
+		var response = await _httpClient.PostAsync(_connectionString + "/connectUser.php", content);
 
 		if (response.IsSuccessStatusCode)
 		{

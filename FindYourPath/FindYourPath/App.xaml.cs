@@ -11,15 +11,14 @@ namespace FindYourPath
 {
 	public partial class App : Application
 	{
-		static UserService _userService;
-		static string _connectionString;
+		static UserService _userService; // Pour la gestion de la Database
+		static string _connectionString; // String de connexion a la Database
 
 		public App()
 		{
 			InitializeComponent();
 
-			_connectionString = "http://dracken24.duckdns.org/apiAnnaLoup/actions/connectUser.php";
-			// _connectionString = "server=https://10.0.2.2/apiAnnaLoup/actions/connectUser.php;user=root;password=Serpents24.;database=users";
+			_connectionString = "http://dracken24.duckdns.org/apiAnnaLoup/actions";
 			_userService = new UserService(_connectionString);
 
 			MainPage = new LoginPage();

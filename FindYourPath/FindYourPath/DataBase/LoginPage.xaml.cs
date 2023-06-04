@@ -19,8 +19,8 @@ namespace FindYourPath.DataBase
 
 		async void OnLoginButtonClicked(object sender, EventArgs e)
 		{
-			// var username = ((LoginPageViewModel)BindingContext).Username;
-			var username = UsernameEntry.Text;
+			var username = ((LoginPageViewModel)BindingContext).Username;
+			// var username = UsernameEntry.Text;
 			var password = PasswordEntry.Text;
 
 			JObject paramJson = new JObject
@@ -29,9 +29,9 @@ namespace FindYourPath.DataBase
 				["password"] = password
 			};
 
-			Console.WriteLine("In Login");
-			Console.WriteLine("Username: " + username);
-			Console.WriteLine("Password: " + password);
+			// Console.WriteLine("In Login");
+			// Console.WriteLine("Username: " + username);
+			// Console.WriteLine("Password: " + password);
 
 			try
 			{
@@ -48,17 +48,17 @@ namespace FindYourPath.DataBase
 			catch (HttpRequestException ex)
 			{
 				Console.WriteLine("Une erreur s'est produite lors de la connexion au serveur : " + ex);
-				await DisplayAlert("Erreur", "Impossible de se connecter au serveur. Veuillez vérifier votre connexion internet.", "OK");
+				await DisplayAlert("Erreur", "Impossible de se connecter au serveur.", "OK");
 			}
 			catch (JsonException ex)
 			{
 				Console.WriteLine("Une erreur s'est produite lors de l'analyse de la réponse du serveur : " + ex);
-				await DisplayAlert("Erreur", "Une erreur inattendue s'est produite. Veuillez réessayer plus tard.", "OK");
+				await DisplayAlert("Erreur", "Une erreur inattendue s'est produite. " + ex.Message, "OK");
 			}
 			catch (Exception ex)
 			{
 				Console.WriteLine("Une erreur inattendue s'est produite : " + ex);
-				await DisplayAlert("Erreur", "Une erreur inattendue s'est produite. Veuillez réessayer plus tard.", "OK");
+				await DisplayAlert("Erreur", "Une erreur inattendue s'est produite. " + ex.Message, "OK");
 			}
 		}
 

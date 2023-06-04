@@ -6,6 +6,7 @@ using System.Text;
 
 namespace FindYourPath.DataBase
 {
+	// Class pour linker les vars du login.xamel aux vars dans le c#
 	public class LoginPageViewModel : INotifyPropertyChanged
 	{
 		private string _username;

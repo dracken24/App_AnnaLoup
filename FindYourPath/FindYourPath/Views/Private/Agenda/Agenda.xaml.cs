@@ -24,6 +24,7 @@ namespace FindYourPath.Views
 
 			Title = "Agenda";
 
+			// TODO: string de connexion au bon .php
 			eventService = new EventService(App.ConnectionString);
 			appointments = new ObservableCollection<MyScheduleAppointment>();
 			schedule.DataSource = appointments;
