@@ -7,7 +7,10 @@
     <ContentPage.Content>
         
         <StackLayout Padding="30">
-            <Label Text="Login" HorizontalOptions="CenterAndExpand" FontSize="Large" TextColor="#006666" />
+            <Label Text="Login"
+                   HorizontalOptions="CenterAndExpand"
+                   FontSize="Large"
+                   TextColor="#006666" />
             
             <!-- Username -->
             <Frame BorderColor="#006666" 
@@ -15,7 +18,12 @@
                    HasShadow="True" 
                    BackgroundColor="LightBlue" 
                    Padding="0">
-                <Entry x:Name="UsernameEntry" Placeholder="Username" PlaceholderColor="#006666" TextColor="#006666" />
+                
+                <Entry x:Name="UsernameEntry"
+                       Placeholder="Username"
+                       PlaceholderColor="#006666"
+                       TextColor="#006666"
+                       Text="{Binding Username}" />
             </Frame>
 
             <!-- Password -->
@@ -24,14 +32,24 @@
                    HasShadow="True" 
                    BackgroundColor="LightBlue" 
                    Padding="0">
-                <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" PlaceholderColor="#006666" TextColor="Black" />
+                
+                <Entry x:Name="PasswordEntry"
+                       Placeholder="Password"
+                       IsPassword="True"
+                       PlaceholderColor="#006666"
+                       TextColor="Black" />
             </Frame>
 
             <!-- Log in button -->
-            <Button Text="Log In" Clicked="OnLoginButtonClicked" TextColor="#006666" />
+            <Button Text="Log In"
+                    Clicked="OnLoginButtonClicked"
+                    TextColor="#006666" />
 
             <!-- Create account button -->
-            <Button Text="Create Account" Clicked="OnCreateAccountButtonClicked" TextColor="#006666" />
+            <Button Text="Create Account"
+                    Clicked="OnCreateAccountButtonClicked"
+                    TextColor="#006666" />
+            
         </StackLayout>
         
     </ContentPage.Content>

@@ -24,7 +24,7 @@ namespace FindYourPath.Views
 
 			Title = "Agenda";
 
-			eventService = new EventService(App.DatabasePath);
+			eventService = new EventService(App.ConnectionString);
 			appointments = new ObservableCollection<MyScheduleAppointment>();
 			schedule.DataSource = appointments;
 			//InitializeEventService();

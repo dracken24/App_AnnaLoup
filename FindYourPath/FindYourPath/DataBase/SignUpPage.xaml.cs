@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net.Http;
+
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -23,18 +23,37 @@ namespace FindYourPath.DataBase
 			var email = EmailEntry.Text;
 			var password = PasswordEntry.Text;
 
+			JObject paramJson = new JObject
+			{
+				["username"] = username,
+				["email"] = email,
+				["password"] = password
+			};
+
 			if (IsValidRegistration(username, email, password))
 			{
 				try
 				{
-					// Create the new user
-					var userService = new UserService(App.DatabasePath);
-					await userService.AddUser(username, email, password); // use 'await' here
+					// Use the UserService from the App class instead of creating a new one
+					var userService = App.UserService;
+					await userService.AddUser(paramJson); // use 'await' here
+				}
+				catch (HttpRequestException ex)
+				{
+					Console.WriteLine("Une erreur s'est produite lors de la connexion au serveur : " + ex);
+					await DisplayAlert("Erreur", "Impossible de se connecter au serveur. Veuillez vérifier votre connexion internet.", "OK");
+					return;
+				}
+				catch (JsonException ex)
+				{
+					Console.WriteLine("Une erreur s'est produite lors de l'analyse de la réponse du serveur : " + ex);
+					await DisplayAlert("Erreur", "Une erreur inattendue s'est produite. Veuillez réessayer plus tard.", "OK");
+					return;
 				}
 				catch (Exception ex)
 				{
-					Console.WriteLine(ex.ToString());
-					await DisplayAlert("Error", "Invalid connexion", "OK");
+					Console.WriteLine("Une erreur inattendue s'est produite : " + ex);
+					await DisplayAlert("Erreur", "Une erreur inattendue s'est produite. Veuillez réessayer plus tard.", "OK");
 					return;
 				}
 
@@ -50,7 +69,7 @@ namespace FindYourPath.DataBase
 
 		bool IsValidRegistration(string username, string email, string password)
 		{
-			// Insérer ici le code pour vérifier les informations d'inscription.
+			// TODO: Insérer ici le code pour vérifier les informations d'inscription.
 			// Cette fonction est un exemple et doit être remplacée par une vérification réelle.
 
 			return !string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(email);

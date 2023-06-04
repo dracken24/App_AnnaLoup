@@ -4,59 +4,87 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using MySqlConnector;
 using FindYourPath.DataBase;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using System.Net.Http;
+using System.Text;
+
 
 public class UserService
 {
-	readonly SQLiteAsyncConnection _database;
+	private readonly string _connectionString;
+	private static HttpClient _httpClient = new HttpClient();
 
-	public UserService(string dbPath)
+	public UserService(string connectionString)
 	{
-		_database = new SQLiteAsyncConnection(dbPath);
-		_database.CreateTableAsync<User>().Wait();
+		_connectionString = connectionString;
 	}
 
-	// ... (autres méthodes) ...
-
-	public Task<int> SaveUserAsync(User user)
+	public async Task AddUser(JObject paramJson)
 	{
-		if (user.Id != 0)
+		//var httpClient = new HttpClient();
+
+		Console.Write("------------------------------BBBBBBBBBBBBB------------------------------\n");
+		var content = new StringContent(JsonConvert.SerializeObject(paramJson), Encoding.UTF8, "application/json");
+
+		var response = await _httpClient.PostAsync("http://dracken24.duckdns.org/apiAnnaLoup/actions/createAccount.php", content);
+
+		if (response.IsSuccessStatusCode)
 		{
-			return _database.UpdateAsync(user);
+			var responseContent = await response.Content.ReadAsStringAsync();
+
+			// Déplace le traitement des données sur un autre thread
+			var result = await Task.Run(() => JsonConvert.DeserializeObject<Dictionary<string, object>>(responseContent));
+
+			if (!(bool)result["success"])
+			{
+				// Gérer l'erreur ici
+				throw new Exception(result["error"].ToString());
+			}
 		}
 		else
 		{
-			return _database.InsertAsync(user);
+			// Gérer l'erreur ici
+			// Console.Write("------------------------------CANT CONNECT------------------------------");
+			throw new Exception($"Une erreur est survenue lors de la création de votre compte: {response.StatusCode}");
 		}
+		Console.Write("------------------------------CCCCCCCCCCCC------------------------------\n");
 	}
 
-	public async Task AddUser(string username, string email, string password)
+	public async Task<bool> VerifyUserAsync(JObject paramJson)
 	{
-		var newUser = new User { Username = username, Email = email, Password = password };
-		await SaveUserAsync(newUser);
-	}
+		var content = new StringContent(JsonConvert.SerializeObject(paramJson), Encoding.UTF8, "application/json");
 
-	public async Task<bool> VerifyUserAsync(string username, string password)
-	{
-		// Get the user with the given username
-		var user = await _database.Table<User>().Where(u => u.Username == username).FirstOrDefaultAsync();
+		var response = await _httpClient.PostAsync("http://dracken24.duckdns.org/apiAnnaLoup/actions/connectUser.php", content);
+		Console.WriteLine("JSON REQUEST: " + response.Content.ReadAsStringAsync());
 
-		// If no such user exists, return false
-		if (user == null)
+		if (response.IsSuccessStatusCode)
 		{
+			var jsonResponse = await response.Content.ReadAsStringAsync();
+
+			// Déplace le traitement des données sur un autre thread
+			var responseObject = await Task.Run(() => JsonConvert.DeserializeObject<Dictionary<string, object>>(jsonResponse));
+
+			// Note the change here: we now check the "success" value in the JSON response
+			if (responseObject.ContainsKey("success") && (bool)responseObject["success"])
+			{
+				return true;
+			}
+			else
+			{
+				// Optionally, log the error message if present
+				if (responseObject.ContainsKey("error"))
+				{
+					Console.WriteLine("Error from server: " + responseObject["error"]);
+				}
+				return false;
+			}
+		}
+		else
+		{
+			// Handle unsuccessful HTTP response here...
+			Console.WriteLine("Unsuccessful HTTP response. Status code: " + response.StatusCode);
 			return false;
 		}
-
-		// Compare the password with the one in the database
-		// NOTE: This assumes that the password in the database is stored in plaintext. 
-		// In a real application, you should NEVER store passwords in plaintext. 
-		// You should store a hash of the password and compare that instead.
-		if (user.Password == password)
-		{
-			return true;
-		}
-
-		// If the passwords do not match, return false
-		return false;
 	}
-
 }

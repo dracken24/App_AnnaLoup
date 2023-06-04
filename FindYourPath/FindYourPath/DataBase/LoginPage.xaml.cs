@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
+﻿using Newtonsoft.Json.Linq;
+using System;
+using System.Net.Http;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Newtonsoft.Json;
 
 namespace FindYourPath.DataBase
 {
@@ -16,19 +14,29 @@ namespace FindYourPath.DataBase
 		public LoginPage()
 		{
 			InitializeComponent();
+			BindingContext = new LoginPageViewModel();
 		}
 
 		async void OnLoginButtonClicked(object sender, EventArgs e)
 		{
+			// var username = ((LoginPageViewModel)BindingContext).Username;
 			var username = UsernameEntry.Text;
 			var password = PasswordEntry.Text;
 
+			JObject paramJson = new JObject
+			{
+				["username"] = username,
+				["password"] = password
+			};
+
 			Console.WriteLine("In Login");
+			Console.WriteLine("Username: " + username);
+			Console.WriteLine("Password: " + password);
 
 			try
 			{
 				// Check if user exist
-				if (await IsValidLogin(username, password))  // utilise maintenant await
+				if (await IsValidLogin(paramJson))  // utilise maintenant await
 				{
 					await ((App)Application.Current).NavigateToMainPage();
 				}
@@ -37,30 +45,30 @@ namespace FindYourPath.DataBase
 					await DisplayAlert("Error", "Invalid username or password", "OK");
 				}
 			}
+			catch (HttpRequestException ex)
+			{
+				Console.WriteLine("Une erreur s'est produite lors de la connexion au serveur : " + ex);
+				await DisplayAlert("Erreur", "Impossible de se connecter au serveur. Veuillez vérifier votre connexion internet.", "OK");
+			}
+			catch (JsonException ex)
+			{
+				Console.WriteLine("Une erreur s'est produite lors de l'analyse de la réponse du serveur : " + ex);
+				await DisplayAlert("Erreur", "Une erreur inattendue s'est produite. Veuillez réessayer plus tard.", "OK");
+			}
 			catch (Exception ex)
 			{
-				Console.WriteLine(ex.ToString());
+				Console.WriteLine("Une erreur inattendue s'est produite : " + ex);
+				await DisplayAlert("Erreur", "Une erreur inattendue s'est produite. Veuillez réessayer plus tard.", "OK");
 			}
 		}
 
-	
-		async Task<bool> IsValidLogin(string username, string password)
+		async Task<bool> IsValidLogin(JObject paramJson)
 		{
-			Console.WriteLine("Verify User: " + username);
-			Console.WriteLine("Verify Pass: " + password);
+			Console.WriteLine("Verify paramJson: " + paramJson.ToString());
 
-			var userService = new UserService(App.DatabasePath);
-			return await userService.VerifyUserAsync(username, password);
+			var userService = App.UserService;
+			return await userService.VerifyUserAsync(paramJson);
 		}
-
-/*		
-		async Task<bool> IsValidLogin(string username, string password)
-		{
-			// doit être remplacée par une vérification réelle.
-
-			return !string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password);
-		}
-*/		
 
 		void OnCreateAccountButtonClicked(object sender, EventArgs e)
 		{
