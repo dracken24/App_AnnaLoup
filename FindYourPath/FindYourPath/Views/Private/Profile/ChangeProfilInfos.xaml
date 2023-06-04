@@ -1,0 +1,39 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FindYourPath.Views.Private.Profile.ChangeProfilInfos">
+    <ContentPage.Content>
+        <Frame BorderColor="#006666" 
+                           CornerRadius="10" 
+                           HasShadow="True" 
+                           Padding="15"
+                           BackgroundColor="LightBlue">
+            <StackLayout>
+                <Label  Text="Change Profile Infos"
+                    FontSize="Title"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="CenterAndExpand"
+                    TextColor="#006666"/>
+                
+                <Frame BorderColor="#006666" 
+                           CornerRadius="10" 
+                           HasShadow="True" 
+                           Padding="15"
+                           BackgroundColor="LightCyan">
+                    <StackLayout>
+                
+
+                <Entry x:Name="nameEntry" Placeholder="Enter your name here" TextColor="#006666"/>
+                <Entry x:Name="adresseEntry" Placeholder="Enter your adresse here" TextColor="#006666"/>
+                <Entry x:Name="emailEntry" Placeholder="Enter your e-mail here" TextColor="#006666"/>
+                <Entry x:Name="phoneEntry" Placeholder="Enter your phone here" TextColor="#006666"/>
+                    </StackLayout>
+                </Frame>
+                <!-- Bouton change profil infos -->
+                <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" >
+                    <Button Text="Valid infos" Clicked="OnSubmitButtonClicked" TextColor="#006666" />
+                </StackLayout>
+            </StackLayout>
+            
+        </Frame>
+    </ContentPage.Content>
+</ContentPage>

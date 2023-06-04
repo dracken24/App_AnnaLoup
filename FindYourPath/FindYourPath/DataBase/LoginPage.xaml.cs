@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
+﻿using Newtonsoft.Json.Linq;
+using System;
+using System.Net.Http;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Newtonsoft.Json;
 
 namespace FindYourPath.DataBase
 {
@@ -16,34 +14,60 @@ namespace FindYourPath.DataBase
 		public LoginPage()
 		{
 			InitializeComponent();
+			BindingContext = new LoginPageViewModel();
 		}
 
 		async void OnLoginButtonClicked(object sender, EventArgs e)
 		{
-			var username = UsernameEntry.Text;
+			var username = ((LoginPageViewModel)BindingContext).Username;
+			// var username = UsernameEntry.Text;
 			var password = PasswordEntry.Text;
 
-			// Insérer ici le code pour vérifier les informations de connexion.
-			// Cela pourrait être une demande à un service Web ou une vérification dans une base de données locale.
+			JObject paramJson = new JObject
+			{
+				["username"] = username,
+				["password"] = password
+			};
 
-			if (IsValidLogin(username, password))
+			// Console.WriteLine("In Login");
+			// Console.WriteLine("Username: " + username);
+			// Console.WriteLine("Password: " + password);
+
+			try
 			{
-				// Naviguer vers la page de profil si la connexion est valide.
-				// await Navigation.PushAsync(new AppShell());
-				await ((App)Application.Current).NavigateToMainPage();
+				// Check if user exist
+				if (await IsValidLogin(paramJson))  // utilise maintenant await
+				{
+					await ((App)Application.Current).NavigateToMainPage();
+				}
+				else
+				{
+					await DisplayAlert("Error", "Invalid username or password", "OK");
+				}
 			}
-			else
+			catch (HttpRequestException ex)
 			{
-				await DisplayAlert("Error", "Invalid username or password", "OK");
+				Console.WriteLine("Une erreur s'est produite lors de la connexion au serveur : " + ex);
+				await DisplayAlert("Erreur", "Impossible de se connecter au serveur.", "OK");
+			}
+			catch (JsonException ex)
+			{
+				Console.WriteLine("Une erreur s'est produite lors de l'analyse de la réponse du serveur : " + ex);
+				await DisplayAlert("Erreur", "Une erreur inattendue s'est produite. " + ex.Message, "OK");
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine("Une erreur inattendue s'est produite : " + ex);
+				await DisplayAlert("Erreur", "Une erreur inattendue s'est produite. " + ex.Message, "OK");
 			}
 		}
 
-		bool IsValidLogin(string username, string password)
+		async Task<bool> IsValidLogin(JObject paramJson)
 		{
-			// Insérer ici le code pour vérifier les informations de connexion.
-			// Cette fonction est un exemple et doit être remplacée par une vérification réelle.
+			Console.WriteLine("Verify paramJson: " + paramJson.ToString());
 
-			return !string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password);
+			var userService = App.UserService;
+			return await userService.VerifyUserAsync(paramJson);
 		}
 
 		void OnCreateAccountButtonClicked(object sender, EventArgs e)
