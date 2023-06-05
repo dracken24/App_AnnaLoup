@@ -10,7 +10,9 @@ namespace FindYourPath.Views.Private.Agenda.SaveAgenda
 	{
 		[PrimaryKey, AutoIncrement]
 		public int MyId { get; set; }
-
+		public string Description { get; set; }
+		public int UserId { get; set; }
+		
 		// Vos autres propriétés personnalisées...
 	}
 }

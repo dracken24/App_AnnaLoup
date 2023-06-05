@@ -49,7 +49,8 @@ namespace FindYourPath.Views
 				Subject = titleEntry.Text,
 				StartTime = startDateTime,
 				EndTime = endDateTime,
-				Notes = descriptionEditor.Text
+				Notes = descriptionEditor.Text,
+				UserId = 22 // TODO: Hardcodding
 			};
 
 			// Add newEvent to your data source
@@ -65,9 +66,18 @@ namespace FindYourPath.Views
 		public async Task CreateEvent(MyScheduleAppointment newEvent)
 		{
 			// Ajoutez ici toute autre logique nécessaire pour créer un événement...
+			Console.WriteLine("*************************** EVENT **************************");
 
 			// Enregistrez l'événement dans la base de données
-			await eventService.SaveEventAsync(newEvent);
+			try
+			{
+				await eventService.SaveEventAsync(newEvent);
+			}
+			catch (Exception ex)
+			{
+				// Handle any errors that occurred during save.
+				Console.WriteLine("Une erreur s'est produite lors de la sauvegarde de l'événement : " + ex);
+			}
 		}
 	}
 }

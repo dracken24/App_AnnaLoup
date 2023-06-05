@@ -25,7 +25,7 @@ namespace FindYourPath.Views
 			Title = "Agenda";
 
 			// TODO: string de connexion au bon .php
-			eventService = new EventService(App.ConnectionString);
+			eventService = new EventService(App.ConnectionString + "/EventService.php");
 			appointments = new ObservableCollection<MyScheduleAppointment>();
 			schedule.DataSource = appointments;
 			//InitializeEventService();
@@ -35,7 +35,7 @@ namespace FindYourPath.Views
 		{
 			try
 			{
-				await eventService.InitializeAsync();
+				// await eventService.InitializeAsync();
 				await LoadEventsFromDatabase();
 			}
 			catch (Exception ex)
@@ -55,6 +55,7 @@ namespace FindYourPath.Views
 
 		private void OnAddEventButtonClicked(object sender, EventArgs e)
 		{
+
 			// Récupérer la date sélectionnée
 			var selectedDate = schedule.SelectedDate;
 			if (!selectedDate.HasValue)
