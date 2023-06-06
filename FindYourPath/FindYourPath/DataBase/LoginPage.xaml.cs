@@ -36,8 +36,9 @@ namespace FindYourPath.DataBase
 			try
 			{
 				// Check if user exist
-				if (await IsValidLogin(paramJson))  // utilise maintenant await
+				if (await IsValidLogin(paramJson))
 				{
+					//App.Print
 					await ((App)Application.Current).NavigateToMainPage();
 				}
 				else
@@ -67,7 +68,7 @@ namespace FindYourPath.DataBase
 			Console.WriteLine("Verify paramJson: " + paramJson.ToString());
 
 			var userService = App.UserService;
-			return await userService.VerifyUserAsync(paramJson);
+			return await userService.ConnectUser(paramJson);
 		}
 
 		void OnCreateAccountButtonClicked(object sender, EventArgs e)

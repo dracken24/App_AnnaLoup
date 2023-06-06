@@ -29,7 +29,7 @@ namespace FindYourPath.DataBase
 				["email"] = email,
 				["password"] = password
 			};
-
+			/*
 				try
 				{
 					if (IsValidRegistration(username, email, password))
@@ -64,6 +64,7 @@ namespace FindYourPath.DataBase
 				}
 
 				Console.WriteLine("222");
+			*/
 				await ((App)Application.Current).NavigateToMainPage();
 		}
 

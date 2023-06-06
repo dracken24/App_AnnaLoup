@@ -52,7 +52,7 @@ namespace FindYourPath.Views.Private.Agenda.SaveAgenda
 		{
 			var jsonObject = new JObject
 			{
-				["action"] = "create",
+				["action"] = "createCalendarEvent",
 				["Title"] = appointment.Subject,
 				["Description"] = appointment.Notes,
 				["StartDate"] = appointment.StartTime.Date,
@@ -67,7 +67,7 @@ namespace FindYourPath.Views.Private.Agenda.SaveAgenda
 			Console.WriteLine("******************************** PHP DEBUG ********************************");
 			Console.WriteLine(jsonObject.ToString());
 			var content = new StringContent(JsonConvert.SerializeObject(jsonObject), Encoding.UTF8, "application/json");
-			var response = await _httpClient.PostAsync("http://dracken24.duckdns.org/apiAnnaLoup/actions/EventService.php", content);
+			var response = await _httpClient.PostAsync(App.ConnectionString + "/EventService.php", content);
 			Console.WriteLine(response.StatusCode);
 			Console.WriteLine("******************************** PHP DEBUG END ********************************");
 
@@ -79,40 +79,4 @@ namespace FindYourPath.Views.Private.Agenda.SaveAgenda
 
 		// Ajoutez des méthodes pour toutes les autres opérations.
 	}
-
-	/*
-	public class EventService
-	{
-
-		readonly SQLiteAsyncConnection _database;
-
-		public EventService(string dbPath)
-		{
-			_database = new SQLiteAsyncConnection(dbPath);
-			//_database.CreateTableAsync<MyScheduleAppointment>().Wait();
-		}
-
-		public async Task InitializeAsync()
-		{
-			await _database.CreateTableAsync<Event>();
-		}
-
-		public Task<List<MyScheduleAppointment>> GetEventsAsync()
-		{
-			return _database.Table<MyScheduleAppointment>().ToListAsync();
-		}
-
-		public Task<int> SaveEventAsync(MyScheduleAppointment appointment)
-		{
-			if (appointment.MyId != 0)
-			{
-				return _database.UpdateAsync(appointment);
-			}
-			else
-			{
-				return _database.InsertAsync(appointment);
-			}
-		}
-	}
-	*/
 }
