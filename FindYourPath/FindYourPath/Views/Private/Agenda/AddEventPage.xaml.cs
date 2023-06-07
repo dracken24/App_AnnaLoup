@@ -1,4 +1,5 @@
-﻿using FindYourPath.Views.Private.Agenda.SaveAgenda;
+﻿using FindYourPath.DataBase;
+using FindYourPath.Views.Private.Agenda.SaveAgenda;
 using FreeSql.Internal.ObjectPool;
 using GoogleApi.Entities.Maps.AerialView.Common;
 using Syncfusion.SfSchedule.XForms;
@@ -17,8 +18,10 @@ namespace FindYourPath.Views
 	{
 		ObservableCollection<MyScheduleAppointment> appointments;
 		private EventService eventService;
+		static User _user;
 
-		public AddEventPage(ObservableCollection<MyScheduleAppointment> appointments, DateTime selectedDate, EventService eventService)
+		public AddEventPage(ObservableCollection<MyScheduleAppointment> appointments, DateTime selectedDate,
+			EventService eventService, User user)
 		{
 			InitializeComponent();
 			this.appointments = appointments;
@@ -27,6 +30,7 @@ namespace FindYourPath.Views
 			endDatePicker.Date = selectedDate;
 			startTimePicker.Time = new TimeSpan(8, 0, 0);
 			endTimePicker.Time = new TimeSpan(10, 0, 0);
+			_user = user;
 		}
 
 		private void OnSaveButtonClicked(object sender, EventArgs e)
@@ -50,7 +54,7 @@ namespace FindYourPath.Views
 				StartTime = startDateTime,
 				EndTime = endDateTime,
 				Notes = descriptionEditor.Text,
-				UserId = 22 // TODO: Hardcodding
+				UserId = _user.GetUserId()
 			};
 
 			// Add newEvent to your data source

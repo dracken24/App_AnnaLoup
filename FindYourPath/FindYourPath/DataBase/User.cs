@@ -8,7 +8,7 @@ using Newtonsoft.Json.Linq;
 
 namespace FindYourPath.DataBase
 {
-	internal class User
+	public class User
 	{
 		int _id;
 		string _username;
@@ -28,9 +28,9 @@ namespace FindYourPath.DataBase
 			_username = parsedJson["user"]["username"].Value<string>();
 			_email = parsedJson["user"]["email"].Value<string>();
 
-			Console.WriteLine("IN USER id: " + _id);
-			Console.WriteLine("IN USER username: " + _username);
-			Console.WriteLine("IN USER email: " + _email);
+			// Console.WriteLine("IN USER id: " + _id);
+			// Console.WriteLine("IN USER username: " + _username);
+			// Console.WriteLine("IN USER email: " + _email);
 		}
 
 		public void PrintMembers()
@@ -38,6 +38,11 @@ namespace FindYourPath.DataBase
 			Console.WriteLine("IN USER id: " + _id);
 			Console.WriteLine("IN USER username: " + _username);
 			Console.WriteLine("IN USER email: " + _email);
+		}
+
+		public int GetUserId()
+		{
+			return _id;
 		}
 	}
 }

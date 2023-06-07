@@ -15,6 +15,8 @@ namespace FindYourPath.Views
 		public Welcome()
 		{
 			Title = "Accueil";
+			Console.WriteLine("***************************** WELCOME ******************************");
+			App.PrintMembers();
 			InitializeComponent();
 		}
 	}

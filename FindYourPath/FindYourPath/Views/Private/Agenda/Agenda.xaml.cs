@@ -1,4 +1,5 @@
-﻿using FindYourPath.Views.Private.Agenda.SaveAgenda;
+﻿using FindYourPath.DataBase;
+using FindYourPath.Views.Private.Agenda.SaveAgenda;
 using SQLite;
 using Syncfusion.SfCalendar.XForms;
 using Syncfusion.SfSchedule.XForms;
@@ -24,19 +25,22 @@ namespace FindYourPath.Views
 
 			Title = "Agenda";
 
-			// TODO: string de connexion au bon .php
-			eventService = new EventService(App.ConnectionString + "/EventService.php");
+			eventService = new EventService(App.ConnectionString);
 			appointments = new ObservableCollection<MyScheduleAppointment>();
 			schedule.DataSource = appointments;
-			//InitializeEventService();
+		}
+		protected override async void OnAppearing()
+		{
+			base.OnAppearing();
+			await InitializeAsync();
 		}
 
 		public async Task InitializeAsync()
 		{
+			Console.WriteLine("************** HHHHEEEEELLLLLLPPPPP **************");
 			try
 			{
-				// await eventService.InitializeAsync();
-				await LoadEventsFromDatabase();
+				await LoadEventsFromDatabase(App.User.GetUserId());
 			}
 			catch (Exception ex)
 			{
@@ -44,14 +48,17 @@ namespace FindYourPath.Views
 			}
 		}
 
-		private async Task LoadEventsFromDatabase()
+		private async Task LoadEventsFromDatabase(int userId)
 		{
-			var events = await Task.Run(() => eventService.GetEventsAsync());
+			appointments.Clear();
+
+			var events = await eventService.GetEventsAsync(userId);
 			foreach (var e in events)
 			{
 				appointments.Add(e);
 			}
 		}
+
 
 		private void OnAddEventButtonClicked(object sender, EventArgs e)
 		{
@@ -63,7 +70,8 @@ namespace FindYourPath.Views
 				selectedDate = DateTime.Now;
 			}
 
-			Navigation.PushAsync(new AddEventPage(appointments, selectedDate.Value, eventService));
+			User user = App.User;
+			Navigation.PushAsync(new AddEventPage(appointments, selectedDate.Value, eventService, user));
 
 		}
 

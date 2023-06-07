@@ -43,6 +43,10 @@ namespace FindYourPath
 			get { return _userService; }
 		}
 
+		internal static User User
+		{
+			get { return _user; }
+		}
 		public static void SaveUser(object user)
 		{
 			User user1 = new User();
@@ -50,7 +54,8 @@ namespace FindYourPath
 			_user = user1;
 		}
 
-		public void PrintMembers()
+		// TODO: Remove, PrintMembers() est pour le debug
+		public static void PrintMembers()
 		{
 			_user.PrintMembers();
 		}

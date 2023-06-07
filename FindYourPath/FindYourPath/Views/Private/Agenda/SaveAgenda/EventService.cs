@@ -28,15 +28,17 @@ namespace FindYourPath.Views.Private.Agenda.SaveAgenda
 			this.apiUrl = apiUrl;
 		}
 
-		public async Task<List<MyScheduleAppointment>> GetEventsAsync()
+		public async Task<List<MyScheduleAppointment>> GetEventsAsync(int userId)
 		{
-			var response = await _httpClient.GetAsync(apiUrl + "/event.php?action=read");
+			Console.WriteLine("************** STRING CONNECTION **************");
+			Console.WriteLine(apiUrl + " ID: " + userId);
+			var response = await _httpClient.GetAsync("http://dracken24.duckdns.org/apiAnnaLoup/objects" + "/Event.php?action=read&userId=" + userId);
 
 			if (response.IsSuccessStatusCode)
 			{
 				var jsonResponse = await response.Content.ReadAsStringAsync();
 
-				// Deserialisez la réponse en une liste de MyScheduleAppointment.
+				// Deserialize the response into a list of MyScheduleAppointment.
 				var events = JsonConvert.DeserializeObject<List<MyScheduleAppointment>>(jsonResponse);
 
 				return events;
@@ -57,10 +59,10 @@ namespace FindYourPath.Views.Private.Agenda.SaveAgenda
 				["Description"] = appointment.Notes,
 				["StartDate"] = appointment.StartTime.Date,
 				["EndDate"] = appointment.EndTime.Date,
-				["StartTime"] = (int)appointment.StartTime.TimeOfDay.TotalSeconds,
-				["EndTime"] = (int)appointment.EndTime.TimeOfDay.TotalSeconds,
+				["StartTime"] = appointment.StartTime.TimeOfDay,
+				["EndTime"] = appointment.EndTime.TimeOfDay,
 				["Location"] = appointment.Location,
-				["UserId"] = appointment.MyId
+				["UserId"] = appointment.UserId
 			};
 
 			// TODO: remove writeline after debugging
