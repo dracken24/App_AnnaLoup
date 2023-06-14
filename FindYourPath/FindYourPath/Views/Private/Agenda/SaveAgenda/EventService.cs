@@ -38,8 +38,21 @@ namespace FindYourPath.Views.Private.Agenda.SaveAgenda
 			{
 				var jsonResponse = await response.Content.ReadAsStringAsync();
 
-				// Deserialize the response into a list of MyScheduleAppointment.
-				var events = JsonConvert.DeserializeObject<List<MyScheduleAppointment>>(jsonResponse);
+				// Print the raw API response
+				Console.WriteLine($"Raw API response: {jsonResponse}");
+
+				List<MyScheduleAppointment> events;
+				try
+				{
+					// Try to deserialize the JSON response
+					events = JsonConvert.DeserializeObject<List<MyScheduleAppointment>>(jsonResponse);
+				}
+				catch (Exception e)
+				{
+					// Print error if deserialization fails
+					Console.WriteLine($"Failed to deserialize JSON: {e.Message}");
+					throw;
+				}
 
 				return events;
 			}

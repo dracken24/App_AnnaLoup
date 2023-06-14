@@ -180,7 +180,7 @@
                            CornerRadius="10" 
                            HasShadow="True" 
                            BackgroundColor="LightCyan" 
-                           Padding="0"
+                           Padding="10"
                            HeightRequest="400">
 
                             <StackLayout>
@@ -192,11 +192,29 @@
                                    VerticalOptions="Start" />
 
                                 <StackLayout >
-                                    <ListView x:Name="bottomListView"
-                                              HorizontalOptions="CenterAndExpand"
-                                              VerticalOptions="Start"
-                                              RowHeight="40" />
-                                </StackLayout>
+                                <ListView x:Name="bottomListView"
+                                          ItemTapped="OnItemTapped"
+                                          HorizontalOptions="CenterAndExpand"
+                                          VerticalOptions="Start"
+                                          SeparatorColor="Black"
+                                          RowHeight="40" >
+                                    
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                
+                                                <StackLayout Orientation="Horizontal" Margin="5,10,0,0">
+                                                    <Label Text="{Binding Name}" TextColor="#006666" />
+                                                    <Label Text="," TextColor="#006666" />
+                                                    <Label Text="{Binding Phone}" TextColor="Gray" />
+                                                </StackLayout>
+                                                
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+
+                            </StackLayout>
                             </StackLayout>
                             
                     </Frame>

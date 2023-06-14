@@ -20,7 +20,7 @@ namespace FindYourPath
 		public App()
 		{
 			InitializeComponent();
-
+			// _connectionString = "http://174.91.185.220/apiAnnaLoup/actions";
 			_connectionString = "http://dracken24.duckdns.org/apiAnnaLoup/actions";
 			_userService = new UserService(_connectionString);
 

@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FindYourPath.Views.ResourceDetailPage">
+             <!--xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps" -->
 
     <ScrollView>
         <Frame BorderColor="#006666" 
@@ -75,6 +76,14 @@
                                    Padding="15"
                                    Grid.Row="1" 
                                    HeightRequest="300">
+
+                                <!-- maps:Map  x:Name="MyMap" 
+                                           WidthRequest="320" 
+                                           HeightRequest="200"
+                                           MapType="Street" 
+                                           IsShowingUser="True"
+                                           xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps">
+                                </-->
 
                             </Frame>
 

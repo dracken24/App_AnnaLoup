@@ -47,6 +47,7 @@ namespace FindYourPath.DataBase
 
 		public async Task<bool> ConnectUser(JObject paramJson)
 		{
+			Console.WriteLine("***************************** in connect ********************************");
 			// Envoie les request par .json au fichiers.php du server TODO: Changer lien selon le server
 			var content = new StringContent(JsonConvert.SerializeObject(paramJson), Encoding.UTF8, "application/json");
 			var response = await _httpClient.PostAsync(_connectionString + "/connectUser.php", content);

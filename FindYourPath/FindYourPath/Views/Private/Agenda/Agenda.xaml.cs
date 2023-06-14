@@ -40,10 +40,11 @@ namespace FindYourPath.Views
 			Console.WriteLine("************** HHHHEEEEELLLLLLPPPPP **************");
 			try
 			{
-				await LoadEventsFromDatabase(App.User.GetUserId());
+				await Task.Run(() => LoadEventsFromDatabase(App.User.GetUserId()));
 			}
 			catch (Exception ex)
 			{
+				Console.WriteLine(ex.Message);
 				Console.WriteLine(ex.StackTrace);
 			}
 		}
@@ -52,7 +53,19 @@ namespace FindYourPath.Views
 		{
 			appointments.Clear();
 
+			if (eventService == null)
+			{
+				Console.WriteLine("eventService is null");
+				return;
+			}
+
 			var events = await eventService.GetEventsAsync(userId);
+			if (events == null)
+			{
+				Console.WriteLine("GetEventsAsync returned null");
+				return;
+			}
+
 			foreach (var e in events)
 			{
 				appointments.Add(e);
@@ -72,7 +85,7 @@ namespace FindYourPath.Views
 
 			User user = App.User;
 			Navigation.PushAsync(new AddEventPage(appointments, selectedDate.Value, eventService, user));
-
+			OnAppearing();
 		}
 
 		private void OnDateClicked(object sender, CellTappedEventArgs e)

@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FindYourPath.Views.Public.RessourcesPublic
+namespace FindYourPath.Views
 {
     class ListeRessources
     {
 		public string Name { get; set; }
 		public string City { get; set; }
-		public List<string> Options { get; set; }
-		// public string Description { get; set; }
+		//public List<string> Options { get; set; }
+		public Dictionary<string, OneRessource> Options { get; set; }
 	}
 }

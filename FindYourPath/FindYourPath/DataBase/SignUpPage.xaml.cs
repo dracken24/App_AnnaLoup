@@ -42,7 +42,6 @@ namespace FindYourPath.DataBase
 					{
 						await DisplayAlert("Error", "Invalid registration information", "OK");
 					}
-
 				}
 				catch (HttpRequestException ex)
 				{
