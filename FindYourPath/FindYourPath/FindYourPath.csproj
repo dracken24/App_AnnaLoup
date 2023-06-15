@@ -15,20 +15,20 @@
 		<PackageReference Include="DBContext" Version="1.0.0" />
 		<PackageReference Include="EntityFramework" Version="6.4.4" />
 		<PackageReference Include="EntityFramework.DbContextScope" Version="1.0.0" />
-		<PackageReference Include="FreeSql.DbContext" Version="3.2.695" />
-		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+		<PackageReference Include="FreeSql.DbContext" Version="3.2.697" />
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
-		<PackageReference Include="Microsoft.NETCore.Platforms" Version="7.0.2" />
+		<PackageReference Include="Microsoft.NETCore.Platforms" Version="7.0.3" />
 		<PackageReference Include="MySql.Data.EntityFramework" Version="8.0.33" />
-		<PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.22" />
 		<PackageReference Include="MySqlConnector" Version="2.2.6" />
-		<PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="21.2.8" />
-		<PackageReference Include="Syncfusion.Xamarin.SfSchedule" Version="21.2.8" />
+		<PackageReference Include="Syncfusion.Licensing" Version="21.2.10" />
+		<PackageReference Include="Syncfusion.Xamarin.Core" Version="21.2.10" />
+		<PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="21.2.10" />
+		<PackageReference Include="Syncfusion.Xamarin.SfSchedule" Version="21.2.10" />
 		<PackageReference Include="System.Data.Common" Version="4.3.0" />
 		<PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
-		<PackageReference Include="System.Data.SQLite" Version="1.0.117" />
-		<PackageReference Include="System.Data.SQLite.EF6" Version="1.0.117" />
+		<PackageReference Include="System.Data.SQLite" Version="1.0.118" />
+		<PackageReference Include="System.Data.SQLite.EF6" Version="1.0.118" />
 		<PackageReference Include="System.Numerics.Vectors" Version="4.5.0.0" />
 	</ItemGroup>
 
@@ -47,8 +47,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Google.Apis.Calendar.v3" Version="1.60.0.3017" />
-    <PackageReference Include="GoogleApi" Version="5.0.0" />
+    <PackageReference Include="Google.Apis.Calendar.v3" Version="1.60.0.3074" />
+    <PackageReference Include="GoogleApi" Version="5.0.2" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
     <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.6" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />
@@ -113,9 +113,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Public\RessourcesPublic\OneRessourceDetailPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Public\RessourcesPublic\OneRessourceListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Public\RessourcesPublic\PublicRessources.xaml">

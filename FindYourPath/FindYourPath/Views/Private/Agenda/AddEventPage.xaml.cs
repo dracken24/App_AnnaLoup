@@ -6,10 +6,12 @@ using Syncfusion.SfSchedule.XForms;
 
 using System;
 using System.Collections.ObjectModel;
-using System.Runtime.InteropServices.ComTypes;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Newtonsoft.Json;
+using System.Net.Http;
+using Syncfusion.SfSchedule.XForms;
 
 namespace FindYourPath.Views
 {
@@ -33,7 +35,7 @@ namespace FindYourPath.Views
 			_user = user;
 		}
 
-		private void OnSaveButtonClicked(object sender, EventArgs e)
+		private async void OnSaveButtonClicked(object sender, EventArgs e)
 		{
 			// Here you would save your event to your data source
 			// and then navigate back to the calendar page
@@ -48,23 +50,43 @@ namespace FindYourPath.Views
 			var endTime = endTimePicker.Time;
 			var endDateTime = new DateTime(endDate.Year, endDate.Month, endDate.Day, endTime.Hours, endTime.Minutes, endTime.Seconds);
 
-			var newEvent = new MyScheduleAppointment
+			MyScheduleAppointment newEvent = new MyScheduleAppointment
 			{
-				Subject = titleEntry.Text,
-				StartTime = startDateTime,
-				EndTime = endDateTime,
-				Notes = descriptionEditor.Text,
-				UserId = _user.GetUserId()
+				Title = titleEntry.Text,
+				StartDate = startDateTime.Date, // Assign the date part
+				MyStartTime = startDateTime.TimeOfDay, // Assign the time part
+				EndDate = endDateTime.Date, // Assign the date part
+				MyEndTime = endDateTime.TimeOfDay, // Assign the time part
+				Description = descriptionEditor.Text,
+				UserId = _user.GetUserId(),
+				Location = "Saint-Nean"
 			};
 
-			// Add newEvent to your data source
-			appointments.Add(newEvent);
+			try
+			{
+				// Add newEvent to your data source
+				appointments.Add(newEvent);
 
-			// Add newEvent to database
-			CreateEvent(newEvent);
+				// Add newEvent to database
+				await Task.Run(() => CreateEvent(newEvent));
+			}
+			catch (HttpRequestException ex)
+			{
+				Console.WriteLine("HTTP, Une erreur s'est produite lors de la connexion au serveur : " + ex);
+				await DisplayAlert("Erreur", "Impossible de se connecter au serveur.", "OK");
+			}
+			catch (JsonException ex)
+			{
+				Console.WriteLine("JSON, Une erreur s'est produite lors de l'analyse de la réponse du serveur : " + ex);
+				await DisplayAlert("Erreur", "Une erreur inattendue s'est produite. " + ex.Message, "OK");
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine("STANDARD, " + ex.ToString());
+			}
 
 			// Then navigate back to the previous page
-			Navigation.PopAsync();
+			await Navigation.PopAsync();
 		}
 
 		public async Task CreateEvent(MyScheduleAppointment newEvent)
@@ -73,15 +95,7 @@ namespace FindYourPath.Views
 			Console.WriteLine("*************************** EVENT **************************");
 
 			// Enregistrez l'événement dans la base de données
-			try
-			{
-				await eventService.SaveEventAsync(newEvent);
-			}
-			catch (Exception ex)
-			{
-				// Handle any errors that occurred during save.
-				Console.WriteLine("Une erreur s'est produite lors de la sauvegarde de l'événement : " + ex);
-			}
+			await eventService.SaveEventAsync(newEvent);
 		}
 	}
 }

@@ -8,7 +8,6 @@ namespace FindYourPath.Views
     {
 		public string Name { get; set; }
 		public string City { get; set; }
-		//public List<string> Options { get; set; }
 		public Dictionary<string, OneRessource> Options { get; set; }
 	}
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
 
 namespace FindYourPath.Views.Public.RessourcesPublic
 {
@@ -30,6 +31,15 @@ namespace FindYourPath.Views.Public.RessourcesPublic
 			phoneDescription.Text = resource.Phone;
 			urlDescription.Text = resource.Url;
 			descriptionDescription.Text = resource.Description;
+		}
+
+		async void OnUrlTapped(object sender, EventArgs e)
+		{
+			var url = urlDescription.Text;
+			if (!string.IsNullOrWhiteSpace(url))
+			{
+				await Browser.OpenAsync(url, BrowserLaunchMode.SystemPreferred);
+			}
 		}
 	}
 }

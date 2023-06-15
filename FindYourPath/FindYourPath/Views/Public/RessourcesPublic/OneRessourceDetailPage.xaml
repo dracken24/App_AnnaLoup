@@ -27,7 +27,7 @@
 
                         <ScrollView>
 
-                            <Grid Padding="10">
+                            <Grid >
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
@@ -36,8 +36,8 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="3*" />
-                                <ColumnDefinition Width="6*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
 
                                <!-- Names -->
@@ -46,7 +46,7 @@
                                     
                                     <Label x:Name="nameLabel"
                                            FontAttributes="Bold"
-                                           TextColor="#006666"/>
+                                           TextColor="MediumPurple"/>
                                     
                                 </StackLayout>
 
@@ -54,7 +54,7 @@
                                     
                                     <Label x:Name="addressLabel"
                                            FontAttributes="Bold"
-                                           TextColor="#006666"/>
+                                           TextColor="MediumPurple"/>
 
                                 </StackLayout>
 
@@ -62,7 +62,7 @@
                                     
                                     <Label x:Name="phoneLabel"
                                            FontAttributes="Bold"
-                                           TextColor="#006666"/>
+                                           TextColor="MediumPurple"/>
                                     
                                 </StackLayout>
 
@@ -70,7 +70,7 @@
                                     
                                     <Label x:Name="urlLabel"
                                            FontAttributes="Bold"
-                                           TextColor="#006666"/>
+                                           TextColor="MediumPurple"/>
 
                                 </StackLayout>
 
@@ -78,7 +78,7 @@
                                     
                                     <Label x:Name="descriptionLabel"
                                            FontAttributes="Bold"
-                                           TextColor="#006666"/>
+                                           TextColor="MediumPurple"/>
 
                                 </StackLayout>
 
@@ -112,7 +112,11 @@
 
                                     <Label x:Name="urlDescription"
                                            FontAttributes="Bold"
-                                           TextColor="#006666"/>
+                                           TextColor="Blue"/>
+                                    
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnUrlTapped"/>
+                                    </Label.GestureRecognizers>
 
                                 </StackLayout>
 

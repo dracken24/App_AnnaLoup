@@ -222,7 +222,7 @@ namespace FindYourPath.Views
 					new ListeRessources
 					{
 						City = "Quebec",
-						Name = "Therapes",
+						Name = "Therapies",
 						Options = new Dictionary<string, OneRessource>
 						{
 							{
@@ -433,7 +433,7 @@ namespace FindYourPath.Views
 					new ListeRessources
 					{
 						City = "Montreal",
-						Name = "Therapes",
+						Name = "Therapies",
 						Options = new Dictionary<string, OneRessource>
 						{
 							{
@@ -564,7 +564,7 @@ namespace FindYourPath.Views
 					new ListeRessources
 					{
 						City = "Outaouais",
-						Name = "Therapes",
+						Name = "Therapies",
 						Options = new Dictionary<string, OneRessource>
 						{
 							{
@@ -695,7 +695,7 @@ namespace FindYourPath.Views
 					new ListeRessources
 					{
 						City = "Other",
-						Name = "Therapes",
+						Name = "Therapies",
 						Options = new Dictionary<string, OneRessource>
 						{
 							{

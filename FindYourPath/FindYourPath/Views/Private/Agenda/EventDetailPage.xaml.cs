@@ -18,10 +18,10 @@ namespace FindYourPath.Views
 			InitializeComponent();
 			Title = "Détail de l'événement";
 
-			var subjectLabel = new Label { Text = $"Sujet                   : {appointment.Subject}" };
+			var subjectLabel = new Label { Text = $"Sujet                   : {appointment.Title}" };
 			var startTimeLabel = new Label { Text = $"Heure de début : {appointment.StartTime}" };
 			var endTimeLabel = new Label { Text = $"Heure de fin       : {appointment.EndTime}" };
-			var notesLabel = new Label { Text = $"Notes                  : {appointment.Notes}" };
+			var notesLabel = new Label { Text = $"Notes                  : {appointment.Description}" };
 
 			subLabel.Text = subjectLabel.Text;
 			startTLabel.Text = startTimeLabel.Text;

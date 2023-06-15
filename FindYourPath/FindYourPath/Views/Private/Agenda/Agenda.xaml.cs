@@ -107,8 +107,8 @@ namespace FindYourPath.Views
 			appointments = appointments ?? new ObservableCollection<MyScheduleAppointment>();
 
 			var eventsForDay = appointments.Where(appointment =>
-				appointment.StartTime.Date <= date.Date &&
-				appointment.EndTime.Date >= date.Date).ToList();
+			appointment.StartDate.Date <= date.Date &&
+			appointment.EndDate.Date >= date.Date).ToList();
 
 			return eventsForDay;
 		}
