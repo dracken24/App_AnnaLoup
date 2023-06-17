@@ -1,7 +1,12 @@
 ﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"
-             x:Class="FindYourPath.Views.Agenda">
+             x:Class="FindYourPath.Views.Agenda"
+             xmlns:xc="clr-namespace:XCalendar;assembly=XCalendar"
+             xmlns:System="clr-namespace:System;assembly=netstandard"
+             xmlns:ViewModels="clr-namespace:XCalendarFormsSample.ViewModels"
+             xmlns:xcConverters="clr-namespace:XCalendar.Forms.Converters;assembly=XCalendar.Forms"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
 
     <ScrollView>
     <Frame BorderColor="#006666" 
@@ -30,7 +35,31 @@
                            BackgroundColor="LightCyan" 
                            Padding="1">
 
-                        <syncfusion:SfSchedule x:Name="schedule"
+                            <xc:CalendarView x:Name="calendar"
+                                             DateSelectionChanged="CalendarView_DateSelectionChanged"
+                                             SelectionType="Single"
+                                             NavigationArrowBackgroundColor="Purple"
+                                             NavigationTextColor="LightCyan"
+                                             NavigationArrowColor="LightCyan"
+                                             DayNameTextColor="MediumPurple"
+                                             NavigationBackgroundColor="MediumPurple"
+                                             BackgroundColor="#FAFAF2"
+                                             Days="{Binding EventCalendar.Days}"
+                                             NavigatedDate="{Binding EventCalendar.NavigatedDate}"
+                                             >
+
+                                <!--xc:CalendarView.DayTemplate>
+                                        <DataTemplate x:DataType="{x:Type DatePicker}">
+
+                                        </DataTemplate>
+                                </xc:CalendarView.DayTemplate-->
+
+
+                            </xc:CalendarView>
+
+                        
+
+                                    <!--syncfusion:SfSchedule x:Name="schedule"
                                                ScheduleView="MonthView"
                                                CellTapped="OnDateClicked"
                                                BackgroundColor="DarkRed" >
@@ -43,7 +72,7 @@
                                      EndTimeMapping="EndTime" />
 
                             </syncfusion:SfSchedule.AppointmentMapping>
-                        </syncfusion:SfSchedule>
+                        </syncfusion:SfSchedule-->
 
                     </Frame>
                 </StackLayout>
@@ -72,7 +101,7 @@
                             <ViewCell>
 
                                 <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding Subject}" />
+                                    <Label Text="{Binding Title}" />
                                     <Label Text=" : " />
                                     <Label Text="{Binding StartTime, StringFormat='{0:HH:mm}'}" />
                                     <Label Text="H" />

@@ -1,14 +1,18 @@
 ﻿using FindYourPath.DataBase;
 using FindYourPath.Views.Private.Agenda.SaveAgenda;
 using SQLite;
-using Syncfusion.SfCalendar.XForms;
-using Syncfusion.SfSchedule.XForms;
+
+//using Syncfusion.SfSchedule.XForms;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
+using XCalendar.Core.Models;
+using XCalendar;
+using Google.Apis.Calendar.v3.Data;
 
 namespace FindYourPath.Views
 {
@@ -27,17 +31,33 @@ namespace FindYourPath.Views
 
 			eventService = new EventService(App.ConnectionString);
 			appointments = new ObservableCollection<MyScheduleAppointment>();
-			schedule.DataSource = appointments;
 		}
+
+		// Remplie le calendrier avec les événements de la database
 		protected override async void OnAppearing()
 		{
 			base.OnAppearing();
 			await InitializeAsync();
 		}
 
+		// Retourne une liste d'événements pour une date donnée.
+		private void CalendarView_DateSelectionChanged(object sender, EventArgs e)
+		{
+			if (calendar.SelectedDates.Count == 0) // Si une date n'est pas sélectionnée ou deselectionnée
+			{
+				eventList.ClearValue(ListView.ItemsSourceProperty);
+				return;
+			}
+			else if (calendar.SelectedDates.Count > 1) // Si plusieurs dates sont sélectionnées
+			{
+				calendar.SelectedDates.RemoveAt(0);
+			}
+			
+			eventList.ItemsSource = GetEventsForDay(calendar.SelectedDates[0]); // Affiche les événements de la date sélectionnée
+		}
+
 		public async Task InitializeAsync()
 		{
-			Console.WriteLine("************** HHHHEEEEELLLLLLPPPPP **************");
 			try
 			{
 				await Task.Run(() => LoadEventsFromDatabase(App.User.GetUserId()));
@@ -72,36 +92,27 @@ namespace FindYourPath.Views
 			}
 		}
 
-
 		private void OnAddEventButtonClicked(object sender, EventArgs e)
 		{
-
 			// Récupérer la date sélectionnée
-			var selectedDate = schedule.SelectedDate;
-			if (!selectedDate.HasValue)
+			var selectedDate = calendar.SelectedDates[0];
+			if (selectedDate == null)
 			{
 				selectedDate = DateTime.Now;
 			}
 
 			User user = App.User;
-			Navigation.PushAsync(new AddEventPage(appointments, selectedDate.Value, eventService, user));
-			OnAppearing();
+			Navigation.PushAsync(new AddEventPage(appointments, selectedDate, eventService,calendar , user));
 		}
 
-		private void OnDateClicked(object sender, CellTappedEventArgs e)
-		{
-			var selectedDate = e.Datetime;
-			var eventsForDay = GetEventsForDay(selectedDate);
-			eventList.ItemsSource = eventsForDay;
-		}
-
+		// Afficher les détails de l'événement sélectionné.
 		private void OnEventTapped(object sender, ItemTappedEventArgs e)
 		{
 			var selectedEvent = e.Item as MyScheduleAppointment;
 			Navigation.PushAsync(new EventDetailPage(selectedEvent));
 		}
 
-
+		// Retourn une liste d'événements pour une date donnée.
 		private List<MyScheduleAppointment> GetEventsForDay(DateTime date)
 		{
 			appointments = appointments ?? new ObservableCollection<MyScheduleAppointment>();
@@ -109,6 +120,16 @@ namespace FindYourPath.Views
 			var eventsForDay = appointments.Where(appointment =>
 			appointment.StartDate.Date <= date.Date &&
 			appointment.EndDate.Date >= date.Date).ToList();
+
+			for (int i = 0; i < eventsForDay.Count; i++)
+			{
+				if (calendar.SelectedDates.Contains(eventsForDay[i].StartDate))
+				{
+					continue;
+				}
+				
+				Console.WriteLine(eventsForDay[i].Title);
+			}
 
 			return eventsForDay;
 		}

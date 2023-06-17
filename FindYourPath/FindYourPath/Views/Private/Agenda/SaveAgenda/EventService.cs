@@ -37,16 +37,12 @@ namespace FindYourPath.Views.Private.Agenda.SaveAgenda
 
 			//TODO: a proteger avec try and catch 
 			var jsonResponse = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-			Console.WriteLine("Read API response.");
-			Console.WriteLine("Raw API response: " + jsonResponse);
 
-			Console.WriteLine("Deserializing JSON...");
 			var events = JsonConvert.DeserializeObject<ObservableCollection<MyScheduleAppointment>>(jsonResponse);
-			Console.WriteLine("Deserialization complete.");
-			Console.WriteLine("Printing events...");
+
 			foreach (var ev in events)
 			{
-				Console.WriteLine($"Event: {ev.Title}, StartDate: {ev.StartDate}, EndDate: {ev.EndDate}, Location: {ev.MyLocation}, ..."); // ajoutez d'autres propriétés si nécessaire
+				Console.WriteLine($"Event: {ev.Title}, StartDate: {ev.StartDate}, EndDate: {ev.EndDate}, Location: {ev.Location}, ..."); // ajoutez d'autres propriétés si nécessaire
 			}
 
 			return events;
@@ -63,9 +59,9 @@ namespace FindYourPath.Views.Private.Agenda.SaveAgenda
 				["Description"] = appointment.Description,
 				["StartDate"] = appointment.StartDate,
 				["EndDate"] = appointment.EndDate,
-				["StartTime"] = appointment.MyStartTime,
-				["EndTime"] = appointment.MyEndTime,
-				["Location"] = appointment.MyLocation,
+				["StartTime"] = appointment.StartTime,
+				["EndTime"] = appointment.EndTime,
+				["Location"] = appointment.Location,
 				["UserId"] = appointment.UserId
 			};
 
@@ -81,24 +77,6 @@ namespace FindYourPath.Views.Private.Agenda.SaveAgenda
 			{
 				var errorContent = await response.Content.ReadAsStringAsync();
 				Console.WriteLine($"Server error response: {errorContent}");
-
-				/*
-				// Deserialize the response content
-				var errorObject = JsonConvert.DeserializeObject<Dictionary<string, string>>(errorContent);
-
-				if (errorObject != null)
-				{
-					if (errorObject.ContainsKey("message")) Console.WriteLine($"Message: {errorObject["message"]}");
-					if (errorObject.ContainsKey("StartDate")) Console.WriteLine($"StartDate: {errorObject["StartDate"]}");
-					if (errorObject.ContainsKey("EndDate")) Console.WriteLine($"EndDate: {errorObject["EndDate"]}");
-					if (errorObject.ContainsKey("StartTime")) Console.WriteLine($"StartTime: {errorObject["StartTime"]}");
-					if (errorObject.ContainsKey("EndTime")) Console.WriteLine($"EndTime: {errorObject["EndTime"]}");
-
-					throw new HttpRequestException($"Dans ErrorObjects: Une erreur est survenue lors de la sauvegarde de l'événement: {response.StatusCode}");
-				}
-				else
-					throw new HttpRequestException($"Sans ErrorObjects: Une erreur est survenue lors de la sauvegarde de l'événement: {response.StatusCode}");
-				*/
 			}
 
 		}

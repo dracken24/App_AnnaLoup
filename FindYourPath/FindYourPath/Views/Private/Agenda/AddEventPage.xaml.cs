@@ -1,8 +1,6 @@
 ﻿using FindYourPath.DataBase;
 using FindYourPath.Views.Private.Agenda.SaveAgenda;
-using FreeSql.Internal.ObjectPool;
 using GoogleApi.Entities.Maps.AerialView.Common;
-using Syncfusion.SfSchedule.XForms;
 
 using System;
 using System.Collections.ObjectModel;
@@ -11,7 +9,6 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Newtonsoft.Json;
 using System.Net.Http;
-using Syncfusion.SfSchedule.XForms;
 
 namespace FindYourPath.Views
 {
@@ -19,15 +16,17 @@ namespace FindYourPath.Views
 	public partial class AddEventPage : ContentPage
 	{
 		ObservableCollection<MyScheduleAppointment> appointments;
+		XCalendar.CalendarView calendar;
 		private EventService eventService;
 		static User _user;
 
 		public AddEventPage(ObservableCollection<MyScheduleAppointment> appointments, DateTime selectedDate,
-			EventService eventService, User user)
+			EventService eventService, XCalendar.CalendarView calendar, User user)
 		{
 			InitializeComponent();
 			this.appointments = appointments;
 			this.eventService = eventService;
+			this.calendar = calendar;
 			startDatePicker.Date = selectedDate;
 			endDatePicker.Date = selectedDate;
 			startTimePicker.Time = new TimeSpan(8, 0, 0);
@@ -54,9 +53,9 @@ namespace FindYourPath.Views
 			{
 				Title = titleEntry.Text,
 				StartDate = startDateTime.Date, // Assign the date part
-				MyStartTime = startDateTime.TimeOfDay, // Assign the time part
+				StartTime = startDateTime.TimeOfDay, // Assign the time part
 				EndDate = endDateTime.Date, // Assign the date part
-				MyEndTime = endDateTime.TimeOfDay, // Assign the time part
+				EndTime = endDateTime.TimeOfDay, // Assign the time part
 				Description = descriptionEditor.Text,
 				UserId = _user.GetUserId(),
 				Location = "Saint-Nean"
@@ -65,7 +64,9 @@ namespace FindYourPath.Views
 			try
 			{
 				// Add newEvent to your data source
-				appointments.Add(newEvent);
+				appointments.Add(newEvent); // Add to the local ObservableCollection
+				calendar.SelectedDates.Add(newEvent.StartDate); // Add to the calendar's SelectedDates
+				
 
 				// Add newEvent to database
 				await Task.Run(() => CreateEvent(newEvent));
