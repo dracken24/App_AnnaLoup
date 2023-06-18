@@ -13,6 +13,8 @@ using Xamarin.Forms;
 using XCalendar.Core.Models;
 using XCalendar;
 using Google.Apis.Calendar.v3.Data;
+using FindYourPath.Views.Private.Agenda;
+using FindYourPath.Converters.FindYourPath.Converters;
 
 namespace FindYourPath.Views
 {
@@ -22,15 +24,25 @@ namespace FindYourPath.Views
 		private ObservableCollection<MyScheduleAppointment> appointments;
 		// Pour sauvegerder les infos sur la database
 		private EventService eventService;
+		private CalendarDayToEventsConverter _converter;
+		public ObservableCollection<DayModel> days { get; set; }
+
 
 		public Agenda()
 		{
 			InitializeComponent();
+			this.BindingContext = this;
 
 			Title = "Agenda";
 
+			_converter = new CalendarDayToEventsConverter(GetEventsForDay);
+
+			Resources.Add("CalendarDayToEventsConverter", _converter);
+
 			eventService = new EventService(App.ConnectionString);
 			appointments = new ObservableCollection<MyScheduleAppointment>();
+
+			days = new ObservableCollection<DayModel>();
 		}
 
 		// Remplie le calendrier avec les événements de la database
@@ -115,24 +127,23 @@ namespace FindYourPath.Views
 		// Retourn une liste d'événements pour une date donnée.
 		private List<MyScheduleAppointment> GetEventsForDay(DateTime date)
 		{
-			appointments = appointments ?? new ObservableCollection<MyScheduleAppointment>();
+			var localAppointments = appointments;
 
-			var eventsForDay = appointments.Where(appointment =>
-			appointment.StartDate.Date <= date.Date &&
-			appointment.EndDate.Date >= date.Date).ToList();
+			var eventsForDay = localAppointments.Where(appointment =>
+				appointment.StartDate.Date <= date.Date &&
+				appointment.EndDate.Date >= date.Date).ToList();
 
-			for (int i = 0; i < eventsForDay.Count; i++)
+			foreach (var eventForDay in eventsForDay)
 			{
-				if (calendar.SelectedDates.Contains(eventsForDay[i].StartDate))
-				{
-					continue;
-				}
-				
-				Console.WriteLine(eventsForDay[i].Title);
+				// Nous ajoutons simplement un nouvel objet DayModel pour chaque événement
+				days.Add(new DayModel() { Events = new List<MyScheduleAppointment> { eventForDay } });
+
+				Console.WriteLine(eventForDay.Title);
 			}
 
 			return eventsForDay;
 		}
+
 	}
 }
 

@@ -5,12 +5,14 @@ using System.Xml;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
+using Xamarin.Forms.Xaml;
 
 namespace FindYourPath.Views
 {
+	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ResourceDetailPage : ContentPage
 	{
-		Geocoder _geocoder;
+		// Geocoder _geocoder;
 
 		public ResourceDetailPage(CommunityResource resource)
 		{
@@ -18,23 +20,46 @@ namespace FindYourPath.Views
 
 			Title = resource.Name;
 
-			nameLabel.Text = $"Nom           : {resource.Name}";
-			addressLabel.Text = $"Adresse     : {resource.Address}";
-			phoneLabel.Text = $"Téléphone : {resource.PhoneNumber}";
-			typeLabel.Text = $"Type           : {resource.Type}";
-		/*
-			_geocoder = new Geocoder();
+			nameLabel.Text = $"Nom           : ";
+			addressLabel.Text = $"Adresse     : ";
+			phoneLabel.Text = $"Téléphone : ";
+			urlLabel.Text = $"Url               : ";
+			typeLabel.Text = $"Type           : ";
+
+			nameDescription.Text = resource.Name;
+			addressDescription.Text = resource.Address;
+			phoneDescription.Text = resource.PhoneNumber;
+			urlDescription.Text = "https://" + resource.Url;
+			typeDescription.Text = resource.Type;
+			/*
+				_geocoder = new Geocoder();
+				try
+				{
+					ShowLocationOnMap(resource.Address);
+				}
+				catch (Exception e)
+				{
+					// Print error if deserialization fails
+					Console.WriteLine($"Failed to connect to google map error: {e.Message}");
+				}
+			*/
+		}
+		async void OnUrlTapped(object sender, EventArgs e)
+		{
 			try
 			{
-				ShowLocationOnMap(resource.Address);
+				var url = urlDescription.Text;
+				if (!string.IsNullOrWhiteSpace(url))
+				{
+					await Browser.OpenAsync(url, BrowserLaunchMode.SystemPreferred);
+				}
 			}
-			catch (Exception e)
+			catch (Exception ex)
 			{
-				// Print error if deserialization fails
-				Console.WriteLine($"Failed to connect to google map error: {e.Message}");
+				Console.WriteLine($"Failed to open browser error: {ex.Message}");
 			}
-		*/
 		}
+
 		/*
 		private async void ShowLocationOnMap(string address)
 		{

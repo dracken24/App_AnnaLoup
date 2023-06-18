@@ -25,28 +25,87 @@
 
                     <ScrollView>
 
-                        <StackLayout Grid.Row="0">
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
 
-                            <Label x:Name="subLabel"
-                                   Grid.Row="0"
-                                   FontAttributes="Bold"
-                                   TextColor="#006666"/>
+                            <!-- Names -->
 
-                            <Label x:Name="startTLabel"
-                                   Grid.Row="1"
-                                   FontAttributes="Bold"
-                                   TextColor="#006666"/>
+                            <StackLayout Grid.Row="0" Grid.Column="0">
 
-                            <Label x:Name="endTLabel"
-                                   Grid.Row="2"
-                                   FontAttributes="Bold"
-                                   TextColor="#006666"/>
+                                <Label x:Name="subjectLabel"
+                                           FontAttributes="Bold"
+                                           TextColor="MediumPurple"/>
 
-                            <Label x:Name="noLabel"
-                                   Grid.Row="3"
-                                   FontAttributes="Bold"
-                                   TextColor="#006666"/>
-                        </StackLayout>
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="1" Grid.Column="0">
+
+                                <Label x:Name="startLabel"
+                                           FontAttributes="Bold"
+                                           TextColor="MediumPurple"/>
+
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="2" Grid.Column="0">
+
+                                <Label x:Name="endLabel"
+                                           FontAttributes="Bold"
+                                           TextColor="MediumPurple"/>
+
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="3" Grid.Column="0">
+
+                                <Label x:Name="descriptionLabel"
+                                           FontAttributes="Bold"
+                                           TextColor="MediumPurple"/>
+
+                            </StackLayout>
+
+                            <!-- Description -->
+
+                            <StackLayout Grid.Row="0" Grid.Column="1">
+
+                                <Label x:Name="subjectDescription"
+                                           FontAttributes="Bold"
+                                           TextColor="#006666"/>
+
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="1" Grid.Column="1">
+
+                                <Label x:Name="startDescription"
+                                           FontAttributes="Bold"
+                                           TextColor="#006666"/>
+
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="2" Grid.Column="1">
+
+                                <Label x:Name="endDescription"
+                                           FontAttributes="Bold"
+                                           TextColor="#006666"/>
+
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="3" Grid.Column="1">
+
+                                <Label x:Name="descriptionDescription"
+                                           FontAttributes="Bold"
+                                           TextColor="#006666"/>
+
+                            </StackLayout>
+                        </Grid>
                     </ScrollView>
                 </Frame>
 

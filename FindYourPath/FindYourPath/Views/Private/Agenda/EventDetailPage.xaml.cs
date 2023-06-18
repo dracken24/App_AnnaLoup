@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using FindYourPath.Views.Private.Agenda;
+using System.Xml;
 
 namespace FindYourPath.Views
 {
@@ -18,15 +20,20 @@ namespace FindYourPath.Views
 			InitializeComponent();
 			Title = "Détail de l'événement";
 
-			var subjectLabel = new Label { Text = $"Sujet                   : {appointment.Title}" };
-			var startTimeLabel = new Label { Text = $"Heure de début : {appointment.StartTime}" };
-			var endTimeLabel = new Label { Text = $"Heure de fin       : {appointment.EndTime}" };
-			var notesLabel = new Label { Text = $"Notes                  : {appointment.Description}" };
+			var subjectLabelIn = new Label { Text = $"Sujet                   : "};
+			var startTimeLabelIn = new Label { Text = $"Heure de début : " };
+			var endTimeLabelIn = new Label { Text = $"Heure de fin       : " };
+			var notesLabelIn = new Label { Text = $"Notes                  : " };
 
-			subLabel.Text = subjectLabel.Text;
-			startTLabel.Text = startTimeLabel.Text;
-			endTLabel.Text = endTimeLabel.Text;
-			noLabel.Text = notesLabel.Text;
+			subjectLabel.Text = subjectLabelIn.Text;
+			startLabel.Text = startTimeLabelIn.Text;
+			endLabel.Text = endTimeLabelIn.Text;
+			descriptionLabel.Text = notesLabelIn.Text;
+
+			subjectDescription.Text = appointment.Title;
+			startDescription.Text = appointment.StartTime.ToString();
+			endDescription.Text = appointment.EndTime.ToString();
+			descriptionDescription.Text = appointment.Description;
 		}
 	}
 }

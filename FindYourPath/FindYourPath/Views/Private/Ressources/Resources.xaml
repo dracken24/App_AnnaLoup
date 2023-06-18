@@ -34,6 +34,7 @@
                                 <Entry x:Name="nameEntry" Placeholder="Nom de l'organisme" TextColor="#006666" PlaceholderColor="Gray" />
                                 <Entry x:Name="addressEntry" Placeholder="Adresse" TextColor="#006666" PlaceholderColor="Gray" />
                                 <Entry x:Name="phoneEntry" Placeholder="Numéro de téléphone" TextColor="#006666" PlaceholderColor="Gray" />
+                                <Entry x:Name="urlEntry" Placeholder="Url" TextColor="#006666" PlaceholderColor="Gray" />
                                 <Entry x:Name="type" Placeholder="Type de contacte" TextColor="#006666" PlaceholderColor="Gray" />
 
                                 <Button Text="Ajouter une ressource" Clicked="OnAddResourceButtonClicked" TextColor="#006666" />
@@ -51,7 +52,24 @@
                        Grid.Row="2" 
                        HeightRequest="450">
 
-                    <ListView x:Name="resourceList" ItemTapped="OnItemTapped" SeparatorColor="Black" />
+                    <ListView x:Name="resourceList"
+                              ItemTapped="OnItemTapped"
+                              SeparatorColor="Black" >
+                        <ListView.ItemTemplate>
+
+                            <DataTemplate>
+                                <ViewCell>
+
+                                    <StackLayout Orientation="Horizontal" Margin="5,10,0,0" >
+                                        <Label Text="{Binding Name}" />
+                                        <Label Text=" : " />
+                                        <Label Text="{Binding PhoneNumber}" />
+                                    </StackLayout>
+
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
 
                 </Frame>
 

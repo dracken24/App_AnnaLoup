@@ -1,12 +1,11 @@
 ﻿using SQLite;
-using Syncfusion.SfSchedule.XForms;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using Xamarin.Forms;
+using XCalendar.Models;
 
-namespace FindYourPath.Views.Private.Agenda.SaveAgenda
+namespace FindYourPath.Views
 {
-	public class MyScheduleAppointment
+	public class MyScheduleAppointment : BaseObservableModel
 	{
 		[PrimaryKey, AutoIncrement]
 		public int MyId { get; set; }
@@ -18,5 +17,6 @@ namespace FindYourPath.Views.Private.Agenda.SaveAgenda
 		public TimeSpan EndTime { get; set; }
 		public string Location { get; set; }
 		public int UserId { get; set; }
+		public Color Color { get; set; } = Color.Blue;
 	}
 }

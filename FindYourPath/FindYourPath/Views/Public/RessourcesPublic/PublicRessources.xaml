@@ -186,10 +186,10 @@
                             <StackLayout>
 
                                 <Label Text="Liste des organismes"
-                                   FontSize="Title"
-                                   TextColor="#006666"
-                                   HorizontalOptions="CenterAndExpand"
-                                   VerticalOptions="Start" />
+                                       FontSize="Title"
+                                       TextColor="#006666"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="Start" />
 
                                 <StackLayout >
                                 <ListView x:Name="bottomListView"
@@ -198,22 +198,21 @@
                                           VerticalOptions="Start"
                                           SeparatorColor="Black"
                                           RowHeight="40" >
-                                    
+
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <ViewCell>
-                                                
+
                                                 <StackLayout Orientation="Horizontal" Margin="5,10,0,0">
                                                     <Label Text="{Binding Name}" TextColor="#006666" />
                                                     <Label Text="," TextColor="#006666" />
                                                     <Label Text="{Binding Phone}" TextColor="Gray" />
                                                 </StackLayout>
-                                                
+
                                             </ViewCell>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>
-
                             </StackLayout>
                             </StackLayout>
                             

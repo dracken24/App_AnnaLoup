@@ -25,6 +25,7 @@ namespace FindYourPath.Views
 				Name = nameEntry.Text,
 				Address = addressEntry.Text,
 				PhoneNumber = phoneEntry.Text,
+				Url = urlEntry.Text,
 				Type = type.Text,
 			};
 
@@ -34,6 +35,7 @@ namespace FindYourPath.Views
 			nameEntry.Text = string.Empty;
 			addressEntry.Text = string.Empty;
 			phoneEntry.Text = string.Empty;
+			urlEntry.Text = string.Empty;
 			type.Text = string.Empty;
 		}
 
@@ -42,8 +44,5 @@ namespace FindYourPath.Views
 			var resource = (CommunityResource)e.Item;
 			await Navigation.PushAsync(new ResourceDetailPage(resource));
 		}
-
-		
-
 	}
 }

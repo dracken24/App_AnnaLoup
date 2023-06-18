@@ -26,28 +26,110 @@
 
                     <ScrollView>
 
-                        <StackLayout Grid.Row="0">
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
 
-                            <Label x:Name="nameLabel"
-                                   Grid.Row="0"
-                                   FontAttributes="Bold"
-                                   TextColor="#006666"/>
+                            <!-- Names -->
 
-                            <Label x:Name="addressLabel"
-                                   Grid.Row="1"
-                                   FontAttributes="Bold"
-                                   TextColor="#006666"/>
+                            <StackLayout Grid.Row="0" Grid.Column="0">
 
-                            <Label x:Name="phoneLabel"
-                                   Grid.Row="2"
-                                   FontAttributes="Bold"
-                                   TextColor="#006666"/>
+                                <Label x:Name="nameLabel"
+                                           FontAttributes="Bold"
+                                           TextColor="MediumPurple"/>
 
-                            <Label x:Name="typeLabel"
-                                   Grid.Row="3"
-                                   FontAttributes="Bold"
-                                   TextColor="#006666"/>
-                        </StackLayout>
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="1" Grid.Column="0">
+
+                                <Label x:Name="addressLabel"
+                                           FontAttributes="Bold"
+                                           TextColor="MediumPurple"/>
+
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="2" Grid.Column="0">
+
+                                <Label x:Name="phoneLabel"
+                                           FontAttributes="Bold"
+                                           TextColor="MediumPurple"/>
+
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="3" Grid.Column="0">
+
+                                <Label x:Name="urlLabel"
+                                           FontAttributes="Bold"
+                                           TextColor="MediumPurple"/>
+
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="4" Grid.Column="0">
+
+                                <Label x:Name="typeLabel"
+                                           FontAttributes="Bold"
+                                           TextColor="MediumPurple"/>
+
+                            </StackLayout>
+
+                            <!-- Description -->
+
+                            <StackLayout Grid.Row="0" Grid.Column="1">
+
+                                <Label x:Name="nameDescription"
+                                           FontAttributes="Bold"
+                                           TextColor="#006666"/>
+
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="1" Grid.Column="1">
+
+                                <Label x:Name="addressDescription"
+                                           FontAttributes="Bold"
+                                           TextColor="#006666"/>
+
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="2" Grid.Column="1">
+
+                                <Label x:Name="phoneDescription"
+                                           FontAttributes="Bold"
+                                           TextColor="#006666"/>
+
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="3" Grid.Column="1">
+
+                                <Label x:Name="urlDescription"
+                                           FontAttributes="Bold"
+                                           TextColor="Blue">
+
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnUrlTapped"/>
+                                    </Label.GestureRecognizers>
+                                    
+                                </Label>
+
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="4" Grid.Column="1">
+
+                                <Label x:Name="typeDescription"
+                                           FontAttributes="Bold"
+                                           TextColor="#006666"/>
+
+                            </StackLayout>
+
+                        </Grid>
                     </ScrollView>
                 </Frame>
 

@@ -1,12 +1,8 @@
 ﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"
              x:Class="FindYourPath.Views.Agenda"
              xmlns:xc="clr-namespace:XCalendar;assembly=XCalendar"
-             xmlns:System="clr-namespace:System;assembly=netstandard"
-             xmlns:ViewModels="clr-namespace:XCalendarFormsSample.ViewModels"
-             xmlns:xcConverters="clr-namespace:XCalendar.Forms.Converters;assembly=XCalendar.Forms"
-             xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+             xmlns:Models="FindYourPath.Views.Agenda">
 
     <ScrollView>
     <Frame BorderColor="#006666" 
@@ -44,37 +40,44 @@
                                              DayNameTextColor="MediumPurple"
                                              NavigationBackgroundColor="MediumPurple"
                                              BackgroundColor="#FAFAF2"
-                                             Days="{Binding EventCalendar.Days}"
-                                             NavigatedDate="{Binding EventCalendar.NavigatedDate}"
+                                             Days="{Binding days}"
+                                             AutoRows="True"
                                              >
+                                
+                                
 
                                 <!--xc:CalendarView.DayTemplate>
-                                        <DataTemplate x:DataType="{x:Type DatePicker}">
+                                    <DataTemplate>
+                                        <ContentView>
+                                        <StackLayout
+                                                     BindableLayout.ItemsSource="{Binding ., Converter={StaticResource CalendarDayToEventsConverter}}"
+                                                     HorizontalOptions="Center"
+                                                     Orientation="Horizontal"
+                                                     Spacing="2.5">
 
-                                        </DataTemplate>
-                                </xc:CalendarView.DayTemplate-->
+                                                    <BindableLayout.ItemTemplate>
+                                                        <DataTemplate x:DataType="{x:Type Models:MyScheduleAppointment}">
+                                                            <BoxView
+                                                             CornerRadius="100"
+                                                             HeightRequest="7"
+                                                             HorizontalOptions="CenterAndExpand"
+                                                             VerticalOptions="Center"
+                                                             WidthRequest="7"
+                                                             Color="{Binding Color}"/>
+                                                        </DataTemplate>
+                                                    </BindableLayout.ItemTemplate>
 
+                                            </StackLayout>
+
+                                        </ContentView>
+                                    </DataTemplate>
+                                    
+                                </xc:CalendarView.DayTemplate -->
 
                             </xc:CalendarView>
 
-                        
 
-                                    <!--syncfusion:SfSchedule x:Name="schedule"
-                                               ScheduleView="MonthView"
-                                               CellTapped="OnDateClicked"
-                                               BackgroundColor="DarkRed" >
-
-                            <syncfusion:SfSchedule.AppointmentMapping>
-
-                                <syncfusion:ScheduleAppointmentMapping
-                                     SubjectMapping="Subject"
-                                     StartTimeMapping="StartTime"
-                                     EndTimeMapping="EndTime" />
-
-                            </syncfusion:SfSchedule.AppointmentMapping>
-                        </syncfusion:SfSchedule-->
-
-                    </Frame>
+                        </Frame>
                 </StackLayout>
             </Frame>
 
@@ -93,14 +96,18 @@
                    HeightRequest="350">
 
                 <ListView x:Name="eventList"
-                          ItemTapped="OnEventTapped" >
+                          ItemTapped="OnEventTapped"
+                          HorizontalOptions="CenterAndExpand"
+                          VerticalOptions="Start"
+                          SeparatorColor="Black"
+                          RowHeight="40" >
 
                     <ListView.ItemTemplate>
 
                         <DataTemplate>
                             <ViewCell>
 
-                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout Orientation="Horizontal" Margin="5,10,0,0" >
                                     <Label Text="{Binding Title}" />
                                     <Label Text=" : " />
                                     <Label Text="{Binding StartTime, StringFormat='{0:HH:mm}'}" />
