@@ -22,6 +22,7 @@
 		<PackageReference Include="MySql.Data.EntityFramework" Version="8.0.33" />
 		<PackageReference Include="MySqlConnector" Version="2.2.6" />
 		<PackageReference Include="Plugin.XCalendar" Version="2.1.0" />
+		<PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
 		<PackageReference Include="Syncfusion.Licensing" Version="21.2.10" />
 		<PackageReference Include="Syncfusion.Xamarin.Core" Version="21.2.10" />
 		<PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="21.2.10" />
@@ -51,6 +52,7 @@
     <PackageReference Include="Google.Apis.Calendar.v3" Version="1.60.0.3074" />
     <PackageReference Include="GoogleApi" Version="5.0.2" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+    <PackageReference Include="System.ObjectModel" Version="4.3.0" />
     <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.6" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.5" />

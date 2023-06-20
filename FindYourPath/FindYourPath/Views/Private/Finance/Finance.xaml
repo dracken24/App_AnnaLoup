@@ -20,7 +20,8 @@
                        CornerRadius="10" 
                        HasShadow="True" 
                        BackgroundColor="LightCyan" 
-                       Padding="15"
+                       Padding="10"
+                       Margin="0,0,0,5"
                        HeightRequest="250">
 
                     <ScrollView>
@@ -59,7 +60,8 @@
                        CornerRadius="10" 
                        HasShadow="True" 
                        BackgroundColor="LightCyan" 
-                       Padding="15"
+                       Padding="10"
+                       Margin="0,0,0,5"
                        Grid.Row="1" 
                        HeightRequest="450">
 

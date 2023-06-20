@@ -15,18 +15,18 @@ namespace FindYourPath.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AddEventPage : ContentPage
 	{
-		ObservableCollection<MyScheduleAppointment> appointments;
-		XCalendar.CalendarView calendar;
+		ObservableCollection<Event> appointments;
+		// XCalendar.CalendarView calendar;
 		private EventService eventService;
 		static User _user;
 
-		public AddEventPage(ObservableCollection<MyScheduleAppointment> appointments, DateTime selectedDate,
-			EventService eventService, XCalendar.CalendarView calendar, User user)
+		public AddEventPage(ObservableCollection<Event> appointments, DateTime selectedDate,
+			EventService eventService, User user)
 		{
 			InitializeComponent();
 			this.appointments = appointments;
 			this.eventService = eventService;
-			this.calendar = calendar;
+			//this.calendar = calendar;
 			startDatePicker.Date = selectedDate;
 			endDatePicker.Date = selectedDate;
 			startTimePicker.Time = new TimeSpan(8, 0, 0);
@@ -49,7 +49,7 @@ namespace FindYourPath.Views
 			var endTime = endTimePicker.Time;
 			var endDateTime = new DateTime(endDate.Year, endDate.Month, endDate.Day, endTime.Hours, endTime.Minutes, endTime.Seconds);
 
-			MyScheduleAppointment newEvent = new MyScheduleAppointment
+			Event newEvent = new Event
 			{
 				Title = titleEntry.Text,
 				StartDate = startDateTime.Date, // Assign the date part
@@ -61,11 +61,13 @@ namespace FindYourPath.Views
 				Location = "Saint-Nean"
 			};
 
+			Console.WriteLine("NewEvent: " + newEvent.PrintMembers());
+
 			try
 			{
 				// Add newEvent to your data source
 				appointments.Add(newEvent); // Add to the local ObservableCollection
-				calendar.SelectedDates.Add(newEvent.StartDate); // Add to the calendar's SelectedDates
+				// calendar.SelectedDates.Add(newEvent.StartDate); // Add to the calendar's SelectedDates
 				
 
 				// Add newEvent to database
@@ -90,7 +92,7 @@ namespace FindYourPath.Views
 			await Navigation.PopAsync();
 		}
 
-		public async Task CreateEvent(MyScheduleAppointment newEvent)
+		public async Task CreateEvent(Event newEvent)
 		{
 			// Ajoutez ici toute autre logique nécessaire pour créer un événement...
 			Console.WriteLine("*************************** EVENT **************************");

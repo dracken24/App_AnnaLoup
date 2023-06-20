@@ -9,7 +9,7 @@
                Padding="0"
                BackgroundColor="LightBlue">
 
-            <Grid Padding="15">
+            <Grid Padding="15" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="4*" />
                     <RowDefinition Height="5*" />
@@ -19,7 +19,8 @@
                        CornerRadius="10" 
                        HasShadow="True" 
                        BackgroundColor="LightCyan" 
-                       Padding="15"
+                       Padding="10"
+                       Margin="0,0,0,5"
                        HeightRequest="250">
 
                     <ScrollView>
@@ -58,7 +59,8 @@
                        CornerRadius="10" 
                        HasShadow="True" 
                        BackgroundColor="LightCyan" 
-                       Padding="15"
+                       Padding="10"
+                       Margin="0,5,0,0"
                        Grid.Row="1" 
                        HeightRequest="450">
                     

@@ -15,15 +15,15 @@ namespace FindYourPath.Views
 {
 	public partial class EventDetailPage : ContentPage
 	{
-		public EventDetailPage(MyScheduleAppointment appointment)
+		public EventDetailPage(Event appointment)
 		{
 			InitializeComponent();
 			Title = "Détail de l'événement";
 
-			var subjectLabelIn = new Label { Text = $"Sujet                   : "};
+			var subjectLabelIn = new Label { Text = $"Sujet                    : "};
 			var startTimeLabelIn = new Label { Text = $"Heure de début : " };
 			var endTimeLabelIn = new Label { Text = $"Heure de fin       : " };
-			var notesLabelIn = new Label { Text = $"Notes                  : " };
+			var notesLabelIn = new Label { Text = $"Notes                   : " };
 
 			subjectLabel.Text = subjectLabelIn.Text;
 			startLabel.Text = startTimeLabelIn.Text;

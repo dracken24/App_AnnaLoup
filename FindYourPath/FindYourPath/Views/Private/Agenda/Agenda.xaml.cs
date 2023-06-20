@@ -1,5 +1,69 @@
 ﻿using FindYourPath.DataBase;
 using FindYourPath.Views.Private.Agenda.SaveAgenda;
+using Google.Apis.Calendar.v3.Data;
+using System;
+using System.Linq;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+using XCalendar.Core.Collections;
+
+namespace FindYourPath.Views
+{
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+	public partial class Agenda : ContentPage
+	{
+		EventCalendarExampleViewModel _eventView;
+
+		public Agenda()
+		{
+			try
+			{
+				InitializeComponent();
+				_eventView = new EventCalendarExampleViewModel(this);
+				BindingContext = _eventView;
+
+			}
+			catch (System.Exception ex)
+			{
+				System.Diagnostics.Debug.WriteLine(ex.Message);
+			}
+		}
+
+		protected override async void OnAppearing()
+		{
+			base.OnAppearing();
+
+			// ici vous pouvez attendre votre méthode Initialize
+			ObservableRangeCollection<Event> events = await (BindingContext as EventCalendarExampleViewModel).Initialize();
+			foreach (var day in _eventView.EventCalendar.Days)
+			{
+				day.Events.ReplaceRange(events.Where(x => x.StartDate.Date == day.DateTime.Date));
+			}
+		}
+
+		private async void OnAddEventButtonClicked(object sender, EventArgs e)
+		{
+			_eventView.OnAddEventButtonClicked(sender, e);
+		}
+
+		private void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			Console.WriteLine("OnCollectionViewSelectionChanged");
+			var selectedEvent = e.CurrentSelection.FirstOrDefault() as Event;
+			if (selectedEvent != null)
+			{
+				Console.WriteLine("selectedEvent != null");
+				// Do something with the selected item
+				// For example, navigate to a new page with the event details
+				Navigation.PushAsync(new EventDetailPage(selectedEvent));
+			}
+		}
+	}
+}
+
+/*
+using FindYourPath.DataBase;
+using FindYourPath.Views.Private.Agenda.SaveAgenda;
 using SQLite;
 
 //using Syncfusion.SfSchedule.XForms;
@@ -146,6 +210,7 @@ namespace FindYourPath.Views
 
 	}
 }
+*/
 
 /*
 using FindYourPath.Services;
