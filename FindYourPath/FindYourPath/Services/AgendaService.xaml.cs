@@ -11,6 +11,7 @@ namespace FindYourPath.Services
 	// TODO: Class pour communication futur avec Google calandar
 	public partial class AgendaService
 	{
+
 		private static string[] Scopes = { CalendarService.Scope.Calendar };
 		private static string ApplicationName = "FindYourPath";
 		private CalendarService _service;

@@ -5,9 +5,7 @@ using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Threading.Tasks;
-using GoogleApi.Entities.Maps.StreetView.Request.Enums;
-using System.Collections.Generic;
-using Xamarin.Essentials;
+using XCalendar.Core.Collections;
 
 namespace FindYourPath
 {
@@ -17,6 +15,8 @@ namespace FindYourPath
 		static string _connectionString; // String de connexion a la Database
 		static User _user = null; // User principale
 
+		static ObservableRangeCollection<Event> _Events = new ObservableRangeCollection<Event>();
+
 		public App()
 		{
 			InitializeComponent();
@@ -25,6 +25,12 @@ namespace FindYourPath
 			_userService = new UserService(_connectionString);
 
 			MainPage = new LoginPage();
+		}
+
+		public static ObservableRangeCollection<Event> Events
+		{
+			get { return _Events; }
+			set { _Events = value; }
 		}
 
 		public static string ConnectionString

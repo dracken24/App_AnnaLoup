@@ -9,24 +9,22 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Newtonsoft.Json;
 using System.Net.Http;
+using System.Linq;
 
 namespace FindYourPath.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AddEventPage : ContentPage
 	{
-		ObservableCollection<Event> appointments;
-		// XCalendar.CalendarView calendar;
 		private EventService eventService;
 		static User _user;
 
-		public AddEventPage(ObservableCollection<Event> appointments, DateTime selectedDate,
+		public AddEventPage(DateTime selectedDate,
 			EventService eventService, User user)
 		{
 			InitializeComponent();
-			this.appointments = appointments;
 			this.eventService = eventService;
-			//this.calendar = calendar;
+
 			startDatePicker.Date = selectedDate;
 			endDatePicker.Date = selectedDate;
 			startTimePicker.Time = new TimeSpan(8, 0, 0);
@@ -66,7 +64,7 @@ namespace FindYourPath.Views
 			try
 			{
 				// Add newEvent to your data source
-				appointments.Add(newEvent); // Add to the local ObservableCollection
+				App.Events.Add(newEvent); // Add to the local ObservableCollection
 				// calendar.SelectedDates.Add(newEvent.StartDate); // Add to the calendar's SelectedDates
 				
 
@@ -99,6 +97,7 @@ namespace FindYourPath.Views
 
 			// Enregistrez l'événement dans la base de données
 			await eventService.SaveEventAsync(newEvent);
+			App.Events.ReplaceRange(App.Events.Where(x => x.StartDate.Date == newEvent.StartDate));
 		}
 	}
 }

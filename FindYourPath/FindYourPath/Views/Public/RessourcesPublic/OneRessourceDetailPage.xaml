@@ -5,22 +5,22 @@
              <!--xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps" -->
     <ScrollView>
         <Frame BorderColor="#006666" 
-               CornerRadius="10" 
+               CornerRadius="0" 
                HasShadow="True" 
                Padding="0"
                BackgroundColor="LightBlue">
 
-            <Grid Padding="10">
+            <Grid Padding="8">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="4*" />
                     <RowDefinition Height="5*" />
                 </Grid.RowDefinitions>
 
                 <Frame BorderColor="#006666" 
-                       CornerRadius="10" 
+                       CornerRadius="2" 
                        HasShadow="True" 
                        BackgroundColor="LightCyan" 
-                       Padding="15"
+                       Padding="5"
                        Margin="0,0,0,5"
                        HeightRequest="250">
 
@@ -85,7 +85,7 @@
 
                                 <!-- Description -->
 
-                                <StackLayout Grid.Row="0" Grid.Column="1">
+                                <StackLayout Grid.Row="0" Grid.Column="1" Margin="5,0,0,0">
 
                                     <Label x:Name="nameDescription"
                                            FontAttributes="Bold"
@@ -93,7 +93,7 @@
 
                                 </StackLayout>
 
-                                <StackLayout Grid.Row="1" Grid.Column="1">
+                            <StackLayout Grid.Row="1" Grid.Column="1" Margin="5,0,0,0">
 
                                     <Label x:Name="addressDescription"
                                            FontAttributes="Bold"
@@ -101,7 +101,7 @@
 
                                 </StackLayout>
 
-                                <StackLayout Grid.Row="2" Grid.Column="1">
+                                <StackLayout Grid.Row="2" Grid.Column="1" Margin="5,0,0,0">
 
                                     <Label x:Name="phoneDescription"
                                            FontAttributes="Bold"
@@ -109,7 +109,7 @@
 
                                 </StackLayout>
 
-                                <StackLayout Grid.Row="3" Grid.Column="1">
+                                <StackLayout Grid.Row="3" Grid.Column="1" Margin="5,0,0,0">
 
                                     <Label x:Name="urlDescription"
                                            FontAttributes="Bold"
@@ -122,7 +122,7 @@
 
                                 </StackLayout>
 
-                                <StackLayout Grid.Row="4" Grid.Column="1">
+                                <StackLayout Grid.Row="4" Grid.Column="1" Margin="5,0,0,0">
 
                                     <Label x:Name="descriptionDescription"
                                            FontAttributes="Bold"
@@ -136,10 +136,10 @@
                 </Frame>
 
                 <Frame BorderColor="#006666" 
-                       CornerRadius="10" 
+                       CornerRadius="2" 
                        HasShadow="True" 
                        BackgroundColor="LightCyan" 
-                       Padding="10"
+                       Padding="8"
                        Grid.Row="1" 
                        HeightRequest="400">
 
@@ -154,7 +154,7 @@
                                    Text="Google Map"/>
 
                             <Frame BorderColor="#006666" 
-                                   CornerRadius="10" 
+                                   CornerRadius="2" 
                                    HasShadow="True" 
                                    BackgroundColor="White" 
                                    Padding="15"

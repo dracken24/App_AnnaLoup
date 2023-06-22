@@ -5,10 +5,10 @@ using XCalendar.Models;
 
 namespace FindYourPath.Views
 {
-	public class MyScheduleAppointment : BaseObservableModel
+	public class Event : BaseObservableModel
 	{
 		[PrimaryKey, AutoIncrement]
-		public int MyId { get; set; }
+		public int id { get; set; }
 		public string Title { get; set; }
 		public string Description { get; set; }
 		public DateTime StartDate { get; set; }
@@ -18,5 +18,12 @@ namespace FindYourPath.Views
 		public string Location { get; set; }
 		public int UserId { get; set; }
 		public Color Color { get; set; } = Color.Blue;
+
+		public string PrintMembers()
+		{
+			return $"MyId: {id} Title: {Title}, Description: {Description}, StartDate: {StartDate}, EndDate: {EndDate}, StartTime: {StartTime}, EndTime: {EndTime}, Location: {Location}, ";
+		}
 	}
+
+	
 }

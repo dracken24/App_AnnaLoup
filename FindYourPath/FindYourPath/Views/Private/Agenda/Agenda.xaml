@@ -11,7 +11,7 @@
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     x:Name="This"
     Title="Event Calendar"
-    x:DataType="{x:Type ViewModels:EventCalendarExampleViewModel}"
+    x:DataType="{x:Type ViewModels:EventCalendarViewModel}"
     Style="{StaticResource DefaultPageStyle}">
 
     <ContentPage.Resources>
@@ -23,10 +23,10 @@
 
         <ScrollView>
     <Frame BorderColor="#006666" 
-                   CornerRadius="10" 
+                   CornerRadius="0" 
                    HasShadow="True" 
                    BackgroundColor="LightBlue" 
-                   Padding="15">
+                   Padding="8">
 
             <Grid ColumnSpacing="5" RowSpacing="5">
 
@@ -41,18 +41,19 @@
             </Grid.ColumnDefinitions>
 
                 <Frame BorderColor="#006666" 
-                   CornerRadius="10" 
+                   CornerRadius="2" 
                    HasShadow="True" 
                    BackgroundColor="LightCyan" 
-                   Padding="5"
+                   Padding="8"
                        Grid.Row="0">
             <Frame
             Grid.Row="0"
             Grid.Column="0"
-            Margin="5"
+            Margin="0"
             Padding="0"
             BackgroundColor="{StaticResource ContentBackgroundColor}"
-            CornerRadius="15">
+                HasShadow="True"
+            CornerRadius="2">
 
                 <xc:CalendarView
                 x:Name="MainCalendarView"
@@ -163,7 +164,7 @@
                                                         <BindableLayout.ItemTemplate>
                                                             <DataTemplate x:DataType="{x:Type Models:Event}">
                                                                 <BoxView
-                                                                CornerRadius="100"
+                                                                CornerRadius="4"
                                                                 HeightRequest="7"
                                                                 HorizontalOptions="CenterAndExpand"
                                                                 VerticalOptions="Center"
@@ -198,10 +199,10 @@
 
                 <!-- Events -->
                 <Frame BorderColor="#006666" 
-                       CornerRadius="10" 
+                       CornerRadius="2" 
                        HasShadow="True" 
                        BackgroundColor="LightCyan" 
-                       Padding="5"
+                       Padding="3"
                        Grid.Row="2">
                 
                 <CollectionView Grid.Row="1"
@@ -229,7 +230,7 @@
                             <Frame
                             Margin="5"
                             Padding="0"
-                            CornerRadius="10">
+                            CornerRadius="2">
                                 <Grid >
 
                                     <Grid.ColumnDefinitions>

@@ -5,23 +5,24 @@
 
     <ScrollView>
         <Frame BorderColor="#006666" 
-               CornerRadius="10" 
+               CornerRadius="0" 
                HasShadow="True" 
                Padding="0"
                BackgroundColor="LightBlue">
 
-            <Grid Padding="15">
+            <Grid Padding="8">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="4*" />
-                    <RowDefinition Height="5*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <Frame BorderColor="#006666" 
-                       CornerRadius="10" 
+                       CornerRadius="2" 
                        HasShadow="True" 
                        BackgroundColor="LightCyan" 
-                       Padding="15"
-                       HeightRequest="250">
+                       Padding="8"
+                       HeightRequest="250"
+                       Grid.Column="0">
 
                     <ScrollView>
 
@@ -142,6 +143,13 @@
                     </ScrollView>
 
                 </Frame -->
+
+                <!-- Add Event button -->
+                <Button Grid.Row="1"
+                        x:Name="addEventButton" 
+                        Text="Modifie Evenement" 
+                        Clicked="OnModifyButtonClicked"
+                        TextColor="#006666"/>
 
             </Grid>
         </Frame>

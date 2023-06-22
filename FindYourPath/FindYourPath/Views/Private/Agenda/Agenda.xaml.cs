@@ -12,14 +12,16 @@ namespace FindYourPath.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Agenda : ContentPage
 	{
-		EventCalendarExampleViewModel _eventView;
+		EventCalendarViewModel _eventView;
+		private EventService _eventService;
 
 		public Agenda()
 		{
 			try
 			{
 				InitializeComponent();
-				_eventView = new EventCalendarExampleViewModel(this);
+				_eventService = new EventService(App.ConnectionString);
+				_eventView = new EventCalendarViewModel(this, _eventService);
 				BindingContext = _eventView;
 
 			}
@@ -33,11 +35,14 @@ namespace FindYourPath.Views
 		{
 			base.OnAppearing();
 
-			// ici vous pouvez attendre votre méthode Initialize
-			ObservableRangeCollection<Event> events = await (BindingContext as EventCalendarExampleViewModel).Initialize();
+			if (App.Events.Count == 0)
+			{
+				// ici vous pouvez attendre votre méthode Initialize
+				await (BindingContext as EventCalendarViewModel).Initialize();
+			}
 			foreach (var day in _eventView.EventCalendar.Days)
 			{
-				day.Events.ReplaceRange(events.Where(x => x.StartDate.Date == day.DateTime.Date));
+				day.Events.ReplaceRange(App.Events.Where(x => x.StartDate.Date == day.DateTime.Date));
 			}
 		}
 
@@ -52,165 +57,14 @@ namespace FindYourPath.Views
 			var selectedEvent = e.CurrentSelection.FirstOrDefault() as Event;
 			if (selectedEvent != null)
 			{
-				Console.WriteLine("selectedEvent != null");
-				// Do something with the selected item
-				// For example, navigate to a new page with the event details
-				Navigation.PushAsync(new EventDetailPage(selectedEvent));
+				Navigation.PushAsync(new EventDetailPage(selectedEvent, _eventService));
+
+				((CollectionView)sender).SelectedItem = null;
+				//_eventView.EventCalendar.SelectedDates.Clear();
 			}
 		}
 	}
 }
-
-/*
-using FindYourPath.DataBase;
-using FindYourPath.Views.Private.Agenda.SaveAgenda;
-using SQLite;
-
-//using Syncfusion.SfSchedule.XForms;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
-using Xamarin.CommunityToolkit.ObjectModel;
-using Xamarin.Forms;
-using XCalendar.Core.Models;
-using XCalendar;
-using Google.Apis.Calendar.v3.Data;
-using FindYourPath.Views.Private.Agenda;
-using FindYourPath.Converters.FindYourPath.Converters;
-
-namespace FindYourPath.Views
-{
-	public partial class Agenda : ContentPage
-	{
-		// Créez une collection pour stocker vos événements.
-		private ObservableCollection<MyScheduleAppointment> appointments;
-		// Pour sauvegerder les infos sur la database
-		private EventService eventService;
-		private CalendarDayToEventsConverter _converter;
-		public ObservableCollection<DayModel> days { get; set; }
-
-
-		public Agenda()
-		{
-			InitializeComponent();
-			this.BindingContext = this;
-
-			Title = "Agenda";
-
-			_converter = new CalendarDayToEventsConverter(GetEventsForDay);
-
-			Resources.Add("CalendarDayToEventsConverter", _converter);
-
-			eventService = new EventService(App.ConnectionString);
-			appointments = new ObservableCollection<MyScheduleAppointment>();
-
-			days = new ObservableCollection<DayModel>();
-		}
-
-		// Remplie le calendrier avec les événements de la database
-		protected override async void OnAppearing()
-		{
-			base.OnAppearing();
-			await InitializeAsync();
-		}
-
-		// Retourne une liste d'événements pour une date donnée.
-		private void CalendarView_DateSelectionChanged(object sender, EventArgs e)
-		{
-			if (calendar.SelectedDates.Count == 0) // Si une date n'est pas sélectionnée ou deselectionnée
-			{
-				eventList.ClearValue(ListView.ItemsSourceProperty);
-				return;
-			}
-			else if (calendar.SelectedDates.Count > 1) // Si plusieurs dates sont sélectionnées
-			{
-				calendar.SelectedDates.RemoveAt(0);
-			}
-			
-			eventList.ItemsSource = GetEventsForDay(calendar.SelectedDates[0]); // Affiche les événements de la date sélectionnée
-		}
-
-		public async Task InitializeAsync()
-		{
-			try
-			{
-				await Task.Run(() => LoadEventsFromDatabase(App.User.GetUserId()));
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine(ex.Message);
-				Console.WriteLine(ex.StackTrace);
-			}
-		}
-
-		private async Task LoadEventsFromDatabase(int userId)
-		{
-			appointments.Clear();
-
-			if (eventService == null)
-			{
-				Console.WriteLine("eventService is null");
-				return;
-			}
-
-			var events = await eventService.GetEventsAsync(userId);
-			if (events == null)
-			{
-				Console.WriteLine("GetEventsAsync returned null");
-				return;
-			}
-
-			foreach (var e in events)
-			{
-				appointments.Add(e);
-			}
-		}
-
-		private void OnAddEventButtonClicked(object sender, EventArgs e)
-		{
-			// Récupérer la date sélectionnée
-			var selectedDate = calendar.SelectedDates[0];
-			if (selectedDate == null)
-			{
-				selectedDate = DateTime.Now;
-			}
-
-			User user = App.User;
-			Navigation.PushAsync(new AddEventPage(appointments, selectedDate, eventService,calendar , user));
-		}
-
-		// Afficher les détails de l'événement sélectionné.
-		private void OnEventTapped(object sender, ItemTappedEventArgs e)
-		{
-			var selectedEvent = e.Item as MyScheduleAppointment;
-			Navigation.PushAsync(new EventDetailPage(selectedEvent));
-		}
-
-		// Retourn une liste d'événements pour une date donnée.
-		private List<MyScheduleAppointment> GetEventsForDay(DateTime date)
-		{
-			var localAppointments = appointments;
-
-			var eventsForDay = localAppointments.Where(appointment =>
-				appointment.StartDate.Date <= date.Date &&
-				appointment.EndDate.Date >= date.Date).ToList();
-
-			foreach (var eventForDay in eventsForDay)
-			{
-				// Nous ajoutons simplement un nouvel objet DayModel pour chaque événement
-				days.Add(new DayModel() { Events = new List<MyScheduleAppointment> { eventForDay } });
-
-				Console.WriteLine(eventForDay.Title);
-			}
-
-			return eventsForDay;
-		}
-
-	}
-}
-*/
 
 /*
 using FindYourPath.Services;

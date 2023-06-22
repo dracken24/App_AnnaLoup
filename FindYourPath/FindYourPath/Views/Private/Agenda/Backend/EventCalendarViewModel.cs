@@ -18,7 +18,7 @@ using XCalendar.Core.Models;
 
 namespace FindYourPath.Views
 {
-	public class EventCalendarExampleViewModel : BaseViewModel
+	public class EventCalendarViewModel : BaseViewModel
 	{
 		#region Properties
 		public Calendar<EventDay> EventCalendar { get; set; } = new Calendar<EventDay>()
@@ -28,9 +28,9 @@ namespace FindYourPath.Views
 			SelectionType = SelectionType.Single
 		};
 
-		public ObservableRangeCollection<Event> Events { get; } = new ObservableRangeCollection<Event>();
+		// public ObservableRangeCollection<Event> Events { get; } = new ObservableRangeCollection<Event>();
 		public ObservableRangeCollection<Event> SelectedEvents { get; } = new ObservableRangeCollection<Event>();
-		private EventService eventService;
+		private EventService _eventService;
 		private Page _page;
 		private DateTime _selectedDate;
 
@@ -42,9 +42,9 @@ namespace FindYourPath.Views
 		#endregion
 
 		#region Constructors
-		public EventCalendarExampleViewModel(Page page)
+		public EventCalendarViewModel(Page page, EventService eventService)
 		{
-			eventService = new EventService(App.ConnectionString);
+			_eventService = eventService;
 			NavigateCalendarCommand = new Command<int>(NavigateCalendar);
 			ChangeDateSelectionCommand = new Command<DateTime>(ChangeDateSelection);
 
@@ -56,7 +56,7 @@ namespace FindYourPath.Views
 			EventCalendar.DaysUpdated += EventCalendar_DaysUpdated;
 			foreach (var day in EventCalendar.Days)
 			{
-				day.Events.ReplaceRange(Events.Where(x => x.StartDate.Date == day.DateTime.Date));
+				day.Events.ReplaceRange(App.Events.Where(x => x.StartDate.Date == day.DateTime.Date));
 			}
 
 		}
@@ -73,13 +73,13 @@ namespace FindYourPath.Views
 			}
 			foreach (var day in EventCalendar.Days)
 			{
-				day.Events.ReplaceRange(Events.Where(x => x.StartDate.Date == day.DateTime.Date));
+				day.Events.ReplaceRange(App.Events.Where(x => x.StartDate.Date == day.DateTime.Date));
 			}
 		}
 		private void SelectedDates_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
 		{
 			Console.WriteLine("Selected dates changed");
-			SelectedEvents.ReplaceRange(Events.Where(x => EventCalendar.SelectedDates.Any(y => x.StartDate.Date == y.Date)).OrderByDescending(x => x.StartDate));
+			SelectedEvents.ReplaceRange(App.Events.Where(x => EventCalendar.SelectedDates.Any(y => x.StartDate.Date == y.Date)).OrderByDescending(x => x.StartDate));
 		}
 		public void NavigateCalendar(int amount)
 		{
@@ -107,47 +107,39 @@ namespace FindYourPath.Views
 		{
 			DateTime selectedDate = _selectedDate;
 
-			User user = App.User;
-			_page.Navigation.PushAsync(new AddEventPage(Events, selectedDate, eventService, user));
+			_page.Navigation.PushAsync(new AddEventPage(selectedDate, _eventService, App.User));
 		}
 
-		public async Task<ObservableRangeCollection<Event>> Initialize()
+		public async Task Initialize()
 		{
+			Console.WriteLine("Initialize");
 			try
 			{
-				return await Task.Run(() => LoadEventsFromDatabase(App.User.GetUserId()));
+				await Task.Run(() => LoadEventsFromDatabase(App.User.GetUserId()));
 			}
 			catch (Exception ex)
 			{
 				Console.WriteLine(ex.Message);
 				Console.WriteLine(ex.StackTrace);
-				return new ObservableRangeCollection<Event>();
 			}
 		}
 
-		private async Task<ObservableRangeCollection<Event>> LoadEventsFromDatabase(int userId)
+		private async Task LoadEventsFromDatabase(int userId)
 		{
-			Events.Clear();
+			App.Events.Clear();
 
-			if (eventService == null)
+			if (_eventService == null)
 			{
 				Console.WriteLine("eventService is null");
-				return null;
+				return;
 			}
 
-			var events = await eventService.GetEventsAsync(userId);
-			if (events == null)
+			await _eventService.GetEventsAsync(userId);
+			if (App.Events == null)
 			{
 				Console.WriteLine("GetEventsAsync returned null");
-				return null;
+				return;
 			}
-
-			foreach (var e in events)
-			{
-				Events.Add(e);
-			}
-
-			return Events;
 		}
 		//**********************************************************************************************************************
 	}

@@ -3,9 +3,9 @@
              x:Class="FindYourPath.Views.Private.Profile.ChangeProfilInfos">
     <ContentPage.Content>
         <Frame BorderColor="#006666" 
-                           CornerRadius="10" 
+                           CornerRadius="0" 
                            HasShadow="True" 
-                           Padding="15"
+                           Padding="8"
                            BackgroundColor="LightBlue">
             <StackLayout>
                 <Label  Text="Change Profile Infos"
@@ -15,9 +15,9 @@
                     TextColor="#006666"/>
                 
                 <Frame BorderColor="#006666" 
-                           CornerRadius="10" 
+                           CornerRadius="2" 
                            HasShadow="True" 
-                           Padding="15"
+                           Padding="5"
                            BackgroundColor="LightCyan">
                     <StackLayout>
                 

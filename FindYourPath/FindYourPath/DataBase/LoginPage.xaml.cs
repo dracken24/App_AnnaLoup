@@ -20,8 +20,7 @@ namespace FindYourPath.DataBase
 		async void OnLoginButtonClicked(object sender, EventArgs e)
 		{
 			var username = ((LoginPageViewModel)BindingContext).Username;
-			// var username = UsernameEntry.Text;
-			var password = PasswordEntry.Text;
+			var password = ((LoginPageViewModel)BindingContext).Password;
 
 			JObject paramJson = new JObject
 			{

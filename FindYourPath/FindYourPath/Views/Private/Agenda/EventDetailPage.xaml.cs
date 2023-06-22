@@ -1,21 +1,21 @@
-﻿using FindYourPath.Views.Private.Agenda.SaveAgenda;
-using Syncfusion.SfSchedule.XForms;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+using XCalendar.Core.Collections;
+using FindYourPath.DataBase;
+using FindYourPath.Views.Private.Agenda.SaveAgenda;
 using FindYourPath.Views.Private.Agenda;
-using System.Xml;
+
+//using Google.Apis.Calendar.v3.Data;
 
 namespace FindYourPath.Views
 {
 	public partial class EventDetailPage : ContentPage
 	{
-		public EventDetailPage(Event appointment)
+		Event _currentEvent;
+		EventService _eventService;
+
+		public EventDetailPage(Event appointment, EventService eventService)
 		{
 			InitializeComponent();
 			Title = "Détail de l'événement";
@@ -34,6 +34,20 @@ namespace FindYourPath.Views
 			startDescription.Text = appointment.StartTime.ToString();
 			endDescription.Text = appointment.EndTime.ToString();
 			descriptionDescription.Text = appointment.Description;
+
+			_currentEvent = appointment;
+			_eventService = eventService;
+		}
+
+		private async void OnModifyButtonClicked(object sender, EventArgs e)
+		{
+			Console.WriteLine("Modify event");
+
+			User user = App.User;
+			Navigation.PushAsync(new EventModificationPage(_currentEvent, _eventService, user));
+
+			// Then navigate back to the previous page
+			//Navigation.PopAsync();
 		}
 	}
 }

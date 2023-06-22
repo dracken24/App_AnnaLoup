@@ -10,6 +10,7 @@ namespace FindYourPath.DataBase
 	public class LoginPageViewModel : INotifyPropertyChanged
 	{
 		private string _username;
+		private string _password;
 
 		public string Username
 		{
@@ -17,6 +18,16 @@ namespace FindYourPath.DataBase
 			set
 			{
 				_username = value;
+				OnPropertyChanged();
+			}
+		}
+
+		public string Password
+		{
+			get { return _password; }
+			set
+			{
+				_password = value;
 				OnPropertyChanged();
 			}
 		}

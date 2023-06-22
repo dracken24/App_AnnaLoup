@@ -37,7 +37,8 @@
                        Placeholder="Password"
                        IsPassword="True"
                        PlaceholderColor="#006666"
-                       TextColor="Black" />
+                       TextColor="Black"
+                       Text="{Binding Password}"/>
             </Frame>
 
             <!-- Log in button -->

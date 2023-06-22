@@ -27,6 +27,8 @@ namespace FindYourPath.Views.Private.Profile
 
 		async void OnSubmitButtonClicked(object sender, EventArgs e)
 		{
+			
+
 			// Display a success message to the user
 			await DisplayAlert("Profile Updated", "Your profile has been updated.", "OK");
 

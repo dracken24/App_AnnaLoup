@@ -17,13 +17,12 @@ namespace FindYourPath.Views.Public.RessourcesPublic
 		{
 			InitializeComponent();
 			
-
 			Title = resource.Name;
 
-			nameLabel.Text = $"Nom            :";
+			nameLabel.Text = $"Nom             :";
 			addressLabel.Text = $"Adresse      :";
 			phoneLabel.Text = $"Téléphone  :";
-			urlLabel.Text = $"Url                :";
+			urlLabel.Text = $"Url                 :";
 			descriptionLabel.Text = $"Description :";
 
 			nameDescription.Text = resource.Name;

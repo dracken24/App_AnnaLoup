@@ -71,9 +71,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Update="Views\Private\Agenda\SaveAgenda\MyScheduleAppointment.xaml.cs">
-      <DependentUpon>MyScheduleAppointment.xaml</DependentUpon>
-    </Compile>
     <Compile Update="Views\Private\Profile\Profile.xaml.cs">
       <DependentUpon>Profile.xaml</DependentUpon>
     </Compile>
@@ -111,7 +108,7 @@
     <EmbeddedResource Update="Views\Private\Agenda\EventDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Private\Agenda\SaveAgenda\MyScheduleAppointment.xaml">
+    <EmbeddedResource Update="Views\Private\Agenda\EventModificationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Private\Finance\Finance.xaml">
