@@ -371,10 +371,13 @@
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-xxxhdpi\img_load.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\G_google.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties XamarinHotReloadUnhandledDeviceExceptionFindYourPathAndroidHideInfoBar="True" XamarinHotReloadWrongLinkerErrorInfoBarFindYourPathAndroidHideInfoBar="True" />
+      <UserProperties XamarinHotReloadWrongLinkerErrorInfoBarFindYourPathAndroidHideInfoBar="True" XamarinHotReloadUnhandledDeviceExceptionFindYourPathAndroidHideInfoBar="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
