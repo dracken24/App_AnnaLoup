@@ -28,10 +28,11 @@
                        CornerRadius="2" 
                        HasShadow="True" 
                        BackgroundColor="White" 
-                       Padding="10"
-                       Margin="0,0,0,5"
+                       Padding="2"
+                       Margin="0,0,0,0"
                        Grid.Row="0">
 
+                        <!-- Barre de recherche -->
                         <StackLayout>
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -40,9 +41,20 @@
                                     <ColumnDefinition Width="2*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Image Grid.Column="0" Source="FindYourPath/FindYourPath.Android/Resources/drawable/G_google.png" WidthRequest="40" HeightRequest="40"/>
-                                <Entry x:Name="searchBar" Grid.Column="1" Placeholder="Rechercher avec Google"/>
-                                <Button Grid.Column="2" Text="Search" Clicked="OnSearchButtonClicked" FontSize="12"/>
+                                <Image Grid.Column="0"
+                                       Source="FindYourPath/FindYourPath.Android/Resources/drawable/G_google.png"
+                                       WidthRequest="35"
+                                       HeightRequest="35"/>
+                                
+                                <Entry x:Name="searchBar"
+                                       Grid.Column="1"
+                                       Placeholder="Rechercher avec Google"/>
+                                
+                                <Button Grid.Column="2"
+                                        Text="Search"
+                                        Clicked="OnSearchButtonClicked"
+                                        FontSize="12"/>
+                                
                             </Grid>
                         </StackLayout>
                         
