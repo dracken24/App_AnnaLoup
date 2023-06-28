@@ -54,7 +54,7 @@ namespace FindYourPath.Views
 		private void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			Console.WriteLine("OnCollectionViewSelectionChanged");
-			var selectedEvent = e.CurrentSelection.FirstOrDefault() as Event;
+			var selectedEvent = e.CurrentSelection.FirstOrDefault() as MyEvent;
 			if (selectedEvent != null)
 			{
 				Navigation.PushAsync(new EventDetailPage(selectedEvent, _eventService));

@@ -12,10 +12,10 @@ namespace FindYourPath.Views
 {
 	public partial class EventDetailPage : ContentPage
 	{
-		Event _currentEvent;
+		MyEvent _currentEvent;
 		EventService _eventService;
 
-		public EventDetailPage(Event appointment, EventService eventService)
+		public EventDetailPage(MyEvent appointment, EventService eventService)
 		{
 			InitializeComponent();
 			Title = "Détail de l'événement";

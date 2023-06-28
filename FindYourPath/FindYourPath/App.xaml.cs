@@ -15,7 +15,7 @@ namespace FindYourPath
 		static string _connectionString; // String de connexion a la Database
 		static User _user = null; // User principale
 
-		static ObservableRangeCollection<Event> _Events = new ObservableRangeCollection<Event>();
+		static ObservableRangeCollection<MyEvent> _Events = new ObservableRangeCollection<MyEvent>();
 
 		public App()
 		{
@@ -27,7 +27,7 @@ namespace FindYourPath
 			MainPage = new LoginPage();
 		}
 
-		public static ObservableRangeCollection<Event> Events
+		public static ObservableRangeCollection<MyEvent> Events
 		{
 			get { return _Events; }
 			set { _Events = value; }

@@ -29,7 +29,7 @@ namespace FindYourPath.Views
 		};
 
 		// public ObservableRangeCollection<Event> Events { get; } = new ObservableRangeCollection<Event>();
-		public ObservableRangeCollection<Event> SelectedEvents { get; } = new ObservableRangeCollection<Event>();
+		public ObservableRangeCollection<MyEvent> SelectedEvents { get; } = new ObservableRangeCollection<MyEvent>();
 		private EventService _eventService;
 		private Page _page;
 		private DateTime _selectedDate;

@@ -1,18 +1,22 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
-using System.Text;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace FindYourPath.DataBase
 {
 	public class User
 	{
+		// Informations sur le user
 		int _id;
 		string _username;
 		string _email;
+
+		// Privileges du user
+		bool _canConnect = false; // Peut se connecter apres avoir valider son email
+
+		// Roles du user pour le futur chat
+		bool _isAdmin = false;
+		bool _isModerator = false;
+
 		public User()
 		{
 
@@ -28,9 +32,7 @@ namespace FindYourPath.DataBase
 			_username = parsedJson["user"]["username"].Value<string>();
 			_email = parsedJson["user"]["email"].Value<string>();
 
-			Console.WriteLine("IN USER id: " + _id);
-			Console.WriteLine("IN USER username: " + _username);
-			Console.WriteLine("IN USER email: " + _email);
+			// PrintMembers();
 		}
 
 		public void PrintMembers()

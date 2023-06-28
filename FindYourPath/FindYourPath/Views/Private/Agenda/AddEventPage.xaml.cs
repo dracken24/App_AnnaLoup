@@ -47,7 +47,7 @@ namespace FindYourPath.Views
 			var endTime = endTimePicker.Time;
 			var endDateTime = new DateTime(endDate.Year, endDate.Month, endDate.Day, endTime.Hours, endTime.Minutes, endTime.Seconds);
 
-			Event newEvent = new Event
+			MyEvent newEvent = new MyEvent
 			{
 				Title = titleEntry.Text,
 				StartDate = startDateTime.Date, // Assign the date part
@@ -90,7 +90,7 @@ namespace FindYourPath.Views
 			await Navigation.PopAsync();
 		}
 
-		public async Task CreateEvent(Event newEvent)
+		public async Task CreateEvent(MyEvent newEvent)
 		{
 			// Ajoutez ici toute autre logique nécessaire pour créer un événement...
 			Console.WriteLine("*************************** EVENT **************************");

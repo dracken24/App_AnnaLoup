@@ -31,7 +31,7 @@ namespace FindYourPath.Views.Private.Agenda.SaveAgenda
 			//TODO: a proteger avec try and catch 
 			var jsonResponse = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-			App.Events = JsonConvert.DeserializeObject<ObservableRangeCollection<Event>>(jsonResponse);
+			App.Events = JsonConvert.DeserializeObject<ObservableRangeCollection<MyEvent>>(jsonResponse);
 
 			foreach (var ev in App.Events)
 			{
@@ -42,7 +42,7 @@ namespace FindYourPath.Views.Private.Agenda.SaveAgenda
 		}
 
 		// Enregistrer un événement dans la base de données
-		public async Task SaveEventAsync(Event appointment)
+		public async Task SaveEventAsync(MyEvent appointment)
 		{
 			//appointment.StartDate += appointment.StartDate.TimeOfDay;
 			var jsonObject = new JObject
@@ -75,7 +75,7 @@ namespace FindYourPath.Views.Private.Agenda.SaveAgenda
 		}
 
 		// Mettre à jour un événement dans la base de données
-		public async Task UpdateEventAsync(Event appointment)
+		public async Task UpdateEventAsync(MyEvent appointment)
 		{
 			var jsonObject = new JObject
 			{
@@ -102,7 +102,7 @@ namespace FindYourPath.Views.Private.Agenda.SaveAgenda
 		}
 
 		// Supprimer un événement dans la base de données
-		public async Task<bool> DeleteEventAsync(Event currentEvent)
+		public async Task<bool> DeleteEventAsync(MyEvent currentEvent)
 		{
 			// Créer un message de requête DELETE
 			var request = new HttpRequestMessage(HttpMethod.Delete, App.ConnectionString + "/EventService.php");

@@ -5,7 +5,7 @@ using XCalendar.Models;
 
 namespace FindYourPath.Views
 {
-	public class Event : BaseObservableModel
+	public class MyEvent : BaseObservableModel
 	{
 		[PrimaryKey, AutoIncrement]
 		public int id { get; set; }

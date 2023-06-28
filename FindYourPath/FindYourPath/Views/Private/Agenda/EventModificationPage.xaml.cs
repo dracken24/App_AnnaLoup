@@ -18,10 +18,10 @@ namespace FindYourPath.Views.Private.Agenda
 	public partial class EventModificationPage : ContentPage
 	{
 		private EventService _eventService;
-		private Event _currentEvent;
+		private MyEvent _currentEvent;
 		static User _user;
 
-		public EventModificationPage(Event appointments, EventService eventService, User user)
+		public EventModificationPage(MyEvent appointments, EventService eventService, User user)
 		{
 			InitializeComponent();
 			_eventService = eventService;
@@ -52,7 +52,7 @@ namespace FindYourPath.Views.Private.Agenda
 			var endTime = endTimePicker.Time;
 			var endDateTime = new DateTime(endDate.Year, endDate.Month, endDate.Day, endTime.Hours, endTime.Minutes, endTime.Seconds);
 
-			Event existingEvent = App.Events.FirstOrDefault(x => x.id == _currentEvent.id);
+			MyEvent existingEvent = App.Events.FirstOrDefault(x => x.id == _currentEvent.id);
 			Console.WriteLine("_currentEvent.MyId1: " + _currentEvent.id + " existingEvent: " + _currentEvent.id);
 
 			if (existingEvent != null)

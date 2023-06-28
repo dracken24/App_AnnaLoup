@@ -28,6 +28,7 @@ namespace FindYourPath.DataBase
 				["password"] = password
 			};
 
+			// TODO: Remove these debug lines
 			// Console.WriteLine("In Login");
 			// Console.WriteLine("Username: " + username);
 			// Console.WriteLine("Password: " + password);

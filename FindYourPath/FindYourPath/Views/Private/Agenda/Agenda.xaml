@@ -162,7 +162,7 @@
                                                         </StackLayout.IsVisible>
 
                                                         <BindableLayout.ItemTemplate>
-                                                            <DataTemplate x:DataType="{x:Type Models:Event}">
+                                                            <DataTemplate x:DataType="{x:Type Models:MyEvent}">
                                                                 <BoxView
                                                                 CornerRadius="4"
                                                                 HeightRequest="7"
@@ -225,7 +225,7 @@
                 </CollectionView.ItemsLayout>
 
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="{x:Type Models:Event}">
+                    <DataTemplate x:DataType="{x:Type Models:MyEvent}">
                         <ContentView>
                             <Frame
                             Margin="5"

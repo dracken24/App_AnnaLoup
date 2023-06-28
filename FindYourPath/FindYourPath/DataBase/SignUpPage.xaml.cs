@@ -7,6 +7,8 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+using FindYourPath.RightGestion;
+
 namespace FindYourPath.DataBase
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
@@ -30,41 +32,42 @@ namespace FindYourPath.DataBase
 				["password"] = password
 			};
 
-				try
+			try
+			{
+				if (IsValidRegistration(username, email, password))
 				{
-					if (IsValidRegistration(username, email, password))
-					{
-						// Use the UserService from the App class instead of creating a new one
-						var userService = App.UserService;
-						await userService.AddUser(paramJson); // use 'await' here
-					}
-					else
-					{
-						await DisplayAlert("Error", "Invalid registration information", "OK");
-					}
+					// Use the UserService from the App class instead of creating a new one
+					var userService = App.UserService;
+					await userService.AddUser(paramJson); // use 'await' here
 				}
-				catch (HttpRequestException ex)
+				else
 				{
-					Console.WriteLine("Une erreur s'est produite lors de la connexion au serveur : " + ex);
-					await DisplayAlert("Erreur", "Impossible de se connecter au serveur. " + ex.Message, "OK");
-					return;
+					await DisplayAlert("Error", "Invalid registration information", "OK");
 				}
-				catch (JsonException ex)
-				{
-					Console.WriteLine("Une erreur s'est produite lors de l'analyse de la réponse du serveur : " + ex);
-					await DisplayAlert("Erreur", "Une erreur inattendue s'est produite. " + ex.Message, "OK");
-					return;
-				}
-				catch (Exception ex)
-				{
-					Console.WriteLine("Une erreur inattendue s'est produite : " + ex);
-					await DisplayAlert("Erreur", "Une erreur inattendue s'est produite. " + ex.Message, "OK");
-					return;
-				}
+			}
+			catch (HttpRequestException ex)
+			{
+				Console.WriteLine("Une erreur s'est produite lors de la connexion au serveur : " + ex);
+				await DisplayAlert("Erreur", "Impossible de se connecter au serveur. " + ex.Message, "OK");
+				return;
+			}
+			catch (JsonException ex)
+			{
+				Console.WriteLine("Une erreur s'est produite lors de l'analyse de la réponse du serveur : " + ex);
+				await DisplayAlert("Erreur", "Une erreur inattendue s'est produite. " + ex.Message, "OK");
+				return;
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine("Une erreur inattendue s'est produite : " + ex);
+				await DisplayAlert("Erreur", "Une erreur inattendue s'est produite. " + ex.Message, "OK");
+				return;
+			}
 
-				Console.WriteLine("222");
+			Console.WriteLine("222");
+			//await Navigation.PushAsync(new ConfirmEmail());
 
-				await ((App)Application.Current).NavigateToMainPage();
+			await ((App)Application.Current).NavigateToMainPage();
 		}
 
 		bool IsValidRegistration(string username, string email, string password)
@@ -79,6 +82,14 @@ namespace FindYourPath.DataBase
 			{
 				throw new Exception("Le mot de passe doit contenir plus de 8 ou moins de 24 characters.");
 			}
+			else if (!email.Contains("@"))
+			{
+				throw new Exception("L'adresse courriel n'est pas valide.");
+			}
+			/*else if (username.Length < 4 || username.Length > 24)
+			{
+				throw new Exception("Le nom d'utilisateur doit contenir plus de 4 ou moins de 24 characters.");
+			}*/
 
 			Console.WriteLine("GOOD infos.\n");
 			return true;
