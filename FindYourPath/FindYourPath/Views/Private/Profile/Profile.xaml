@@ -171,14 +171,7 @@
 
                                 </StackLayout>
 
-
-
-
-
-
                                 <!-- Labels de droite -->
-
-
                                 <Frame BorderColor="#006666" 
                                    CornerRadius="2" 
                                    HasShadow="True" 
@@ -192,15 +185,17 @@
 
 
                                 <StackLayout Orientation="Horizontal"
-                                             HorizontalOptions="Start"
+                                             HorizontalOptions="StartAndExpand"
                                              Spacing="10"
                                              Grid.Row="0"
                                              Grid.Column="1"
                                              Margin="10,5,0,5">
 
-                                    <Label x:Name="nameLabel" 
+                                    <Label Text="{Binding Name}" x:Name="nameLabel"
                                            FontSize="16"
-                                           TextColor="#006666" />
+                                           TextColor="#006666"
+                                           LineBreakMode="WordWrap"
+                                           WidthRequest="250" />
 
                                 </StackLayout>
 
@@ -211,10 +206,12 @@
                                              Grid.Column="1"
                                              Margin="10,5,0,5">
 
-                                    <Label x:Name="addressLabel" 
+                                    <Label Text="{Binding Address}" x:Name="addressLabel" 
                                            FontSize="16"
                                            HorizontalOptions="Start"
-                                           TextColor="#006666" />
+                                           TextColor="#006666"
+                                           LineBreakMode="WordWrap"
+                                           WidthRequest="800" />
 
                                 </StackLayout>
 
@@ -225,10 +222,12 @@
                                              Grid.Column="1"
                                              Margin="10,5,0,5">
 
-                                    <Label x:Name="emailLabel" 
+                                    <Label Text="{Binding Email}" x:Name="emailLabel" 
                                            FontSize="16"
                                            HorizontalOptions="Start"
-                                           TextColor="#006666" />
+                                           TextColor="#006666" 
+                                           LineBreakMode="WordWrap"
+                                           WidthRequest="250" />
 
                                 </StackLayout>
 
@@ -239,10 +238,12 @@
                                              Grid.Column="1"
                                              Margin="10,5,5,5">
 
-                                    <Label x:Name="phoneLabel" 
+                                    <Label Text="{Binding Phone}" x:Name="phoneLabel" 
                                            FontSize="16"
                                            HorizontalOptions="Start"
-                                           TextColor="#006666" />
+                                           TextColor="#006666"
+                                           LineBreakMode="WordWrap"
+                                           WidthRequest="250" />
 
                                 </StackLayout>
 

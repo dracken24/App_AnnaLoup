@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace FindYourPath.Views.Private.Profile
 {
@@ -16,6 +14,11 @@ namespace FindYourPath.Views.Private.Profile
 
 		public event PropertyChangedEventHandler PropertyChanged;
 
+		protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+		}
+
 		public string Name
 		{
 			get => name;
@@ -23,7 +26,6 @@ namespace FindYourPath.Views.Private.Profile
 			{
 				name = value;
 				OnPropertyChanged();
-				//PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name)));
 			}
 		}
 
@@ -34,7 +36,6 @@ namespace FindYourPath.Views.Private.Profile
 			{
 				address = value;
 				OnPropertyChanged();
-				//PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Address)));
 			}
 		}
 
@@ -45,7 +46,6 @@ namespace FindYourPath.Views.Private.Profile
 			{
 				email = value;
 				OnPropertyChanged();
-				//PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Email)));
 			}
 		}
 
@@ -56,15 +56,7 @@ namespace FindYourPath.Views.Private.Profile
 			{
 				phone = value;
 				OnPropertyChanged();
-				//PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Phone)));
 			}
 		}
-
-		protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-		{
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-		}
-
 	}
-
 }

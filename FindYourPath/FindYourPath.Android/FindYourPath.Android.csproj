@@ -72,10 +72,10 @@
       <Version>3.2.697</Version>
     </PackageReference>
     <PackageReference Include="Google.Apis.Calendar.v3">
-      <Version>1.60.0.3074</Version>
+      <Version>1.61.0.3095</Version>
     </PackageReference>
     <PackageReference Include="GoogleApi">
-      <Version>5.0.2</Version>
+      <Version>5.0.5</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.CSharp">
       <Version>4.7.0</Version>
@@ -105,16 +105,16 @@
       <Version>1.8.116</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Licensing">
-      <Version>21.2.10</Version>
+      <Version>22.1.36</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.Core">
-      <Version>21.2.10</Version>
+      <Version>22.1.36</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfCalendar">
-      <Version>21.2.10</Version>
+      <Version>22.1.36</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfSchedule">
-      <Version>21.2.10</Version>
+      <Version>22.1.36</Version>
     </PackageReference>
     <PackageReference Include="System.Data.Common">
       <Version>4.3.0</Version>
@@ -138,7 +138,7 @@
       <Version>2.0.6</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.7.5" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.6" />
     <PackageReference Include="Xamarin.Forms.Maps">
       <Version>5.0.0.2578</Version>
     </PackageReference>
@@ -377,7 +377,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties XamarinHotReloadWrongLinkerErrorInfoBarFindYourPathAndroidHideInfoBar="True" XamarinHotReloadUnhandledDeviceExceptionFindYourPathAndroidHideInfoBar="True" />
+      <UserProperties XamarinHotReloadUnhandledDeviceExceptionFindYourPathAndroidHideInfoBar="True" XamarinHotReloadWrongLinkerErrorInfoBarFindYourPathAndroidHideInfoBar="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

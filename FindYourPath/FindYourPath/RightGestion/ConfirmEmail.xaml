@@ -3,16 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FindYourPath.RightGestion.ConfirmEmail"
              BackgroundColor="#ccccff">
+    
     <ContentPage.Content>
         <StackLayout Padding="30">
 
             <!-- Text -->
-            <StackLayout>
-                <Label Text="Please enter the verification code you received in your email."
-                       VerticalOptions="CenterAndExpand" 
-                       HorizontalOptions="CenterAndExpand"
-                       FontSize="Body"/> 
-            </StackLayout>
+            <Label Text="Please enter the verification code you received in your email."
+                   HorizontalOptions="CenterAndExpand"
+                   FontSize="Body"
+                   TextColor="#006666" /> 
 
             <!-- Entree du user -->
             <Frame BorderColor="#006666" 
@@ -21,16 +20,18 @@
                    BackgroundColor="LightBlue" 
                    Padding="0">
 
-                <StackLayout>
-                    <Entry x:Name="verificationCodeEntry" 
-                       Placeholder="Verification code"/>
-                </StackLayout>
-                
+                <Entry x:Name="verificationCodeEntry" 
+                       Placeholder="Verification code"
+                       PlaceholderColor="#006666"
+                       TextColor="#006666" />
+
             </Frame>
 
             <!-- Bouton confirm -->
             <Button Text="Submit" 
-                    Clicked="OnSubmitButtonClicked" />
+                    Clicked="OnSubmitButtonClicked"
+                    TextColor="#006666" />
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

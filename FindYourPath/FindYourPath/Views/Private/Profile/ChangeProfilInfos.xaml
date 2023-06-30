@@ -20,17 +20,34 @@
                            Padding="5"
                            BackgroundColor="LightCyan">
                     <StackLayout>
-                
 
-                <Entry x:Name="nameEntry" Placeholder="Enter your name here" TextColor="#006666"/>
-                <Entry x:Name="adresseEntry" Placeholder="Enter your adresse here" TextColor="#006666"/>
-                <Entry x:Name="emailEntry" Placeholder="Enter your e-mail here" TextColor="#006666"/>
-                <Entry x:Name="phoneEntry" Placeholder="Enter your phone here" TextColor="#006666"/>
+                        <Entry x:Name="nameEntry"
+                               TextColor="#006666"
+                               Text="{Binding Name}" />
+                        
+                        <Entry x:Name="adresseEntry"
+                               TextColor="#006666"
+                               Text="{Binding Address}" />
+                        
+                        <Entry x:Name="emailEntry"
+                               TextColor="#006666"
+                               Text="{Binding Email}" />
+                        
+                        <Entry x:Name="phoneEntry"
+                               TextColor="#006666"
+                               Text="{Binding Phone}" />
+                        
                     </StackLayout>
                 </Frame>
                 <!-- Bouton change profil infos -->
-                <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" >
-                    <Button Text="Valid infos" Clicked="OnSubmitButtonClicked" TextColor="#006666" />
+                <StackLayout Grid.Row="2"
+                             Grid.Column="0"
+                             Grid.ColumnSpan="2" >
+                    
+                    <Button Text="Valid infos"
+                            Clicked="OnSubmitButtonClicked"
+                            TextColor="#006666" />
+                    
                 </StackLayout>
             </StackLayout>
             

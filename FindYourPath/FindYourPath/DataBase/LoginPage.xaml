@@ -3,22 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FindYourPath.DataBase.LoginPage"
              BackgroundColor="#ccccff" >
-    
+
     <ContentPage.Content>
-        
         <StackLayout Padding="30">
+
             <Label Text="Login"
                    HorizontalOptions="CenterAndExpand"
                    FontSize="Large"
                    TextColor="#006666" />
-            
+
             <!-- Username -->
             <Frame BorderColor="#006666" 
                    CornerRadius="5" 
                    HasShadow="True" 
                    BackgroundColor="LightBlue" 
                    Padding="0">
-                
+
                 <Entry x:Name="UsernameEntry"
                        Placeholder="Username"
                        PlaceholderColor="#006666"
@@ -32,7 +32,7 @@
                    HasShadow="True" 
                    BackgroundColor="LightBlue" 
                    Padding="0">
-                
+
                 <Entry x:Name="PasswordEntry"
                        Placeholder="Password"
                        IsPassword="True"
@@ -50,9 +50,8 @@
             <Button Text="Create Account"
                     Clicked="OnCreateAccountButtonClicked"
                     TextColor="#006666" />
-            
+
         </StackLayout>
-        
     </ContentPage.Content>
-    
 </ContentPage>
+    
