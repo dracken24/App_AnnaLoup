@@ -64,7 +64,7 @@ namespace FindYourPath.Views.Private.Agenda
 				existingEvent.EndDate = endDateTime.Date; // Assign the date part
 				existingEvent.EndTime = endDateTime.TimeOfDay; // Assign the time part
 				existingEvent.Description = descriptionEditor.Text;
-				existingEvent.UserId = _user.GetUserId();
+				existingEvent.UserId = _user._id;
 				existingEvent.Location = "Saint-Nean";
 				_currentEvent = existingEvent;
 

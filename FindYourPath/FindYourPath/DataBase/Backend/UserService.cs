@@ -6,6 +6,8 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Text;
+using System.Net.Mail;
+using System.Net;
 
 namespace FindYourPath.DataBase
 {
@@ -40,6 +42,7 @@ namespace FindYourPath.DataBase
 				{
 					//App app = new App();
 					App.SaveUser(result["user"]);
+					SendConfirmationEmail(App.User._email, (App.User._verifEmail));
 					Console.WriteLine("*** USER ***: " + result["user"]); // infos du user
 				}
 				else
@@ -98,5 +101,36 @@ namespace FindYourPath.DataBase
 				return false;
 			}
 		}
+
+		public void SendConfirmationEmail(string toEmail, string confirmationCode)
+		{
+			// Créez une instance de client SMTP
+			SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+
+			// TODO: Securiser le e-mail
+			// Utilisez vos informations d'authentification pour le serveur SMTP
+			client.UseDefaultCredentials = false;
+			client.Credentials = new NetworkCredential("apiphare@gmail.com", "cuvwlyybvzinoqcm");
+			client.EnableSsl = true;
+
+			// Créez un nouveau message
+			MailMessage mailMessage = new MailMessage();
+
+			// Définissez l'expéditeur du message
+			mailMessage.From = new MailAddress("apiphare@gmail.com");
+
+			// Ajoutez le destinataire du message
+			mailMessage.To.Add(toEmail);
+
+			// Définissez l'objet du message
+			mailMessage.Subject = "Email confirmation";
+
+			// Définissez le corps du message
+			mailMessage.Body = "This is your confirmation code: " + confirmationCode;
+
+			// Envoyez le message
+			client.Send(mailMessage);
+		}
+
 	}
 }

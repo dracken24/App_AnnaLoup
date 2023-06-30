@@ -115,7 +115,7 @@ namespace FindYourPath.Views
 			Console.WriteLine("Initialize");
 			try
 			{
-				await Task.Run(() => LoadEventsFromDatabase(App.User.GetUserId()));
+				await Task.Run(() => LoadEventsFromDatabase(App.User._id));
 			}
 			catch (Exception ex)
 			{

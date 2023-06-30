@@ -24,7 +24,8 @@ namespace FindYourPath
 			_connectionString = "http://dracken24.duckdns.org/apiAnnaLoup/actions";
 			_userService = new UserService(_connectionString);
 
-			MainPage = new LoginPage();
+			// MainPage = new LoginPage();
+			MainPage = new NavigationPage(new LoginPage());
 		}
 
 		public static ObservableRangeCollection<MyEvent> Events

@@ -55,7 +55,7 @@ namespace FindYourPath.Views
 				EndDate = endDateTime.Date, // Assign the date part
 				EndTime = endDateTime.TimeOfDay, // Assign the time part
 				Description = descriptionEditor.Text,
-				UserId = _user.GetUserId(),
+				UserId = _user._id,
 				Location = "Saint-Nean"
 			};
 

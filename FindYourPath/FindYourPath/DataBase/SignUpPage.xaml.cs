@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using FindYourPath.RightGestion;
+using GoogleApi.Entities.Maps.AerialView.Common;
 
 namespace FindYourPath.DataBase
 {
@@ -25,11 +26,20 @@ namespace FindYourPath.DataBase
 			var email = EmailEntry.Text;
 			var password = PasswordEntry.Text;
 
+			var date = DateTime.Today.Date;
+			var birthDateTime = new DateTime(date.Year, date.Month, date.Day);
+
 			JObject paramJson = new JObject
 			{
 				["username"] = username,
 				["email"] = email,
-				["password"] = password
+				["password"] = password,
+				["lastName"] = "",
+				["firstName"] = "",
+				["phone"] = "",
+				["birthDate"] = birthDateTime.Date,
+				["sexe"] = "",
+				["address"] = "",
 			};
 
 			try
@@ -64,10 +74,8 @@ namespace FindYourPath.DataBase
 				return;
 			}
 
-			Console.WriteLine("222");
-			//await Navigation.PushAsync(new ConfirmEmail());
-
-			await ((App)Application.Current).NavigateToMainPage();
+			// Console.WriteLine("222");
+			await Navigation.PushAsync(new ConfirmEmail());
 		}
 
 		bool IsValidRegistration(string username, string email, string password)
@@ -93,11 +101,6 @@ namespace FindYourPath.DataBase
 
 			Console.WriteLine("GOOD infos.\n");
 			return true;
-		}
-
-		void OnBackButtonClicked(object sender, EventArgs e)
-		{
-			Navigation.PopModalAsync();
 		}
 	}
 }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Newtonsoft.Json;
+using FindYourPath.RightGestion;
 
 namespace FindYourPath.DataBase
 {
@@ -38,8 +39,20 @@ namespace FindYourPath.DataBase
 				// Check if user exist
 				if (await IsValidLogin(paramJson))
 				{
+					if (App.User._canConnect == false)
+					{
+						Console.WriteLine("333");
+						await Navigation.PushAsync(new ConfirmEmail());
+						
+					}
+					else
+					{
+						Console.WriteLine("444");
+						
+						await ((App)Application.Current).NavigateToMainPage();
+					}
 					//App.Print
-					await ((App)Application.Current).NavigateToMainPage();
+					// await ((App)Application.Current).NavigateToMainPage();
 				}
 				else
 				{
@@ -71,9 +84,15 @@ namespace FindYourPath.DataBase
 			return await userService.ConnectUser(paramJson);
 		}
 
-		void OnCreateAccountButtonClicked(object sender, EventArgs e)
+		void	OnCreateAccountButtonClicked(object sender, EventArgs e)
 		{
-			Navigation.PushModalAsync(new SignUpPage());
+			//Navigation.PushModalAsync(new SignUpPage());
+			PageChange();
+		}
+
+		async Task PageChange()
+		{
+			await Navigation.PushAsync(new SignUpPage());
 		}
 	}
 }
