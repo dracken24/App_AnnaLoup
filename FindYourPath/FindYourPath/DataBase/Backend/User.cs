@@ -58,6 +58,7 @@ namespace FindYourPath.DataBase
 		}
 
 		// Privileges du user
+
 		// Peut se connecter apres avoir valider son email
 		public bool _canConnect
 		{

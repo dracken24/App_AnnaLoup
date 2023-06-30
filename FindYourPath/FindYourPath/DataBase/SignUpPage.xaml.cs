@@ -81,7 +81,6 @@ namespace FindYourPath.DataBase
 		bool IsValidRegistration(string username, string email, string password)
 		{
 			// TODO: Insérer ici le code pour vérifier les informations d'inscription.
-			// Cette fonction est un exemple et doit être remplacée par une vérification réelle.
 			if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(email))
 			{
 				throw new Exception("Un ou plusieurs champs sont vides.");
