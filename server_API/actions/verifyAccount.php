@@ -25,6 +25,33 @@ if (isset($json["action"]) && $json["action"] === "verifEmail") {
         $user = $userInstance->getUser($user_id);
 
         $res = ["success" => true, "user" => $user];
+    } else if (isset($json["action"]) && $json["action"] === "modifAccount") {
+
+    }
+    else {
+        // Il y a eu une erreur lors de la mise à jour des données
+        $res = ["success" => false, "error" => "Une erreur est survenue lors de la mise à jour des données."];
+    }
+
+    echo json_encode($res);
+}
+if (isset($json["action"]) && $json["action"] === "modifAccount") {
+    $id = $json["id"];
+    $email = $json["email"];
+    $lastName = $json["lastName"];
+    $firstName = $json["firstName"];
+    $phone = $json["phone"];
+    $address = $json["address"];
+
+    // Mise à jour des données de l'utilisateur
+    $stmt = $db->prepare("UPDATE infoperso SET email = ?, Nom = ?, Prenom = ?, Telephone = ?, Adresse = ? WHERE User_id = ?");
+    $stmt->execute(array($email, $lastName, $firstName, $phone, $address, $id));
+
+    if ($stmt->rowCount() > 0) {
+        // Les données ont été mises à jour avec succès
+        $userInstance = new User($db);
+        $user = $userInstance->getUser($id);
+        $res = ["success" => true, "user" => $user];
     } else {
         // Il y a eu une erreur lors de la mise à jour des données
         $res = ["success" => false, "error" => "Une erreur est survenue lors de la mise à jour des données."];
@@ -35,4 +62,3 @@ if (isset($json["action"]) && $json["action"] === "verifEmail") {
     $res = ["success" => false, "error" => "Action non reconnue"];
     echo json_encode($res);
 }
-?>
