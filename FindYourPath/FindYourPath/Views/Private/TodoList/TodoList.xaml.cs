@@ -19,7 +19,6 @@ namespace FindYourPath.Views
 			public ObservableCollection<string> SubTasks { get; set; }
 		}
 
-
 		public TodoList()
 		{
 			InitializeComponent();
