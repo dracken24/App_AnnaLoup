@@ -27,7 +27,7 @@
 
             </Frame>
 
-            <!-- Bouton confirm -->
+            <!-- Bouton confirm email -->
             <Button Text="Submit" 
                     Clicked="OnSubmitButtonClicked"
                     TextColor="#006666" />
@@ -38,7 +38,7 @@
                    FontSize="Body"
                    TextColor="#006666" />
 
-            <!-- Bouton confirm -->
+            <!-- Bouton Resend email -->
             <Button Text="Resend email" 
                     Clicked="OnResendButtonClicked"
                     TextColor="#006666" />

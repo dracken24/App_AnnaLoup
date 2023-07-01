@@ -18,7 +18,7 @@ namespace FindYourPath.Views
 		public Profile()
 		{
 			InitializeComponent();
-			ProfileViewModel viewModel = new ProfileViewModel { Name = App.User._name, Address = App.User._adress, Email = App.User._email, Phone = App.User._phone };
+			ProfileViewModel viewModel = new ProfileViewModel {FirstName = App.User._name, Name = App.User._surname, Address = App.User._adress, Email = App.User._email, Phone = App.User._phone };
 
 			_viewModel = viewModel;
 			this.BindingContext = _viewModel;

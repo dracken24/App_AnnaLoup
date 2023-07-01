@@ -76,11 +76,22 @@ namespace FindYourPath.Views
 				day.Events.ReplaceRange(App.Events.Where(x => x.StartDate.Date == day.DateTime.Date));
 			}
 		}
+
+		private void OnMonthChanged(object sender, EventArgs e)
+		{
+			Console.WriteLine("Month changed");
+			foreach (var day in EventCalendar.Days)
+			{
+				day.Events.ReplaceRange(App.Events.Where(x => x.StartDate.Date == day.DateTime.Date));
+			}
+		}
+
 		private void SelectedDates_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
 		{
 			Console.WriteLine("Selected dates changed");
 			SelectedEvents.ReplaceRange(App.Events.Where(x => EventCalendar.SelectedDates.Any(y => x.StartDate.Date == y.Date)).OrderByDescending(x => x.StartDate));
 		}
+
 		public void NavigateCalendar(int amount)
 		{
 			Console.WriteLine("Navigate calendar");
@@ -92,7 +103,12 @@ namespace FindYourPath.Views
 			{
 				EventCalendar.Navigate(amount > 0 ? TimeSpan.MaxValue : TimeSpan.MinValue);
 			}
+
+			// Call OnMonthChanged after navigating
+			OnMonthChanged(this, EventArgs.Empty);
 		}
+
+
 		public void ChangeDateSelection(DateTime dateTime) 
 		{
 			_selectedDate = dateTime;

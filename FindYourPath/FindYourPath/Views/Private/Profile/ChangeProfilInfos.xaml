@@ -20,6 +20,10 @@
                            Padding="5"
                            BackgroundColor="LightCyan">
                     <StackLayout>
+                        
+                        <Entry x:Name="FirstNameEntry"
+                               TextColor="#006666"
+                               Text="{Binding FirstName}" />
 
                         <Entry x:Name="nameEntry"
                                TextColor="#006666"

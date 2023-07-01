@@ -7,6 +7,7 @@ namespace FindYourPath.Views.Private.Profile
 {
 	public class ProfileViewModel : INotifyPropertyChanged
 	{
+		private string firstName;
 		private string name;
 		private string address;
 		private string email;
@@ -17,6 +18,16 @@ namespace FindYourPath.Views.Private.Profile
 		protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+		}
+
+		public string FirstName
+		{
+			get => firstName;
+			set
+			{
+				firstName = value;
+				OnPropertyChanged();
+			}
 		}
 
 		public string Name

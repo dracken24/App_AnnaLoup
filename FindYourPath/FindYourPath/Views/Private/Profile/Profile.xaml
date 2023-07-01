@@ -95,14 +95,23 @@
                                            HeightRequest="30"
                                            WidthRequest="30"
                                            HorizontalOptions="Start"
-                                           VerticalOptions="Start"
-                                                   />
-                                    <Label Text="Nom" 
-                                           FontAttributes="Bold"
-                                           HorizontalOptions="Start"
-                                           VerticalOptions="Start"
-                                           TextColor="#006666"
-                                           FontSize="16" />
+                                           VerticalOptions="Center" />
+                                    
+                                    <StackLayout>
+                                        <Label Text="Prenom" 
+                                               FontAttributes="Bold"
+                                               HorizontalOptions="Start"
+                                               VerticalOptions="Start"
+                                               TextColor="#006666"
+                                               FontSize="16" />
+                                    
+                                        <Label Text="Nom" 
+                                               FontAttributes="Bold"
+                                               HorizontalOptions="Start"
+                                               VerticalOptions="Start"
+                                               TextColor="#006666"
+                                               FontSize="16" />
+                                    </StackLayout>
 
                                 </StackLayout>
 
@@ -191,11 +200,19 @@
                                              Grid.Column="1"
                                              Margin="10,5,0,5">
 
-                                    <Label Text="{Binding Name}" x:Name="nameLabel"
+                                    <StackLayout>
+                                        <Label Text="{Binding FirstName}" x:Name="firstNameLabel"
                                            FontSize="16"
                                            TextColor="#006666"
                                            LineBreakMode="WordWrap"
                                            WidthRequest="250" />
+
+                                        <Label Text="{Binding Name}" x:Name="nameLabel"
+                                           FontSize="16"
+                                           TextColor="#006666"
+                                           LineBreakMode="WordWrap"
+                                           WidthRequest="250" />
+                                    </StackLayout>
 
                                 </StackLayout>
 
