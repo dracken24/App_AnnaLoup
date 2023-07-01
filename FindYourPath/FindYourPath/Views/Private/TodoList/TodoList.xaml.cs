@@ -1,14 +1,24 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Collections.Generic;
 
 namespace FindYourPath.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TodoList : ContentPage
 	{
-		private ObservableCollection<string> tasks;
+		private ObservableCollection<TaskList> tasks;
+
+		public class TaskList
+		{
+			public string Name { get; set; }
+			public ObservableCollection<string> SubTasks { get; set; }
+		}
+
 
 		public TodoList()
 		{
@@ -16,27 +26,28 @@ namespace FindYourPath.Views
 
 			Title = "TodoList";
 
-			tasks = new ObservableCollection<string>();
+			tasks = new ObservableCollection<TaskList>();
 			taskList.ItemsSource = tasks;
 		}
 
-		private void OnAddTaskButtonClicked(object sender, EventArgs e)
+		private void OnAddListButtonClicked(object sender, EventArgs e)
 		{
-			var newTask = "- " + newTaskEntry.Text;
+			var newTask = newTaskEntry.Text;
 			if (!string.IsNullOrWhiteSpace(newTask))
 			{
-				tasks.Add(newTask);
+				tasks.Add(new TaskList()
+				{
+					Name = newTask,
+					SubTasks = new ObservableCollection<string>()
+				});
 				newTaskEntry.Text = string.Empty;
 			}
 		}
 
-		private void OnTaskTapped(object sender, ItemTappedEventArgs e)
+		private async void OnListTapped(object sender, ItemTappedEventArgs e)
 		{
-			var task = e.Item as string;
-			if (tasks.Contains(task))
-			{
-				tasks.Remove(task);
-			}
+			var taskList = e.Item as TaskList;
+			await Navigation.PushAsync(new OneList(taskList));
 		}
 	}
 }

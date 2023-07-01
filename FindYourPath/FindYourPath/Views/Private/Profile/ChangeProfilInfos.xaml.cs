@@ -64,7 +64,6 @@ namespace FindYourPath.Views.Private.Profile
 				await DisplayAlert("Profile Updated", "Une erreur est subvenue lors de la sauvegarde du profil.", "OK");
 			}	
 			
-
 			// Navigate back to the previous page (the Profile page)
 			await Navigation.PopAsync();
 		}

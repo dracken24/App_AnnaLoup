@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FindYourPath.Views.TodoList">
-
+             x:Class="FindYourPath.Views.OneList">
+    
     <ScrollView>
         <Frame BorderColor="#006666" 
                CornerRadius="0" 
@@ -33,14 +33,13 @@
 
                             <StackLayout>
                                 <Entry x:Name="newTaskEntry"
-                                       Placeholder="Nouvelle Liste"
+                                       Placeholder="Nouvelle tache"
                                        TextColor="#006666"
                                        PlaceholderColor="Gray"/>
                                 
-                                <Button Text="Ajoutez une Liste"
-                                        Clicked="OnAddListButtonClicked"
+                                <Button Text="Ajoutez une tache"
+                                        Clicked="OnAddTaskButtonClicked"
                                         TextColor="#006666" />
-                                
                             </StackLayout>
 
                         </Frame>
@@ -56,12 +55,13 @@
                    HeightRequest="450">
 
                     <ListView x:Name="taskList"
-                              ItemTapped="OnListTapped"
+                              ItemsSource="{Binding Tasks}"
+                              ItemTapped="OnTaskTapped"
                               SeparatorColor="Black">
                         
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <TextCell Text="{Binding Name}" />
+                                <TextCell Text="{Binding .}" />
                             </DataTemplate>
                         </ListView.ItemTemplate>
                         
