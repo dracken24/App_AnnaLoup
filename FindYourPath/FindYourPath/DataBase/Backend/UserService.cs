@@ -126,7 +126,7 @@ namespace FindYourPath.DataBase
 			mailMessage.Subject = "Email confirmation";
 
 			// Définissez le corps du message
-			mailMessage.Body = "This is your confirmation code: " + confirmationCode;
+			mailMessage.Body = "Voici votre code de validation a entrer dans votre application pour confirmer votre identite: " + confirmationCode;
 
 			// Envoyez le message
 			client.Send(mailMessage);

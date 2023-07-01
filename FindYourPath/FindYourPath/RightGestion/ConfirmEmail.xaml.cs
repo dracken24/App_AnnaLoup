@@ -22,23 +22,6 @@ namespace FindYourPath.RightGestion
 		public ConfirmEmail()
 		{
 			InitializeComponent();
-
-			verificationCodeEntry = new Entry
-			{
-				Placeholder = "Enter verification code"
-			};
-
-			Button submitButton = new Button
-			{
-				Text = "Submit"
-			};
-
-			submitButton.Clicked += OnSubmitButtonClicked;
-
-			Content = new StackLayout
-			{
-				Children = { verificationCodeEntry, submitButton }
-			};
 		}
 
 		private async void OnSubmitButtonClicked(object sender, EventArgs e)
@@ -74,10 +57,11 @@ namespace FindYourPath.RightGestion
 			var content = new StringContent(JsonConvert.SerializeObject(paramJson), Encoding.UTF8, "application/json");
 			var response = await _httpClient.PostAsync(App.ConnectionString + "/verifyAccount.php", content);
 
+			var jsonResponse = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+			var result = await Task.Run(() => JsonConvert.DeserializeObject<Dictionary<string, object>>(jsonResponse));
+
 			if (response.IsSuccessStatusCode)
 			{
-				var jsonResponse = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-				var result = await Task.Run(() => JsonConvert.DeserializeObject<Dictionary<string, object>>(jsonResponse));
 				if (result.ContainsKey("success") && (bool)result["success"])
 				{
 					App.User.SetCanConnect(true);
@@ -94,10 +78,16 @@ namespace FindYourPath.RightGestion
 			}
 			else
 			{
-				var jsonResponse = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-				var result = await Task.Run(() => JsonConvert.DeserializeObject<Dictionary<string, object>>(jsonResponse));
 				Console.WriteLine("Error from server: " + result["error"]);
 			}
+		}
+
+		private async void OnResendButtonClicked(object sender, EventArgs e)
+		{
+			UserService userService = new UserService(App.ConnectionString);
+			userService.SendConfirmationEmail(App.User._email, App.User._verifEmail);
+
+			await DisplayAlert("Email sent", "Votre code de validation vous a ete envoye.", "OK");
 		}
 	}
 }

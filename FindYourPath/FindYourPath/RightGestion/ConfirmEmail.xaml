@@ -8,7 +8,7 @@
         <StackLayout Padding="30">
 
             <!-- Text -->
-            <Label Text="Please enter the verification code you received in your email."
+            <Label Text="Veuillez entrer votre code de validation qui est compris dans le email qui vous a ete envoye."
                    HorizontalOptions="CenterAndExpand"
                    FontSize="Body"
                    TextColor="#006666" /> 
@@ -31,7 +31,18 @@
             <Button Text="Submit" 
                     Clicked="OnSubmitButtonClicked"
                     TextColor="#006666" />
-            
+
+            <!-- Text -->
+            <Label Text="Si vous n'avez pas recu votre code, cliquez-ici bas pour le recevoir"
+                   HorizontalOptions="CenterAndExpand"
+                   FontSize="Body"
+                   TextColor="#006666" />
+
+            <!-- Bouton confirm -->
+            <Button Text="Resend email" 
+                    Clicked="OnResendButtonClicked"
+                    TextColor="#006666" />
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
