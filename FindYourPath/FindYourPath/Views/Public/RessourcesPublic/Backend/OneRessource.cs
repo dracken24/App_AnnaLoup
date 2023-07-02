@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,30 +7,50 @@ namespace FindYourPath.Views
 {
 	public class OneRessource
 	{
-		public string Name
+		[PrimaryKey, AutoIncrement]
+		public int id
 		{
 			get; set;
 		}
-		public string Adress
+
+		public string Nom
 		{
 			get; set;
 		}
-		public string Phone
+
+		public string Adresse
 		{
 			get; set;
 		}
-		public string Url
+		
+		public string Telephone
 		{
 			get; set;
 		}
+
+		public string URL
+		{
+			get; set;
+		}
+
+		public string Type
+		{
+			get; set;
+		}
+
 		public string Description
+		{
+			get; set;
+		}
+
+		public int User_Id
 		{
 			get; set;
 		}
 
 		public override string ToString()
 		{
-			return $"{Name}, {Phone}";
+			return $"{Nom}, {Telephone}";
 		}
 	}
 }

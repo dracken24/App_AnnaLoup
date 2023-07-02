@@ -1,4 +1,5 @@
 ﻿using FindYourPath.Views;
+using FindYourPath.Services;
 using FindYourPath.DataBase;
 using System;
 using System.IO;
@@ -6,25 +7,28 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Threading.Tasks;
 using XCalendar.Core.Collections;
+using System.Collections.ObjectModel;
 
 namespace FindYourPath
 {
 	public partial class App : Application
 	{
-		static UserService _userService; // Pour la gestion de la Database
+		static UserService _userService; // Pour la gestion des connexions la Database
+		static RessourceService _ressourceService; // Pour la gestion des contactes de la Database
 		static string _connectionString; // String de connexion a la Database
 		static User _user = null; // User principale
 
 		static ObservableRangeCollection<MyEvent> _Events = new ObservableRangeCollection<MyEvent>();
+		static ObservableCollection<OneRessource> _resources = new ObservableCollection<OneRessource>();
 
 		public App()
 		{
 			InitializeComponent();
-			// _connectionString = "http://174.91.185.220/apiAnnaLoup/actions";
+			
 			_connectionString = "http://dracken24.duckdns.org/apiAnnaLoup/actions";
 			_userService = new UserService(_connectionString);
+			_ressourceService = new RessourceService(_connectionString);
 
-			// MainPage = new LoginPage();
 			MainPage = new NavigationPage(new LoginPage());
 		}
 
@@ -32,6 +36,12 @@ namespace FindYourPath
 		{
 			get { return _Events; }
 			set { _Events = value; }
+		}
+
+		public static ObservableCollection<OneRessource> ResourcesCollection
+		{
+			get { return _resources; }
+			set { _resources = value; }
 		}
 
 		public static string ConnectionString
@@ -48,6 +58,11 @@ namespace FindYourPath
 		public static UserService UserService
 		{
 			get { return _userService; }
+		}
+
+		public static RessourceService RessourceService
+		{
+			get { return _ressourceService; }
 		}
 
 		internal static User User

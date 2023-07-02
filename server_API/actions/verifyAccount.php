@@ -25,17 +25,14 @@ if (isset($json["action"]) && $json["action"] === "verifEmail") {
         $user = $userInstance->getUser($user_id);
 
         $res = ["success" => true, "user" => $user];
-    } else if (isset($json["action"]) && $json["action"] === "modifAccount") {
-
-    }
-    else {
+    } else {
         // Il y a eu une erreur lors de la mise à jour des données
         $res = ["success" => false, "error" => "Une erreur est survenue lors de la mise à jour des données."];
     }
 
     echo json_encode($res);
-}
-if (isset($json["action"]) && $json["action"] === "modifAccount") {
+} else if (isset($json["action"]) && $json["action"] === "modifAccount") {
+
     $id = $json["id"];
     $email = $json["email"];
     $lastName = $json["lastName"];
@@ -62,3 +59,4 @@ if (isset($json["action"]) && $json["action"] === "modifAccount") {
     $res = ["success" => false, "error" => "Action non reconnue"];
     echo json_encode($res);
 }
+?>

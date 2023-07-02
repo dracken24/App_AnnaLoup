@@ -13,6 +13,7 @@
             <Grid Padding="8">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="4*" />
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="5*" />
                 </Grid.RowDefinitions>
 
@@ -122,25 +123,38 @@
 
                                 </StackLayout>
 
-                                <StackLayout Grid.Row="4" Grid.Column="1" Margin="5,0,0,0">
+                            <StackLayout Grid.Row="4" Grid.Column="1" Margin="5,0,0,0">
 
-                                    <Label x:Name="descriptionDescription"
+                                <Label x:Name="descriptionDescription"
                                            FontAttributes="Bold"
                                            TextColor="#006666"/>
 
-                                </StackLayout>
+                            </StackLayout>
 
-                            </Grid>
+                        </Grid>
                         </ScrollView>
                     
                 </Frame>
+
+                <!-- Boutton add ressources to private -->
+                <StackLayout Grid.Row="1" Margin="0,0,0,5">
+                    <Button Clicked="OnAddToPrivateButtonTapped"
+                            TextColor="#006666">
+                        <Button.Text>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <On Platform="iOS" Value="Add to private ressources"/>
+                                <On Platform="Android" Value="Add to private ressources"/>
+                            </OnPlatform>
+                        </Button.Text>
+                    </Button>
+                </StackLayout>
 
                 <Frame BorderColor="#006666" 
                        CornerRadius="2" 
                        HasShadow="True" 
                        BackgroundColor="LightCyan" 
                        Padding="8"
-                       Grid.Row="1" 
+                       Grid.Row="2" 
                        HeightRequest="400">
 
                     <ScrollView>

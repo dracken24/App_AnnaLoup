@@ -8,13 +8,13 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 
-namespace FindYourPath.Views.Public.RessourcesPublic
+namespace FindYourPath.Views.Private
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class OneRessourceDetailPage : ContentPage
+	public partial class PrivateOneRessourceDetailPage : ContentPage
 	{
 		OneRessource _oneRessource;
-		public OneRessourceDetailPage(OneRessource resource)
+		public PrivateOneRessourceDetailPage(OneRessource resource)
 		{
 			InitializeComponent();
 			

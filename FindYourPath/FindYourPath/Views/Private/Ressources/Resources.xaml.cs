@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FindYourPath.Views.Private;
+using FindYourPath.Views.Public.RessourcesPublic;
+using System;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
 
@@ -6,7 +8,7 @@ namespace FindYourPath.Views
 {
 	public partial class Resources : ContentPage
 	{
-		private ObservableCollection<CommunityResource> _resources;
+		// private static ObservableCollection<OneRessource> _resources;
 
 		public Resources()
 		{
@@ -14,22 +16,42 @@ namespace FindYourPath.Views
 
 			Title = "Resources";
 
-			_resources = new ObservableCollection<CommunityResource>();
-			resourceList.ItemsSource = _resources;
+			App.ResourcesCollection = new ObservableCollection<OneRessource>();
+			resourceList.ItemsSource = App.ResourcesCollection;
+
+			TakeRessourcesFromDatabase();
+		}
+
+		private async void TakeRessourcesFromDatabase()
+		{
+			try
+			{
+				var resources = await App.RessourceService.GetRessourcesAsync(App.User._id);
+				foreach (var resource in resources)
+				{
+					App.ResourcesCollection.Add(resource);
+				}
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine("Error message: " + ex.Message);
+				await DisplayAlert("Error", ex.Message, "OK");
+			}
 		}
 
 		private void OnAddResourceButtonClicked(object sender, System.EventArgs e)
 		{
-			var newResource = new CommunityResource
+			OneRessource newResource = new OneRessource
 			{
-				Name = nameEntry.Text,
-				Address = addressEntry.Text,
-				PhoneNumber = phoneEntry.Text,
-				Url = urlEntry.Text,
+				Nom = nameEntry.Text,
+				Adresse = addressEntry.Text,
+				Telephone = phoneEntry.Text,
+				URL = urlEntry.Text,
+				Description = descriptionEntry.Text,
 				Type = type.Text,
 			};
 
-			_resources.Add(newResource);
+			App.ResourcesCollection.Add(newResource);
 
 			// Clear the entries
 			nameEntry.Text = string.Empty;
@@ -41,8 +63,8 @@ namespace FindYourPath.Views
 
 		private async void OnItemTapped(object sender, ItemTappedEventArgs e)
 		{
-			var resource = (CommunityResource)e.Item;
-			await Navigation.PushAsync(new ResourceDetailPage(resource));
+			var resource = (OneRessource)e.Item;
+			await Navigation.PushAsync(new PrivateOneRessourceDetailPage(resource));
 		}
 	}
 }

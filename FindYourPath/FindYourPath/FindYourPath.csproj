@@ -74,6 +74,9 @@
     <Compile Update="Views\Private\Profile\Profile.xaml.cs">
       <DependentUpon>Profile.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Private\Ressources\PrivateOneRessourceDetailPage.xaml.cs">
+      <DependentUpon>PrivateOneRessourceDetailPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Private\Ressources\Resources.xaml.cs">
       <DependentUpon>Resources.xaml</DependentUpon>
     </Compile>
@@ -120,9 +123,6 @@
     <EmbeddedResource Update="Views\Private\Profile\ChangeProfilInfos.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Private\Ressources\ResourceDetailPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Views\Private\TodoList\OneList.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -144,5 +144,9 @@
     <EmbeddedResource Update="Views\Private\TodoList\TodoList.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Private\Ressources\Backend\" />
   </ItemGroup>
 </Project>

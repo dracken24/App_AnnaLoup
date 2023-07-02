@@ -33,6 +33,7 @@ namespace FindYourPath.Views.Private.Agenda.SaveAgenda
 
 			App.Events = JsonConvert.DeserializeObject<ObservableRangeCollection<MyEvent>>(jsonResponse);
 
+			// TODO: à supprimer, seulement pour tests
 			foreach (var ev in App.Events)
 			{
 				ev.StartDate = ev.StartDate.Date + ev.StartTime;
@@ -58,13 +59,10 @@ namespace FindYourPath.Views.Private.Agenda.SaveAgenda
 				["UserId"] = appointment.UserId
 			};
 
-			// TODO: remove writeline after debugging
-			Console.WriteLine("******************************** PHP DEBUG ********************************");
 			Console.WriteLine(jsonObject.ToString());
 			var content = new StringContent(JsonConvert.SerializeObject(jsonObject), Encoding.UTF8, "application/json");
 			var response = await Task.Run(() => _httpClient.PostAsync(App.ConnectionString + "/EventService.php", content));
 			Console.WriteLine(response.StatusCode);
-			Console.WriteLine("******************************** PHP DEBUG END ********************************");
 
 			if (!response.IsSuccessStatusCode)
 			{
@@ -79,8 +77,8 @@ namespace FindYourPath.Views.Private.Agenda.SaveAgenda
 		{
 			var jsonObject = new JObject
 			{
-				["action"] = "updateCalendarEvent", // supposons que l'action soit nommée 'updateCalendarEvent'
-				["id"] = appointment.id, // l'id est probablement nécessaire pour identifier quel événement mettre à jour
+				["action"] = "updateCalendarEvent",
+				["id"] = appointment.id,
 				["Title"] = appointment.Title,
 				["Description"] = appointment.Description,
 				["StartDate"] = appointment.StartDate,
