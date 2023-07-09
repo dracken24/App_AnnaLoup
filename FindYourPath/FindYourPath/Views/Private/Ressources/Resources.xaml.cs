@@ -39,7 +39,7 @@ namespace FindYourPath.Views
 			}
 		}
 
-		private void OnAddResourceButtonClicked(object sender, System.EventArgs e)
+		private async void OnAddResourceButtonClicked(object sender, System.EventArgs e)
 		{
 			OneRessource newResource = new OneRessource
 			{
@@ -47,11 +47,13 @@ namespace FindYourPath.Views
 				Adresse = addressEntry.Text,
 				Telephone = phoneEntry.Text,
 				URL = urlEntry.Text,
-				Description = descriptionEntry.Text,
 				Type = type.Text,
+				Description = descriptionEntry.Text,
+				User_Id = App.User._id
 			};
 
 			App.ResourcesCollection.Add(newResource);
+			await App.RessourceService.SaveRessourceAsync(newResource);
 
 			// Clear the entries
 			nameEntry.Text = string.Empty;
@@ -59,6 +61,7 @@ namespace FindYourPath.Views
 			phoneEntry.Text = string.Empty;
 			urlEntry.Text = string.Empty;
 			type.Text = string.Empty;
+			descriptionEntry.Text = string.Empty;
 		}
 
 		private async void OnItemTapped(object sender, ItemTappedEventArgs e)

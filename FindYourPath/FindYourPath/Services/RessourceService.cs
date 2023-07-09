@@ -23,7 +23,6 @@ namespace FindYourPath.Services
 		// Enregistrer un événement dans la base de données
 		public async Task SaveRessourceAsync(OneRessource ressource)
 		{
-
 			var jsonObject = new JObject
 			{
 				["action"] = "addPrivateRessource",
@@ -32,7 +31,7 @@ namespace FindYourPath.Services
 				["Adresse"] = ressource.Adresse,
 				["Phone"] = ressource.Telephone,
 				["URL"] = ressource.URL,
-				["Type"] = "",
+				["Type"] = ressource.Type,
 				["Description"] = ressource.Description
 			};
 
@@ -61,7 +60,6 @@ namespace FindYourPath.Services
 			Console.WriteLine("url connexion: " + connectionUrl);
 
 			ObservableCollection<OneRessource> ressourcesPrivate = new ObservableCollection<OneRessource>();
-			// ressourcesPrivate = JsonConvert.DeserializeObject<ObservableCollection<OneRessource>>(jsonResponse);
 			try
 			{
 				ressourcesPrivate = JsonConvert.DeserializeObject<ObservableCollection<OneRessource>>(jsonResponse);
