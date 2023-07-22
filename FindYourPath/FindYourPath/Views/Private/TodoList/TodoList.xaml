@@ -8,7 +8,7 @@
                CornerRadius="0" 
                HasShadow="True" 
                Padding="0"
-               BackgroundColor="LightBlue">
+               BackgroundColor="#303030">
 
             <Grid Padding="8">
                 <Grid.RowDefinitions>
@@ -20,7 +20,7 @@
                 <Frame BorderColor="#006666" 
                        CornerRadius="2" 
                        HasShadow="True" 
-                       BackgroundColor="LightCyan" 
+                       BackgroundColor="#404040" 
                        Padding="5"
                        Margin="0,0,0,5">
 
@@ -39,7 +39,7 @@
                                 
                                 <Button Text="Ajoutez une Liste"
                                         Clicked="OnAddListButtonClicked"
-                                        TextColor="#006666" />
+                                        TextColor="black" />
                                 
                             </StackLayout>
 
@@ -50,18 +50,18 @@
                 <Frame BorderColor="#006666" 
                    CornerRadius="2" 
                    HasShadow="True" 
-                   BackgroundColor="LightCyan" 
+                   BackgroundColor="#404040" 
                    Padding="5"
                    Grid.Row="2" 
                    HeightRequest="450">
 
                     <ListView x:Name="taskList"
                               ItemTapped="OnListTapped"
-                              SeparatorColor="Black">
+                              SeparatorColor="#006666">
                         
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <TextCell Text="{Binding Name}" />
+                                <TextCell Text="{Binding Name}" TextColor="#009A9A" />
                             </DataTemplate>
                         </ListView.ItemTemplate>
                         

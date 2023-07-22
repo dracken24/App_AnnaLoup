@@ -6,19 +6,19 @@
                            CornerRadius="0" 
                            HasShadow="True" 
                            Padding="8"
-                           BackgroundColor="LightBlue">
+                           BackgroundColor="#404040">
             <StackLayout>
                 <Label  Text="Change Profile Infos"
                     FontSize="Title"
                     VerticalOptions="Center" 
                     HorizontalOptions="CenterAndExpand"
-                    TextColor="#006666"/>
+                    TextColor="#009A9A"/>
                 
                 <Frame BorderColor="#006666" 
                            CornerRadius="2" 
                            HasShadow="True" 
                            Padding="5"
-                           BackgroundColor="LightCyan">
+                           BackgroundColor="White">
                     <StackLayout>
                         
                         <Entry x:Name="FirstNameEntry"

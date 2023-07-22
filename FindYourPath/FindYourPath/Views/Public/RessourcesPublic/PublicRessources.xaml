@@ -8,7 +8,7 @@
                CornerRadius="0" 
                HasShadow="True" 
                Padding="0"
-               BackgroundColor="LightBlue">
+               BackgroundColor="#303030">
 
             <Grid Padding="8">
                 <Grid.RowDefinitions>
@@ -26,7 +26,7 @@
                     <Frame BorderColor="#006666" 
                            CornerRadius="2" 
                            HasShadow="True" 
-                           BackgroundColor="LightCyan" 
+                           BackgroundColor="#404040" 
                            Padding="10"
                            Margin="0,0,0,5"
                            HeightRequest="150">
@@ -36,12 +36,12 @@
 
                                 <Label Text="Ressources Publiques"
                                    FontSize="Title"
-                                   TextColor="#006666"
+                                   TextColor="#009A9A"
                                    HorizontalOptions="CenterAndExpand"
                                    VerticalOptions="Start" />
 
                                 <Label FontSize="16"
-                                       TextColor="#006666"
+                                       TextColor="#3EC6D0"
                                        HorizontalOptions="CenterAndExpand"
                                        VerticalOptions="Start"
                                        Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Et malesuada fames ac turpis egestas. Montes nascetur ridiculus mus mauris vitae ultricies leo integer malesuada. Ut venenatis tellus in metus vulputate eu scelerisque. Quisque egestas diam in arcu cursus euismod. Quam elementum pulvinar etiam non quam lacus. Magna ac placerat vestibulum lectus. Leo in vitae turpis massa sed elementum tempus egestas. Est ultricies integer quis auctor elit sed vulputate mi sit. Non odio euismod lacinia at quis risus sed vulputate odio. Odio eu feugiat pretium nibh ipsum consequat nisl. Viverra nam libero justo laoreet. Velit scelerisque in dictum non consectetur a erat."/>
@@ -60,7 +60,7 @@
                            HasShadow="True" 
                            Padding="0"
                            Margin="0,0,0,5"
-                           BackgroundColor="LightCyan"
+                           BackgroundColor="#404040"
                            HeightRequest="160">
 
                         <ScrollView>
@@ -78,7 +78,7 @@
                                            FontAttributes="Bold"
                                            HorizontalOptions="Center"
                                            VerticalOptions="Center"
-                                           TextColor="#006666"
+                                           TextColor="#009A9A"
                                            FontSize="16" />
 
                                 </StackLayout>
@@ -125,7 +125,7 @@
                            HasShadow="True" 
                            Padding="0"
                            Margin="5,0,0,0"
-                           BackgroundColor="LightCyan"
+                           BackgroundColor="#404040"
                            HeightRequest="160">
 
                         <StackLayout HorizontalOptions="Center">
@@ -146,7 +146,7 @@
                                                FontAttributes="Bold"
                                                HorizontalOptions="Center"
                                                VerticalOptions="Center"
-                                               TextColor="#006666"
+                                               TextColor="#009A9A"
                                                FontSize="16" />
                                         <Image Source=""
                                                HeightRequest="30"
@@ -162,7 +162,7 @@
                                                   RowHeight="30">
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
-                                                    <TextCell Text="{Binding Name}" />
+                                                    <TextCell Text="{Binding Name}" TextColor="#b0b0b0" />
                                                 </DataTemplate>
                                             </ListView.ItemTemplate>
                                         </ListView>
@@ -182,7 +182,7 @@
                     <Frame BorderColor="#006666" 
                            CornerRadius="2" 
                            HasShadow="True" 
-                           BackgroundColor="LightCyan" 
+                           BackgroundColor="#404040" 
                            Padding="10"
                            HeightRequest="400">
 
@@ -190,7 +190,7 @@
 
                                 <Label Text="Liste des organismes"
                                        FontSize="Title"
-                                       TextColor="#006666"
+                                       TextColor="#009A9A"
                                        HorizontalOptions="CenterAndExpand"
                                        VerticalOptions="Start" />
 
@@ -207,9 +207,9 @@
                                             <ViewCell>
 
                                                 <StackLayout Orientation="Horizontal" Margin="5,10,0,0">
-                                                    <Label Text="{Binding Nom}" TextColor="#006666" />
-                                                    <Label Text="," TextColor="#006666" />
-                                                    <Label Text="{Binding Telephone}" TextColor="Gray" />
+                                                    <Label Text="{Binding Nom}" TextColor="#3EC6D0" />
+                                                    <Label Text="," TextColor="#3EC6D0" />
+                                                    <Label Text="{Binding Telephone}" TextColor="#b0b0b0" />
                                                 </StackLayout>
 
                                             </ViewCell>

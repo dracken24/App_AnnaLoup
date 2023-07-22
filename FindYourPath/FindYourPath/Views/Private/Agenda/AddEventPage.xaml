@@ -1,14 +1,14 @@
 ﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-x:Class="FindYourPath.Views.AddEventPage"
-Title="Add Event">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FindYourPath.Views.AddEventPage"
+             Title="Add Event">
 
     <ScrollView>
         <Frame BorderColor="#006666" 
                CornerRadius="0" 
                HasShadow="True" 
                Padding="0"
-               BackgroundColor="LightBlue">
+               BackgroundColor="#303030">
 
             <Grid Padding="8">
                 <Grid.RowDefinitions>
@@ -19,7 +19,7 @@ Title="Add Event">
                 <Frame BorderColor="#006666" 
                        CornerRadius="2" 
                        HasShadow="True" 
-                       BackgroundColor="LightCyan" 
+                       BackgroundColor="#404040" 
                        Padding="8"
                        HeightRequest="500">
 
@@ -30,34 +30,37 @@ Title="Add Event">
                             <!-- Title for Calendar event -->
                             <Entry x:Name="titleEntry"
                                    Placeholder="Event Title"
-                                   TextColor="#006666" />
+                                   TextColor="#59E0E9"
+                                   PlaceholderColor="#b0b0b0"/>
 
                             <!-- Start time and date -->
                             <Label Text="Start Date"
-                                    TextColor="#006666"/>
-                            <DatePicker x:Name="startDatePicker"/>
+                                    TextColor="#009A9A"/>
+                            <DatePicker x:Name="startDatePicker" TextColor="#b0b0b0"/>
 
                             <Label Text="Start Time"
-                                    TextColor="#006666"/>
-                            <TimePicker x:Name="startTimePicker"/>
+                                    TextColor="#009A9A"/>
+                            <TimePicker x:Name="startTimePicker" TextColor="#b0b0b0"/>
 
                             <!-- End time and date -->
                             <Label Text="End Date"
-                                    TextColor="#006666"/>
-                            <DatePicker x:Name="endDatePicker"/>
+                                    TextColor="#009A9A"/>
+                            <DatePicker x:Name="endDatePicker" TextColor="#b0b0b0"/>
 
                             <Label Text="End Time"
-                                    TextColor="#006666"/>
-                            <TimePicker x:Name="endTimePicker"/>
+                                    TextColor="#009A9A"/>
+                            <TimePicker x:Name="endTimePicker" TextColor="#b0b0b0"/>
 
                             <!-- Description -->
                             <Editor x:Name="descriptionEditor" 
                                     Placeholder="Description"
-                                    TextColor="#006666"/>
+                                    PlaceholderColor="#b0b0b0"
+                                    TextColor="#59E0E9"/>
 
                             <Button x:Name="saveButton" 
                                     Text="Save Event" 
-                                    Clicked="OnSaveButtonClicked"/>
+                                    Clicked="OnSaveButtonClicked"
+                                    />
                         </StackLayout>
                     </ScrollView>
                 </Frame>

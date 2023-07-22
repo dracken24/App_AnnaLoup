@@ -11,20 +11,20 @@
         <ResourceDictionary>
             
             <Style TargetType="NavigationPage" ApplyToDerivedTypes="True">
-                <Setter Property="BackgroundColor" Value="LightBlue" />
-                <Setter Property="BarBackgroundColor" Value="#ccccff" />
-                <Setter Property="BarTextColor" Value="Black" />
+                <Setter Property="BackgroundColor" Value="#404040" />
+                <Setter Property="BarBackgroundColor" Value="#303030" />
+                <Setter Property="BarTextColor" Value="#59E0E9" />
             </Style>
 
             <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
-                <Setter Property="BackgroundColor" Value="LightBlue" />
+                <Setter Property="BackgroundColor" Value="#404040" />
             </Style>
 
         </ResourceDictionary>
 
         <!-- Setting pour le calendrier -->
         <Color x:Key="PrimaryColor">#2060FF</Color>
-        <Color x:Key="TertiaryColor">#A0A0FF</Color>
+        <Color x:Key="TertiaryColor">#303030</Color>
         <!--<Color x:Key="PrimaryColor">#E00000</Color>
         <Color x:Key="TertiaryColor">#FFA0A0</Color>-->
         <Color x:Key="SeparatorColor">#E0E0E0</Color>
@@ -33,9 +33,9 @@
         <Color x:Key="PageBackgroundColor">#F0F0F4</Color>
         <Color x:Key="ContentBackgroundColor">LightBlue</Color>
 
-        <Color x:Key="PrimaryTextColor">White</Color>
+        <Color x:Key="PrimaryTextColor">#3EC6D0</Color>
         <Color x:Key="ContentTextColor">Black</Color>
-        <Color x:Key="PageTextColor">Black</Color>
+        <Color x:Key="PageTextColor">#3EC6D0</Color>
 
         <x:Double x:Key="SmallFontSize">14</x:Double>
         <x:Double x:Key="MediumFontSize">16</x:Double>
@@ -100,9 +100,9 @@
         </Style>
 
         <Style x:Key="DefaultPageStyle" TargetType="{x:Type ContentPage}">
-            <Setter Property="BackgroundColor" Value="LightBlue"/>
+            <Setter Property="BackgroundColor" Value="#303030"/>
             <Setter Property="xct:SafeAreaEffect.SafeArea" Value="True"/>
-            <Setter Property="Shell.BackgroundColor" Value="#ccccff"/>
+            <Setter Property="Shell.BackgroundColor" Value="#202020"/>
 
         </Style>
 

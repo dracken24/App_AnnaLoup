@@ -28113,25 +28113,13 @@ namespace FindYourPath.Droid
 			public const int Scrat_04 = 2131165398;
 			
 			// aapt resource value: 0x7F0700D7
-			public const int test_00 = 2131165399;
+			public const int test_custom_background = 2131165399;
 			
 			// aapt resource value: 0x7F0700D8
-			public const int test_01 = 2131165400;
+			public const int tooltip_frame_dark = 2131165400;
 			
 			// aapt resource value: 0x7F0700D9
-			public const int test_02 = 2131165401;
-			
-			// aapt resource value: 0x7F0700DA
-			public const int test_03 = 2131165402;
-			
-			// aapt resource value: 0x7F0700DB
-			public const int test_custom_background = 2131165403;
-			
-			// aapt resource value: 0x7F0700DC
-			public const int tooltip_frame_dark = 2131165404;
-			
-			// aapt resource value: 0x7F0700DD
-			public const int tooltip_frame_light = 2131165405;
+			public const int tooltip_frame_light = 2131165401;
 			
 			static Drawable()
 			{

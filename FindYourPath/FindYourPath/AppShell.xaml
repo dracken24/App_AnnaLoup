@@ -8,10 +8,10 @@
         <ResourceDictionary>
             <Style x:Key="BaseStyle"
                    TargetType="Element">
-                
-                <Setter Property="Shell.BackgroundColor" Value="#ccccff" />
-                <Setter Property="Shell.ForegroundColor" Value="Color.White" />
-                <Setter Property="Shell.TitleColor" Value="#006666" />
+
+                <Setter Property="Shell.BackgroundColor" Value="#252525" />
+                <Setter Property="Shell.ForegroundColor" Value="#404040" />
+                <Setter Property="Shell.TitleColor" Value="#3EC6D0" />
                 <Setter Property="Shell.DisabledColor" Value="Color.Red" />
                 <Setter Property="Shell.UnselectedColor" Value="Color.Gray" />
                 

@@ -25,7 +25,7 @@
     <Frame BorderColor="#006666" 
                    CornerRadius="0" 
                    HasShadow="True" 
-                   BackgroundColor="LightBlue" 
+                   BackgroundColor="#303030" 
                    Padding="8">
 
             <Grid ColumnSpacing="5" RowSpacing="5">
@@ -43,7 +43,7 @@
                 <Frame BorderColor="#006666" 
                    CornerRadius="2" 
                    HasShadow="True" 
-                   BackgroundColor="LightCyan" 
+                   BackgroundColor="#404040" 
                    Padding="8"
                        Grid.Row="0">
             <Frame
@@ -201,7 +201,7 @@
                 <Frame BorderColor="#006666" 
                        CornerRadius="2" 
                        HasShadow="True" 
-                       BackgroundColor="LightCyan" 
+                       BackgroundColor="#404040" 
                        Padding="3"
                        Grid.Row="2">
                 
@@ -244,7 +244,7 @@
                                     <StackLayout 
                                     Grid.Column="1"
                                     Padding="10"
-                                    BackgroundColor="{StaticResource ContentBackgroundColor}"
+                                    BackgroundColor="#808080"
                                     Spacing="0">
                                         <Label
                                         FontAttributes="Bold"

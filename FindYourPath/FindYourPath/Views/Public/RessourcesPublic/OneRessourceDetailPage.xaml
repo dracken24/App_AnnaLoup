@@ -8,7 +8,7 @@
                CornerRadius="0" 
                HasShadow="True" 
                Padding="0"
-               BackgroundColor="LightBlue">
+               BackgroundColor="#303030">
 
             <Grid Padding="8">
                 <Grid.RowDefinitions>
@@ -20,7 +20,7 @@
                 <Frame BorderColor="#006666" 
                        CornerRadius="2" 
                        HasShadow="True" 
-                       BackgroundColor="LightCyan" 
+                       BackgroundColor="#404040" 
                        Padding="5"
                        Margin="0,0,0,5"
                        HeightRequest="250">
@@ -48,7 +48,7 @@
                                     
                                     <Label x:Name="nameLabel"
                                            FontAttributes="Bold"
-                                           TextColor="MediumPurple"/>
+                                           TextColor="#009A9A"/>
                                     
                                 </StackLayout>
 
@@ -56,7 +56,7 @@
                                     
                                     <Label x:Name="addressLabel"
                                            FontAttributes="Bold"
-                                           TextColor="MediumPurple"/>
+                                           TextColor="#009A9A"/>
 
                                 </StackLayout>
 
@@ -64,7 +64,7 @@
                                     
                                     <Label x:Name="phoneLabel"
                                            FontAttributes="Bold"
-                                           TextColor="MediumPurple"/>
+                                           TextColor="#009A9A"/>
                                     
                                 </StackLayout>
 
@@ -72,7 +72,7 @@
                                     
                                     <Label x:Name="urlLabel"
                                            FontAttributes="Bold"
-                                           TextColor="MediumPurple"/>
+                                           TextColor="#009A9A"/>
 
                                 </StackLayout>
 
@@ -80,7 +80,7 @@
                                     
                                     <Label x:Name="descriptionLabel"
                                            FontAttributes="Bold"
-                                           TextColor="MediumPurple"/>
+                                           TextColor="#009A9A"/>
 
                                 </StackLayout>
 
@@ -90,7 +90,7 @@
 
                                     <Label x:Name="nameDescription"
                                            FontAttributes="Bold"
-                                           TextColor="#006666"/>
+                                           TextColor="#3EC6D0"/>
 
                                 </StackLayout>
 
@@ -98,7 +98,7 @@
 
                                     <Label x:Name="addressDescription"
                                            FontAttributes="Bold"
-                                           TextColor="#006666"/>
+                                           TextColor="#3EC6D0"/>
 
                                 </StackLayout>
 
@@ -106,7 +106,7 @@
 
                                     <Label x:Name="phoneDescription"
                                            FontAttributes="Bold"
-                                           TextColor="#006666"/>
+                                           TextColor="#3EC6D0"/>
 
                                 </StackLayout>
 
@@ -127,7 +127,7 @@
 
                                 <Label x:Name="descriptionDescription"
                                            FontAttributes="Bold"
-                                           TextColor="#006666"/>
+                                           TextColor="#3EC6D0"/>
 
                             </StackLayout>
 
@@ -152,7 +152,7 @@
                 <Frame BorderColor="#006666" 
                        CornerRadius="2" 
                        HasShadow="True" 
-                       BackgroundColor="LightCyan" 
+                       BackgroundColor="#404040" 
                        Padding="8"
                        Grid.Row="2" 
                        HeightRequest="400">
@@ -162,7 +162,7 @@
                         <StackLayout>
 
                             <Label FontSize="Title"
-                                   TextColor="#006666"
+                                   TextColor="#009A9A"
                                    HorizontalOptions="CenterAndExpand"
                                    VerticalOptions="Start"
                                    Text="Google Map"/>

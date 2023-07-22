@@ -2,19 +2,19 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FindYourPath.DataBase.SignUpPage"
-             BackgroundColor="#ccccff">
+             BackgroundColor="#404040">
     <ContentPage.Content>
 
         <StackLayout Padding="30">
 
-            <Label Text="Sign Up" HorizontalOptions="CenterAndExpand" FontSize="Large" TextColor="#006666" />
+            <Label Text="Sign Up" HorizontalOptions="CenterAndExpand" FontSize="Large" TextColor="#3EC6D0" />
             <!-- Username -->
             <Frame BorderColor="#006666" 
                    CornerRadius="5" 
                    HasShadow="True"
                    BackgroundColor="LightBlue" 
                    Padding="0">
-                <Entry x:Name="UsernameEntry" Placeholder="Username" PlaceholderColor="#006666" TextColor="#006666" />
+                <Entry x:Name="UsernameEntry" Placeholder="Username" PlaceholderColor="#606060" TextColor="Black" />
             </Frame>
 
             <!-- E-mail -->
@@ -23,7 +23,7 @@
                    HasShadow="True" 
                    BackgroundColor="LightBlue" 
                    Padding="0">
-                <Entry x:Name="EmailEntry" Placeholder="Email" PlaceholderColor="#006666" TextColor="#006666" />
+                <Entry x:Name="EmailEntry" Placeholder="Email" PlaceholderColor="#606060" TextColor="Black" />
             </Frame>
 
             <!-- Password -->
@@ -32,7 +32,7 @@
                    HasShadow="True" 
                    BackgroundColor="LightBlue" 
                    Padding="0">
-                <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" PlaceholderColor="#006666" TextColor="Black" />
+                <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" PlaceholderColor="#606060" TextColor="Black" />
             </Frame>
 
             <Button Text="Create Account" Clicked="OnSignUpButtonClicked" TextColor="#006666" />

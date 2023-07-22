@@ -26,7 +26,7 @@
 		<!-- colorPrimary is used for the default action bar background -->
 		<item name="colorPrimary">#2196F3</item>
 		<!-- colorPrimaryDark is used for the status bar -->
-		<item name="colorPrimaryDark">#ccccff</item>
+		<item name="colorPrimaryDark">#303030</item>
 		<!-- Default color pour le texte -->
 		<item name="colorAccent">#4c0099</item>
 		<!-- You can also set colorControlNormal, colorControlActivated

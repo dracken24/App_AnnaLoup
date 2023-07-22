@@ -192,18 +192,6 @@
     <AndroidResource Include="Resources\drawable\button_round_green.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\test_00.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\test_01.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\test_02.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\test_03.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\liberty_logo.png" />
   </ItemGroup>
   <ItemGroup>
@@ -377,7 +365,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties XamarinHotReloadUnhandledDeviceExceptionFindYourPathAndroidHideInfoBar="True" XamarinHotReloadWrongLinkerErrorInfoBarFindYourPathAndroidHideInfoBar="True" />
+      <UserProperties XamarinHotReloadWrongLinkerErrorInfoBarFindYourPathAndroidHideInfoBar="True" XamarinHotReloadUnhandledDeviceExceptionFindYourPathAndroidHideInfoBar="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

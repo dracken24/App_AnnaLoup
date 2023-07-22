@@ -9,7 +9,7 @@
                CornerRadius="0" 
                HasShadow="True" 
                Padding="8"
-               BackgroundColor="LightBlue" >
+               BackgroundColor="#303030" >
 
             <Grid >
                 <Grid.RowDefinitions>
@@ -20,7 +20,7 @@
                 <Frame BorderColor="#006666" 
                        CornerRadius="2" 
                        HasShadow="True" 
-                       BackgroundColor="LightCyan" 
+                       BackgroundColor="#404040" 
                        Padding="8"
                        HeightRequest="500"
                        Margin="0,0,0,8">
@@ -31,30 +31,32 @@
                             <!-- Title for Calendar event -->
                             <Entry x:Name="titleEntry"
                                    Placeholder="Event Title"
-                                   TextColor="#006666" />
+                                   PlaceholderColor="#b0b0b0"
+                                   TextColor="#59E0E9" />
 
                             <!-- Start time and date -->
                             <Label Text="Start Date"
-                                    TextColor="#006666"/>
-                            <DatePicker x:Name="startDatePicker"/>
+                                    TextColor="#009A9A"/>
+                            <DatePicker x:Name="startDatePicker" TextColor="#b0b0b0"/>
 
                             <Label Text="Start Time"
-                                    TextColor="#006666"/>
-                            <TimePicker x:Name="startTimePicker"/>
+                                    TextColor="#009A9A"/>
+                            <TimePicker x:Name="startTimePicker" TextColor="#b0b0b0"/>
 
                             <!-- End time and date -->
                             <Label Text="End Date"
-                                    TextColor="#006666"/>
-                            <DatePicker x:Name="endDatePicker"/>
+                                    TextColor="#009A9A"/>
+                            <DatePicker x:Name="endDatePicker" TextColor="#b0b0b0"/>
 
                             <Label Text="End Time"
-                                    TextColor="#006666"/>
-                            <TimePicker x:Name="endTimePicker"/>
+                                    TextColor="#009A9A"/>
+                            <TimePicker x:Name="endTimePicker" TextColor="#b0b0b0"/>
 
                             <!-- Description -->
                             <Editor x:Name="descriptionEditor" 
                                     Placeholder="Description"
-                                    TextColor="#006666"/>
+                                    PlaceholderColor="#b0b0b0"
+                                    TextColor="#59E0E9"/>
 
                         </StackLayout>
 

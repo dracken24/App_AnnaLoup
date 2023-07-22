@@ -9,7 +9,7 @@
                CornerRadius="0" 
                HasShadow="True" 
                Padding="0"
-               BackgroundColor="LightBlue">
+               BackgroundColor="#303030">
 
             <Grid Padding="3">
                 <Grid.RowDefinitions>
@@ -27,7 +27,7 @@
                     <Frame BorderColor="#006666" 
                            CornerRadius="2" 
                            HasShadow="True" 
-                           BackgroundColor="LightCyan" 
+                           BackgroundColor="#404040" 
                            Padding="0"
                            Margin="0,0,0,5"
                            WidthRequest="200"
@@ -77,7 +77,7 @@
                                        HasShadow="True" 
                                        Padding="0"
                                        Margin="5,0,0,0"
-                                       BackgroundColor="LightCyan"
+                                       BackgroundColor="#404040"
                                        HeightRequest="350"
                                        Grid.Column="0"
                                        Grid.RowSpan="4">
@@ -102,14 +102,14 @@
                                                FontAttributes="Bold"
                                                HorizontalOptions="Start"
                                                VerticalOptions="Start"
-                                               TextColor="#006666"
+                                               TextColor="#009A9A"
                                                FontSize="16" />
                                     
                                         <Label Text="Nom" 
                                                FontAttributes="Bold"
                                                HorizontalOptions="Start"
                                                VerticalOptions="Start"
-                                               TextColor="#006666"
+                                               TextColor="#009A9A"
                                                FontSize="16" />
                                     </StackLayout>
 
@@ -131,7 +131,7 @@
                                            FontAttributes="Bold"
                                            HorizontalOptions="Start"
                                            VerticalOptions="Start"
-                                           TextColor="#006666"
+                                           TextColor="#009A9A"
                                            FontSize="16"/>
 
                                 </StackLayout>
@@ -153,7 +153,7 @@
                                            FontAttributes="Bold"
                                            HorizontalOptions="Start"
                                            VerticalOptions="Start"
-                                           TextColor="#006666"
+                                           TextColor="#009A9A"
                                            FontSize="16"/>
 
                                 </StackLayout>
@@ -175,7 +175,7 @@
                                            FontAttributes="Bold"
                                            HorizontalOptions="Start"
                                            VerticalOptions="Start"
-                                           TextColor="#006666"
+                                           TextColor="#009A9A"
                                            FontSize="16"/>
 
                                 </StackLayout>
@@ -186,7 +186,7 @@
                                    HasShadow="True" 
                                    Padding="0"
                                    Margin="5,0,5,0"
-                                   BackgroundColor="LightCyan"
+                                   BackgroundColor="#404040"
                                    HeightRequest="350"
                                    Grid.Column="1"
                                    Grid.RowSpan="4">
@@ -203,13 +203,13 @@
                                     <StackLayout>
                                         <Label Text="{Binding FirstName}" x:Name="firstNameLabel"
                                            FontSize="16"
-                                           TextColor="#006666"
+                                           TextColor="#3EC6D0"
                                            LineBreakMode="WordWrap"
                                            WidthRequest="250" />
 
                                         <Label Text="{Binding Name}" x:Name="nameLabel"
                                            FontSize="16"
-                                           TextColor="#006666"
+                                           TextColor="#3EC6D0"
                                            LineBreakMode="WordWrap"
                                            WidthRequest="250" />
                                     </StackLayout>
@@ -226,7 +226,7 @@
                                     <Label Text="{Binding Address}" x:Name="addressLabel" 
                                            FontSize="16"
                                            HorizontalOptions="Start"
-                                           TextColor="#006666"
+                                           TextColor="#3EC6D0"
                                            LineBreakMode="WordWrap"
                                            WidthRequest="800" />
 
@@ -242,7 +242,7 @@
                                     <Label Text="{Binding Email}" x:Name="emailLabel" 
                                            FontSize="16"
                                            HorizontalOptions="Start"
-                                           TextColor="#006666" 
+                                           TextColor="#3EC6D0" 
                                            LineBreakMode="WordWrap"
                                            WidthRequest="250" />
 
@@ -258,7 +258,7 @@
                                     <Label Text="{Binding Phone}" x:Name="phoneLabel" 
                                            FontSize="16"
                                            HorizontalOptions="Start"
-                                           TextColor="#006666"
+                                           TextColor="#3EC6D0"
                                            LineBreakMode="WordWrap"
                                            WidthRequest="250" />
 

@@ -8,7 +8,7 @@
                CornerRadius="0" 
                HasShadow="True" 
                Padding="0"
-               BackgroundColor="LightBlue">
+               BackgroundColor="#303030">
 
             <Grid Padding="8">
                 <Grid.RowDefinitions>
@@ -19,7 +19,7 @@
                 <Frame BorderColor="#006666" 
                        CornerRadius="2" 
                        HasShadow="True" 
-                       BackgroundColor="LightCyan" 
+                       BackgroundColor="#404040" 
                        Padding="8"
                        HeightRequest="250"
                        Grid.Column="0">
@@ -45,7 +45,7 @@
 
                                 <Label x:Name="subjectLabel"
                                            FontAttributes="Bold"
-                                           TextColor="MediumPurple"/>
+                                           TextColor="#009A9A"/>
 
                             </StackLayout>
 
@@ -53,7 +53,7 @@
 
                                 <Label x:Name="startLabel"
                                            FontAttributes="Bold"
-                                           TextColor="MediumPurple"/>
+                                           TextColor="#009A9A"/>
 
                             </StackLayout>
 
@@ -61,7 +61,7 @@
 
                                 <Label x:Name="endLabel"
                                            FontAttributes="Bold"
-                                           TextColor="MediumPurple"/>
+                                           TextColor="#009A9A"/>
 
                             </StackLayout>
 
@@ -69,7 +69,7 @@
 
                                 <Label x:Name="descriptionLabel"
                                            FontAttributes="Bold"
-                                           TextColor="MediumPurple"/>
+                                           TextColor="#009A9A"/>
 
                             </StackLayout>
 
@@ -79,7 +79,7 @@
 
                                 <Label x:Name="subjectDescription"
                                            FontAttributes="Bold"
-                                           TextColor="#006666"/>
+                                           TextColor="#b0b0b0"/>
 
                             </StackLayout>
 
@@ -87,7 +87,7 @@
 
                                 <Label x:Name="startDescription"
                                            FontAttributes="Bold"
-                                           TextColor="#006666"/>
+                                           TextColor="#b0b0b0"/>
 
                             </StackLayout>
 
@@ -95,7 +95,7 @@
 
                                 <Label x:Name="endDescription"
                                            FontAttributes="Bold"
-                                           TextColor="#006666"/>
+                                           TextColor="#b0b0b0"/>
 
                             </StackLayout>
 
@@ -103,7 +103,7 @@
 
                                 <Label x:Name="descriptionDescription"
                                            FontAttributes="Bold"
-                                           TextColor="#006666"/>
+                                           TextColor="#b0b0b0"/>
 
                             </StackLayout>
                         </Grid>
