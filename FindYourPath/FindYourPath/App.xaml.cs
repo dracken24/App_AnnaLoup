@@ -32,6 +32,20 @@ namespace FindYourPath
 			MainPage = new NavigationPage(new LoginPage());
 		}
 
+		public async Task NavigateToMainPage()
+		{
+			MainPage = new AppShell();
+			await Shell.Current.GoToAsync("//main");
+		}
+
+		public static App Instance { get; private set; }
+
+		protected override void OnStart()
+		{
+			Instance = this;
+		}
+
+
 		public static ObservableRangeCollection<MyEvent> Events
 		{
 			get { return _Events; }
@@ -49,11 +63,11 @@ namespace FindYourPath
 			get { return _connectionString; }
 		}
 
-		public async Task NavigateToMainPage()
+		/*public async Task NavigateToMainPage()
 		{
 			MainPage = new AppShell();
 			await Shell.Current.GoToAsync("//main");
-		}
+		}*/
 
 		public static UserService UserService
 		{
@@ -63,6 +77,17 @@ namespace FindYourPath
 		public static RessourceService RessourceService
 		{
 			get { return _ressourceService; }
+		}
+
+		// Refresh la liste des Contactes
+		public async Task RefreshResources()
+		{
+			ResourcesCollection.Clear();
+			var resources = await _ressourceService.GetRessourcesAsync(User._id);
+			foreach (var resource in resources)
+			{
+				ResourcesCollection.Add(resource);
+			}
 		}
 
 		internal static User User
@@ -82,9 +107,9 @@ namespace FindYourPath
 			_user.PrintMembers();
 		}
 
-		protected override void OnStart()
+		/*protected override void OnStart()
 		{
-		}
+		}*/
 
 		protected override void OnSleep()
 		{

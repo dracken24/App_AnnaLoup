@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FindYourPath.Views.Private.Ressources.ContactModifier">
+    <ScrollView >
+        <Frame BorderColor="#006666" 
+               CornerRadius="0" 
+               HasShadow="True" 
+               Padding="8"
+               BackgroundColor="#303030" >
+
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Frame BorderColor="#006666" 
+                       CornerRadius="2" 
+                       HasShadow="True" 
+                       BackgroundColor="#404040" 
+                       Padding="8"
+                       HeightRequest="500"
+                       Margin="0,0,0,8">
+
+                    <ScrollView>
+                        <StackLayout Grid.Row="0">
+
+                            <!-- Start time and date -->
+                            <Label Text="Name"
+                                    TextColor="#009A9A"/>
+                            <Entry x:Name="nomEntry"
+                                   Placeholder="Enter a name"
+                                   PlaceholderColor="#b0b0b0"
+                                   TextColor="#59E0E9" />
+
+                            <Label Text="Adresse"
+                                    TextColor="#009A9A"/>
+                            <Entry x:Name="adressePicker"
+                                   Placeholder="Enter an adress"
+                                   PlaceholderColor="#b0b0b0"
+                                   TextColor="#59E0E9" />
+
+                            <!-- End time and date -->
+                            <Label Text="Telephone"
+                                    TextColor="#009A9A"/>
+                            <Entry x:Name="phonePicker"
+                                   Placeholder="Enter a phone number"
+                                   PlaceholderColor="#b0b0b0"
+                                   TextColor="#59E0E9" />
+
+                            <Label Text="Url"
+                                    TextColor="#009A9A"/>
+                            <Entry x:Name="urlPicker"
+                                   Placeholder="Enter an url"
+                                   PlaceholderColor="#b0b0b0"
+                                   TextColor="#59E0E9" />
+
+                            <!-- Description -->
+                            <Label Text="Description"
+                                    TextColor="#009A9A"/>
+                            <Entry x:Name="descriptionPicker"
+                                   Placeholder="Enter a description"
+                                   PlaceholderColor="#b0b0b0"
+                                   TextColor="#59E0E9" />
+
+                            <!-- Type -->
+                            <Label Text="Type"
+                                    TextColor="#009A9A"/>
+                            <Entry x:Name="typePicker"
+                                   Placeholder="Enter a type of contact"
+                                   PlaceholderColor="#b0b0b0"
+                                   TextColor="#59E0E9" />
+
+                        </StackLayout>
+
+                    </ScrollView>
+                </Frame>
+                <StackLayout Grid.Row="1">
+
+                    <Button x:Name="saveButton" 
+                            Text="Save Event" 
+                            Clicked="OnSaveButtonClicked"/>
+
+                    <Button x:Name="deleteButton" 
+                            Text="Delete Event" 
+                            Clicked="OnDeleteButtonClicked"/>
+
+                </StackLayout>
+            </Grid>
+        </Frame >
+
+    </ScrollView>
+</ContentPage>

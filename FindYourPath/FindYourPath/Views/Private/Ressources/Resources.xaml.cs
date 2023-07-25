@@ -1,4 +1,5 @@
-﻿using FindYourPath.Views.Private;
+﻿using FindYourPath.Services;
+using FindYourPath.Views.Private;
 using FindYourPath.Views.Public.RessourcesPublic;
 using System;
 using System.Collections.ObjectModel;
@@ -9,6 +10,7 @@ namespace FindYourPath.Views
 	public partial class Resources : ContentPage
 	{
 		// private static ObservableCollection<OneRessource> _resources;
+		RessourceService _ressourceService;
 
 		public Resources()
 		{
@@ -17,6 +19,7 @@ namespace FindYourPath.Views
 			Title = "Resources";
 
 			App.ResourcesCollection = new ObservableCollection<OneRessource>();
+			_ressourceService = new RessourceService(App.ConnectionString);
 			resourceList.ItemsSource = App.ResourcesCollection;
 
 			TakeRessourcesFromDatabase();
@@ -67,7 +70,7 @@ namespace FindYourPath.Views
 		private async void OnItemTapped(object sender, ItemTappedEventArgs e)
 		{
 			var resource = (OneRessource)e.Item;
-			await Navigation.PushAsync(new PrivateOneRessourceDetailPage(resource));
+			await Navigation.PushAsync(new PrivateOneRessourceDetailPage(resource, _ressourceService));
 		}
 	}
 }

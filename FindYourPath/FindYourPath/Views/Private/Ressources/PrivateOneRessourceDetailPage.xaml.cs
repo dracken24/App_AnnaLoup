@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
+using FindYourPath.DataBase;
+using FindYourPath.Services;
+using FindYourPath.Views.Private.Ressources;
 
 namespace FindYourPath.Views.Private
 {
@@ -14,11 +17,13 @@ namespace FindYourPath.Views.Private
 	public partial class PrivateOneRessourceDetailPage : ContentPage
 	{
 		OneRessource _oneRessource;
-		public PrivateOneRessourceDetailPage(OneRessource resource)
+		RessourceService _ressourceService;
+		public PrivateOneRessourceDetailPage(OneRessource resource, RessourceService ressourceService)
 		{
 			InitializeComponent();
 			
 			_oneRessource = resource;
+			_ressourceService = ressourceService;
 			Title = resource.Nom;
 
 			nameLabel.Text = $"Nom             :";
@@ -54,10 +59,22 @@ namespace FindYourPath.Views.Private
 		}
 */
 
-		async void OnAddToPrivateButtonTapped(object sender, EventArgs e)
+		private async void OnModifyButtonClicked(object sender, EventArgs e)
 		{
-			await App.RessourceService.SaveRessourceAsync(_oneRessource);
-			await Navigation.PopAsync();
+			Console.WriteLine("Modify event");
+
+			User user = App.User;
+			try
+			{
+				Navigation.PushAsync(new ContactModifier(_oneRessource, _ressourceService, user));
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+			}
+
+			// Then navigate back to the previous page
+			//Navigation.PopAsync();
 		}
 	}
 }
