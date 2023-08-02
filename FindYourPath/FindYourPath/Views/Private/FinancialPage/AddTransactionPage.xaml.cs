@@ -44,8 +44,9 @@ namespace FindYourPath.Views.Private
 						App.FinanceManager.AddTransaction(newTransaction);
 
 						// Mettez à jour l'affichage pour refléter les changements
-						_addTransactionPage.UpdateUI();
 						await App.FinanceService.SaveFinanceAsync(newTransaction);
+						await _addTransactionPage.GetListFromDatabase();
+						_addTransactionPage.UpdateUI();
 					}
 					else
 					{
@@ -71,8 +72,9 @@ namespace FindYourPath.Views.Private
 						App.FinanceManager.AddTransaction(newTransaction);
 
 						// Mettez à jour l'affichage pour refléter les changements
-						_addTransactionPage.UpdateUI();
 						await App.FinanceService.SaveFinanceAsync(newTransaction);
+						await _addTransactionPage.GetListFromDatabase();
+						_addTransactionPage.UpdateUI();
 					}
 					else
 					{

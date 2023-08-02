@@ -78,27 +78,28 @@
                             <ListView x:Name="transactionsListView"
                                       HasUnevenRows="True"
                                       VerticalOptions="FillAndExpand"
-                                      SeparatorVisibility="None"
+                                      SeparatorVisibility="Default"
+                                      SeparatorColor="Black"
                                       ItemSelected="OnTransactionSelected">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
-                                        <ViewCell>
-                                            <Grid Padding="10" BackgroundColor="white">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="2*" />
-                                                    <!-- Première colonne prendra autant d'espace que possible -->
-                                                    <ColumnDefinition Width="1*" />
-                                                    <!-- Deuxième colonne s'adaptera à la largeur du contenu -->
-                                                    <ColumnDefinition Width="1*" />
-                                                    <!-- Troisième colonne s'adaptera à la largeur du contenu -->
-                                                </Grid.ColumnDefinitions>
+                                    <ViewCell>
+                                        <Grid Padding="10" BackgroundColor="white">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="2*" />
+                                                <!-- Première colonne prendra autant d'espace que possible -->
+                                                <ColumnDefinition Width="1*" />
+                                                <!-- Deuxième colonne s'adaptera à la largeur du contenu -->
+                                                <ColumnDefinition Width="1*" />
+                                                <!-- Troisième colonne s'adaptera à la largeur du contenu -->
+                                            </Grid.ColumnDefinitions>
 
-                                                <Label Text="{Binding Description}" FontSize="16" TextColor="#006666" Grid.Column="0" />
-                                                <Label Text="{Binding Montant_Achat, StringFormat='{0:C}'}" FontSize="14" TextColor="#006666" Grid.Column="1" />
-                                                <Label Text="{Binding Date_Achat, StringFormat='{0:dd/MM/yyyy}'}" FontSize="14" TextColor="#006666" Grid.Column="2" />
-                                            </Grid>
-                                        </ViewCell>
-                                    </DataTemplate>
+                                            <Label Text="{Binding Description}" FontSize="16" TextColor="#006666" Grid.Column="0" />
+                                            <Label Text="{Binding Montant_Achat, StringFormat='{0:C}'}" FontSize="14" TextColor="#006666" Grid.Column="1" />
+                                            <Label Text="{Binding Date_Achat, StringFormat='{0:dd/MM/yyyy}'}" FontSize="14" TextColor="#006666" Grid.Column="2" />
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
                                 </ListView.ItemTemplate>
 
                             </ListView>

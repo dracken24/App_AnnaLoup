@@ -199,7 +199,7 @@
                                           ItemTapped="OnItemTapped"
                                           HorizontalOptions="CenterAndExpand"
                                           VerticalOptions="Start"
-                                          SeparatorColor="Black"
+                                          SeparatorColor="White"
                                           RowHeight="40" >
 
                                     <ListView.ItemTemplate>

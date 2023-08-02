@@ -22,7 +22,7 @@ namespace FindYourPath.Views
 			GetListFromDatabase();
 		}
 
-		private async Task GetListFromDatabase()
+		public async Task GetListFromDatabase()
 		{
 			await App.FinanceService.GetRessourcesAsync(App.User._id);
 
@@ -36,12 +36,13 @@ namespace FindYourPath.Views
 			UpdateUI();
 		}
 
-		private void OnTransactionSelected(object sender, SelectedItemChangedEventArgs e)
+		private async void OnTransactionSelected(object sender, SelectedItemChangedEventArgs e)
 		{
 			// Vérifiez si l'élément sélectionné est une transaction (et non null)
 			if (e.SelectedItem is Transaction selectedTransaction)
 			{
 				Console.WriteLine("--- SelectedTransaction: " + selectedTransaction.Description + " " + selectedTransaction.Montant_Achat + " " + selectedTransaction.Date_Achat);
+				await Navigation.PushAsync(new ModifyTransaction(this, selectedTransaction));
 			}
 
 			// Désélectionner l'élément sélectionné pour permettre de le sélectionner à nouveau ultérieurement

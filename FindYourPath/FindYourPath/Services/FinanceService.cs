@@ -43,6 +43,29 @@ namespace FindYourPath.Services
 			}
 		}
 
+		public async Task ModifyFinanceAsync(Transaction transaction)
+		{
+			var jsonObject = new JObject
+			{
+				["action"] = "updateTransaction",
+				["id"] = transaction.id,
+				["Description"] = transaction.Description,
+				["Montant_Achat"] = transaction.Montant_Achat,
+				["Date_Achat"] = transaction.Date_Achat,
+				["Type"] = transaction.Type.ToString(),
+				["UserId"] = App.User._id,
+			};
+
+			var content = new StringContent(JsonConvert.SerializeObject(jsonObject), Encoding.UTF8, "application/json");
+			var response = await Task.Run(() => _httpClient.PostAsync(App.ConnectionString + "/FinanceServices.php", content));
+
+			if (!response.IsSuccessStatusCode)
+			{
+				var errorContent = await response.Content.ReadAsStringAsync();
+				Console.WriteLine($"Server error response: {errorContent}");
+			}
+		}
+
 		// Loader les contactes d'un utilisateur à partir de la base de données
 		public async Task GetRessourcesAsync(int userId)
 		{
@@ -74,50 +97,28 @@ namespace FindYourPath.Services
 			}
 		}
 
-
-		/*
-		// Mettre à jour un événement dans la base de données
-		public async Task UpdateEventAsync(OneRessource appointment)
+		// Supprimer un événement dans la base de données
+		public async Task<bool> DeleteFinanceAsync(Transaction transaction)
 		{
-			var jsonObject = new JObject
+			try
 			{
-				["action"] = "updateContact", // supposons que l'action soit nommée 'updateCalendarEvent'
-				["id"] = appointment.id, // l'id est probablement nécessaire pour identifier quel événement mettre à jour
-				["name"] = appointment.Nom,
-				["Adress"] = appointment.Adresse,
-				["Phone"] = appointment.Telephone,
-				["Url"] = appointment.URL,
-				["Type"] = appointment.Type,
-				["Description"] = appointment.Description,
-				["UserId"] = appointment.User_Id
-			};
+				// Créer un message de requête DELETE
+				var request = new HttpRequestMessage(HttpMethod.Delete, App.ConnectionString + "/FinanceServices.php");
 
-			Console.WriteLine("Objet Json: " + jsonObject.ToString());
+				// Ajouter l'ID de l'événement au corps de la requête
+				var requestJson = JsonConvert.SerializeObject(new { action = "delete", id = transaction.id });
+				request.Content = new StringContent(requestJson, Encoding.UTF8, "application/json");
 
-			var content = new StringContent(JsonConvert.SerializeObject(jsonObject), Encoding.UTF8, "application/json");
-			var response = await Task.Run(() => _httpClient.PostAsync(App.ConnectionString + "/RessourceServices.php", content));
+				// Envoyer la requête
+				var response = await _httpClient.SendAsync(request);
 
-			if (!response.IsSuccessStatusCode)
+				return response.IsSuccessStatusCode;
+			}
+			catch (Exception ex)
 			{
-				var errorContent = await response.Content.ReadAsStringAsync();
-				Console.WriteLine($"Server error response: {errorContent}");
+				Console.WriteLine("Error: " + ex.Message);
+				return false;
 			}
 		}
-
-		// Supprimer un événement dans la base de données
-		public async Task<bool> DeleteEventAsync(OneRessource currentEvent)
-		{
-			// Créer un message de requête DELETE
-			var request = new HttpRequestMessage(HttpMethod.Delete, App.ConnectionString + "/RessourceServices.php");
-
-			// Ajouter l'ID de l'événement au corps de la requête
-			var requestJson = JsonConvert.SerializeObject(new { action = "delete", id = currentEvent.id });
-			request.Content = new StringContent(requestJson, Encoding.UTF8, "application/json");
-
-			// Envoyer la requête
-			var response = await _httpClient.SendAsync(request);
-
-			return response.IsSuccessStatusCode;
-		}*/
 	}
 }

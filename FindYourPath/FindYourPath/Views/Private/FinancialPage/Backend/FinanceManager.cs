@@ -14,6 +14,19 @@ namespace FindYourPath.Views.Finance
 		{
 			App.Transactions.Add(transaction);
 		}
+		public void DeleteTransaction(Transaction transaction)
+		{
+			App.Transactions.Remove(transaction);
+		}
+		public void UpdateTransaction(Transaction transactionToUpdate)
+		{
+			int index = App.Transactions.FindIndex(t => t.id == transactionToUpdate.id);
+			if (index != -1)
+			{
+				App.Transactions[index] = transactionToUpdate;
+			}
+		}
+
 
 		public decimal GetBalance()
 		{
