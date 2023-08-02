@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FindYourPath.Views.Private.AddTransactionPage">
+    <ScrollView>
+        <Frame BorderColor="#006666" 
+               CornerRadius="0" 
+               HasShadow="True" 
+               Padding="0"
+               BackgroundColor="#303030">
+
+            <Grid Padding="8">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Frame BorderColor="#006666" 
+                       CornerRadius="2" 
+                       HasShadow="True" 
+                       BackgroundColor="#404040" 
+                       Padding="5"
+                       Margin="0,0,0,5"
+                       HeightRequest="250"
+                       Grid.Row="0">
+
+                    <ScrollView>
+
+                        <StackLayout >
+
+                            <Label Text="Nouvelle transaction"
+                                       FontSize="Title"
+                                       TextColor="#009A9A"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="Start" />
+
+                            <Picker x:Name="transactionTypePicker" Title="Sélectionner le type" TextColor="#009A9A" TitleColor="#b0b0b0">
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}" >
+                                        <x:String>Dépense (Achat)</x:String>
+                                        <x:String>Entrée d'argent</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+
+                            <!-- Affichage des informations financières -->
+                            <Entry x:Name="descriptionEntry" Placeholder="Description de la transaction" PlaceholderColor="#b0b0b0" TextColor="#009A9A" />
+                            <Entry x:Name="amountEntry" Placeholder="Montant de la transaction" PlaceholderColor="#b0b0b0" TextColor="#009A9A" Keyboard="Telephone" />
+                            <DatePicker x:Name="datePicker" TextColor="#009A9A" />
+
+                        </StackLayout>
+                    </ScrollView>
+                </Frame>
+
+                <!-- Contrôles pour ajouter une nouvelle transaction -->
+                <StackLayout Grid.Row="1">
+                    <Button Text="Ajouter la transaction" Clicked="AddTransactionButton_Clicked" />
+                </StackLayout>
+
+            </Grid>
+        </Frame>
+    </ScrollView>
+
+</ContentPage >

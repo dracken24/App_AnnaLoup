@@ -17,10 +17,11 @@ namespace FindYourPath.Views
 	public partial class AddEventPage : ContentPage
 	{
 		private EventService eventService;
-		static User _user;
+		static private User _user;
+		static private Agenda _agenda;
 
-		public AddEventPage(DateTime selectedDate,
-			EventService eventService, User user)
+		public AddEventPage(DateTime selectedDate, EventService eventService,
+					User user, Agenda agenda)
 		{
 			InitializeComponent();
 			this.eventService = eventService;
@@ -30,6 +31,7 @@ namespace FindYourPath.Views
 			startTimePicker.Time = new TimeSpan(8, 0, 0);
 			endTimePicker.Time = new TimeSpan(10, 0, 0);
 			_user = user;
+			_agenda = agenda;
 		}
 
 		private async void OnSaveButtonClicked(object sender, EventArgs e)
@@ -70,6 +72,7 @@ namespace FindYourPath.Views
 
 				// Add newEvent to database
 				await Task.Run(() => CreateEvent(newEvent));
+				_agenda.UpdateCalendar();
 			}
 			catch (HttpRequestException ex)
 			{
@@ -97,6 +100,7 @@ namespace FindYourPath.Views
 
 			// Enregistrez l'événement dans la base de données
 			await eventService.SaveEventAsync(newEvent);
+			// Mise a jour de l'evenement selectionnee
 			App.Events.ReplaceRange(App.Events.Where(x => x.StartDate.Date == newEvent.StartDate));
 		}
 	}

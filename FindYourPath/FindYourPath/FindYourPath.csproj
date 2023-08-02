@@ -71,6 +71,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Views\Private\FinancialPage\FinancialPage.xaml.cs">
+      <DependentUpon>FinancialPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Private\Profile\Profile.xaml.cs">
       <DependentUpon>Profile.xaml</DependentUpon>
     </Compile>
@@ -117,7 +120,10 @@
     <EmbeddedResource Update="Views\Private\Agenda\EventModificationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Private\Finance\Finance.xaml">
+    <EmbeddedResource Update="Views\Private\FinancialPage\AddTransactionPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Private\FinancialPage\FinancialPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Private\Profile\ChangeProfilInfos.xaml">
@@ -150,6 +156,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Views\Private\Ressources\Backend\" />
     <Folder Include="Views\Private\Ressources\Backend\" />
   </ItemGroup>
 </Project>

@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FindYourPath.RightGestion.ConfirmEmail"
-             BackgroundColor="#ccccff">
+             BackgroundColor="#303030">
     
     <ContentPage.Content>
         <StackLayout Padding="30">
@@ -11,7 +11,7 @@
             <Label Text="Veuillez entrer votre code de validation qui est compris dans le email qui vous a ete envoye."
                    HorizontalOptions="CenterAndExpand"
                    FontSize="Body"
-                   TextColor="#006666" /> 
+                   TextColor="#3EC6D0" /> 
 
             <!-- Entree du user -->
             <Frame BorderColor="#006666" 
@@ -36,7 +36,7 @@
             <Label Text="Si vous n'avez pas recu votre code, cliquez-ici bas pour le recevoir"
                    HorizontalOptions="CenterAndExpand"
                    FontSize="Body"
-                   TextColor="#006666" />
+                   TextColor="#3EC6D0" />
 
             <!-- Bouton Resend email -->
             <Button Text="Resend email" 

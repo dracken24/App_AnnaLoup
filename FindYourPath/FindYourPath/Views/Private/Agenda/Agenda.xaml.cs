@@ -3,6 +3,7 @@ using FindYourPath.Views.Private.Agenda.SaveAgenda;
 using Google.Apis.Calendar.v3.Data;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XCalendar.Core.Collections;
@@ -40,27 +41,35 @@ namespace FindYourPath.Views
 				// ici vous pouvez attendre votre méthode Initialize
 				await (BindingContext as EventCalendarViewModel).Initialize();
 			}
-			foreach (var day in _eventView.EventCalendar.Days)
-			{
-				day.Events.ReplaceRange(App.Events.Where(x => x.StartDate.Date == day.DateTime.Date));
-			}
+			UpdateCalendar();
 		}
 
 		private async void OnAddEventButtonClicked(object sender, EventArgs e)
 		{
-			_eventView.OnAddEventButtonClicked(sender, e);
+			await _eventView.OnAddEventButtonClicked(sender, e, this);
+			
+			UpdateCalendar();
 		}
 
-		private void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
+		private async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			Console.WriteLine("OnCollectionViewSelectionChanged");
 			var selectedEvent = e.CurrentSelection.FirstOrDefault() as MyEvent;
 			if (selectedEvent != null)
 			{
-				Navigation.PushAsync(new EventDetailPage(selectedEvent, _eventService));
+				await Navigation.PushAsync(new EventDetailPage(selectedEvent, _eventService));
 
 				((CollectionView)sender).SelectedItem = null;
-				//_eventView.EventCalendar.SelectedDates.Clear();
+				App.Events.Remove(selectedEvent);
+			}
+			UpdateCalendar();
+		}
+
+		public void	UpdateCalendar()
+		{
+			foreach (var day in _eventView.EventCalendar.Days)
+			{
+				day.Events.ReplaceRange(App.Events.Where(x => x.StartDate.Date == day.DateTime.Date));
 			}
 		}
 	}

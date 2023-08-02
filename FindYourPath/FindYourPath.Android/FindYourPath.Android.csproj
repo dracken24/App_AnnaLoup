@@ -365,10 +365,16 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\G_google.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\values-en\strings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\values-fr\strings.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties XamarinHotReloadWrongLinkerErrorInfoBarFindYourPathAndroidHideInfoBar="True" XamarinHotReloadUnhandledDeviceExceptionFindYourPathAndroidHideInfoBar="True" />
+      <UserProperties XamarinHotReloadUnhandledDeviceExceptionFindYourPathAndroidHideInfoBar="True" XamarinHotReloadWrongLinkerErrorInfoBarFindYourPathAndroidHideInfoBar="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

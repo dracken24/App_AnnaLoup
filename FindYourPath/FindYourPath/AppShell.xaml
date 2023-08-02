@@ -45,7 +45,7 @@
             <ShellContent Title="Agenda" ContentTemplate="{DataTemplate views:Agenda}" />
             <ShellContent Title="TodoList" ContentTemplate="{DataTemplate views:TodoList}" />
             <ShellContent Title="Resources" ContentTemplate="{DataTemplate views:Resources}" />
-            <ShellContent Title="Finance" ContentTemplate="{DataTemplate views:Finance}" />
+            <ShellContent Title="Finance" ContentTemplate="{DataTemplate views:FinancialPage}" />
             <ShellContent Title="Profile" ContentTemplate="{DataTemplate views:Profile}" />
             
         </Tab>

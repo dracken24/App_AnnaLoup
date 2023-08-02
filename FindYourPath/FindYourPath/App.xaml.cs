@@ -1,10 +1,10 @@
 ﻿using FindYourPath.Views;
 using FindYourPath.Services;
 using FindYourPath.DataBase;
-using System;
-using System.IO;
+using FindYourPath.Views.Finance;
+
+using System.Collections.Generic;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 using System.Threading.Tasks;
 using XCalendar.Core.Collections;
 using System.Collections.ObjectModel;
@@ -21,13 +21,20 @@ namespace FindYourPath
 		static ObservableRangeCollection<MyEvent> _Events = new ObservableRangeCollection<MyEvent>();
 		static ObservableCollection<OneRessource> _resources = new ObservableCollection<OneRessource>();
 
+		// Finance gestion
+		static private List<Transaction> _transactions = new List<Transaction>();
+		static private FinanceService _financeService;
+		static private FinanceManager _financeManager = new FinanceManager();
+
 		public App()
 		{
 			InitializeComponent();
 			
 			_connectionString = "http://dracken24.duckdns.org/apiAnnaLoup/actions";
+
 			_userService = new UserService(_connectionString);
 			_ressourceService = new RessourceService(_connectionString);
+			_financeService = new FinanceService(_connectionString);
 
 			MainPage = new NavigationPage(new LoginPage());
 		}
@@ -35,6 +42,7 @@ namespace FindYourPath
 		public async Task NavigateToMainPage()
 		{
 			MainPage = new AppShell();
+			
 			await Shell.Current.GoToAsync("//main");
 		}
 
@@ -45,6 +53,22 @@ namespace FindYourPath
 			Instance = this;
 		}
 
+		public static List<Transaction> Transactions
+		{
+			get { return _transactions; }
+			set { _transactions = value; }
+		}
+
+		public static FinanceService FinanceService
+		{
+			get { return _financeService; }
+		}
+
+		public static FinanceManager FinanceManager
+		{
+			get { return _financeManager; }
+			set { _financeManager = value; }
+		}
 
 		public static ObservableRangeCollection<MyEvent> Events
 		{
@@ -62,12 +86,6 @@ namespace FindYourPath
 		{
 			get { return _connectionString; }
 		}
-
-		/*public async Task NavigateToMainPage()
-		{
-			MainPage = new AppShell();
-			await Shell.Current.GoToAsync("//main");
-		}*/
 
 		public static UserService UserService
 		{

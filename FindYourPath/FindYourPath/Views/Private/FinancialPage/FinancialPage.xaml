@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FindYourPath.Views.FinancialPage">
+
+    <ScrollView>
+        <Frame BorderColor="#006666" 
+               CornerRadius="0" 
+               HasShadow="True" 
+               Padding="0"
+               BackgroundColor="#303030">
+
+            <Grid Padding="8">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="5*" />
+                </Grid.RowDefinitions>
+
+                <Frame BorderColor="#006666" 
+                       CornerRadius="2" 
+                       HasShadow="True" 
+                       BackgroundColor="#404040" 
+                       Padding="5"
+                       Margin="0,0,0,5"
+                       HeightRequest="250"
+                       Grid.Row="0">
+
+                    <ScrollView>
+
+                        <StackLayout >
+
+                            <Label Text="Total"
+                                       FontSize="Title"
+                                       TextColor="#009A9A"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="Start" />
+
+                            <!-- Affichage des informations financières -->
+                            <Label Text="Balance:" TextColor="#009A9A" />
+                            <Label x:Name="balanceLabel" TextColor="#3EC6D0" />
+
+                            <Label Text="Enteree Totale:" TextColor="#009A9A" />
+                            <Label x:Name="totalIncomeLabel" TextColor="#3EC6D0" />
+
+                            <Label Text="Depences Totale:" TextColor="#009A9A" />
+                            <Label x:Name="totalExpensesLabel" TextColor="#3EC6D0" />
+
+
+                        </StackLayout>
+                    </ScrollView>
+                </Frame>
+
+                <!-- Contrôles pour ajouter une nouvelle transaction -->
+                <StackLayout Grid.Row="1">
+                    <Button Text="Ajouter une transaction" Clicked="AddTransactionButton_Clicked" />
+                </StackLayout>
+                <!-- Recapitulatif -->
+                <Frame BorderColor="#006666" 
+                       CornerRadius="2" 
+                       HasShadow="True" 
+                       BackgroundColor="#404040" 
+                       Padding="8"
+                       Margin="0,5,0,5"
+                       Grid.Row="2" 
+                       HeightRequest="450">
+
+                  
+                        <StackLayout >
+
+                            <Label Text="Recapitulatif"
+                                   FontSize="Title"
+                                   TextColor="#009A9A"
+                                   HorizontalOptions="CenterAndExpand"
+                                   VerticalOptions="Start" />
+
+                            <!-- ListView pour afficher les transactions -->
+                            <ListView x:Name="transactionsListView"
+                                      HasUnevenRows="True"
+                                      VerticalOptions="FillAndExpand"
+                                      SeparatorVisibility="None"
+                                      ItemSelected="OnTransactionSelected">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Grid Padding="10" BackgroundColor="white">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="2*" />
+                                                    <!-- Première colonne prendra autant d'espace que possible -->
+                                                    <ColumnDefinition Width="1*" />
+                                                    <!-- Deuxième colonne s'adaptera à la largeur du contenu -->
+                                                    <ColumnDefinition Width="1*" />
+                                                    <!-- Troisième colonne s'adaptera à la largeur du contenu -->
+                                                </Grid.ColumnDefinitions>
+
+                                                <Label Text="{Binding Description}" FontSize="16" TextColor="#006666" Grid.Column="0" />
+                                                <Label Text="{Binding Montant_Achat, StringFormat='{0:C}'}" FontSize="14" TextColor="#006666" Grid.Column="1" />
+                                                <Label Text="{Binding Date_Achat, StringFormat='{0:dd/MM/yyyy}'}" FontSize="14" TextColor="#006666" Grid.Column="2" />
+                                            </Grid>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+
+                            </ListView>
+
+                        </StackLayout>
+                    
+
+                </Frame>
+            </Grid>
+        </Frame>
+    </ScrollView>
+
+</ContentPage >

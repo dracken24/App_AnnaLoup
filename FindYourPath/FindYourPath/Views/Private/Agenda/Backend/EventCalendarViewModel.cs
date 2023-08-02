@@ -1,9 +1,7 @@
-﻿using FindYourPath.DataBase;
-using FindYourPath.Views.Private.Agenda.SaveAgenda;
+﻿using FindYourPath.Views.Private.Agenda.SaveAgenda;
 using Google.Apis.Calendar.v3.Data;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,8 +11,6 @@ using XCalendar.Core.Collections;
 using XCalendar.Core.Enums;
 using XCalendar.Core.Extensions;
 using XCalendar.Core.Models;
-//using Xamarin.CommunityToolkit.ObjectModel;
-
 
 namespace FindYourPath.Views
 {
@@ -63,7 +59,7 @@ namespace FindYourPath.Views
 		#endregion
 
 		#region Methods
-		private void EventCalendar_DaysUpdated(object sender, EventArgs e)
+		public void EventCalendar_DaysUpdated(object sender, EventArgs e)
 		{
 			Console.WriteLine("Days updated");
 			if (EventCalendar.SelectedDates.Count == 0)
@@ -86,7 +82,7 @@ namespace FindYourPath.Views
 			}
 		}
 
-		private void SelectedDates_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+		public void SelectedDates_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
 		{
 			Console.WriteLine("Selected dates changed");
 			SelectedEvents.ReplaceRange(App.Events.Where(x => EventCalendar.SelectedDates.Any(y => x.StartDate.Date == y.Date)).OrderByDescending(x => x.StartDate));
@@ -119,11 +115,19 @@ namespace FindYourPath.Views
 
 		//**********************************************************************************************************************
 
-		public async void OnAddEventButtonClicked(object sender, EventArgs e)
+		void UpdateSelectedEvent()
+		{
+			ObservableRangeCollection<MyEvent> tmpsEvents;
+			tmpsEvents = new ObservableRangeCollection<MyEvent>(App.Events.Where(x => x.StartDate.Date == _selectedDate.Date).OrderByDescending(x => x.StartDate));
+			SelectedEvents.ReplaceRange(tmpsEvents);
+		}
+
+		public async Task OnAddEventButtonClicked(object sender, EventArgs e, Agenda agenda)
 		{
 			DateTime selectedDate = _selectedDate;
 
-			_page.Navigation.PushAsync(new AddEventPage(selectedDate, _eventService, App.User));
+			await _page.Navigation.PushAsync(new AddEventPage(selectedDate, _eventService, App.User, agenda));
+			UpdateSelectedEvent();
 		}
 
 		public async Task Initialize()
