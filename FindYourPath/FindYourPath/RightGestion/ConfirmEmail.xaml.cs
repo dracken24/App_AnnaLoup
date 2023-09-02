@@ -49,8 +49,8 @@ namespace FindYourPath.RightGestion
 			JObject paramJson = new JObject
 			{
 				["action"] = "verifEmail",
-				["email_verif"] = true,
-				["user_id"] = App.User._id
+				["canConnect"] = true,
+				["User_Id"] = App.User._id
 			};
 			Console.WriteLine("--- user_id: " + App.User._id);
 

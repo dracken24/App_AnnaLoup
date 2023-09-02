@@ -83,15 +83,39 @@ namespace FindYourPath.DataBase
 
 			_id = parsedJson["user"]["User_Id"].Value<int>();
 			_username = parsedJson["user"]["username"].Value<string>();
-			_email = parsedJson["user"]["8"].Value<string>();
-			_name = parsedJson["user"]["Prenom"].Value<string>();
-			_surname = parsedJson["user"]["Nom"].Value<string>();
-			_phone = parsedJson["user"]["Telephone"].Value<string>();
-			_birthDate = parsedJson["user"]["Date_Naissance"].Value<string>();
-			_sexe = parsedJson["user"]["Sexe"].Value<string>();
-			_adress = parsedJson["user"]["Adresse"].Value<string>();
-			_verifEmail = parsedJson["user"]["9"].Value<string>();
-			_canConnect = parsedJson["user"]["email_verif"].Value<bool>();
+			if (parsedJson["user"]["email"].Value<string>() != null)
+			{
+				_email = parsedJson["user"]["email"].Value<string>();
+			}
+            if (parsedJson["user"]["Prenom"].Value<string>() != null)
+            {
+                _name = parsedJson["user"]["Prenom"].Value<string>();
+            }
+            if (parsedJson["user"]["Nom"].Value<string>() != null)
+            {
+                _surname = parsedJson["user"]["Nom"].Value<string>();
+            }
+            if (parsedJson["user"]["Telephone"].Value<string>() != null)
+            {
+                _phone = parsedJson["user"]["Telephone"].Value<string>();
+            }
+            if (parsedJson["user"]["Date_Naissance"].Value<string>() != null)
+            {
+                _birthDate = parsedJson["user"]["Date_Naissance"].Value<string>();
+            }
+            if (parsedJson["user"]["Sexe"].Value<string>() != null)
+            {
+                _sexe = parsedJson["user"]["Sexe"].Value<string>();
+            }
+            if (parsedJson["user"]["Adresse"].Value<string>() != null)
+            {
+                _adress = parsedJson["user"]["Adresse"].Value<string>();
+            }
+
+
+            _adress = parsedJson["user"]["Adresse"].Value<string>();
+			_verifEmail = parsedJson["user"]["email_verification_token"].Value<string>();
+			_canConnect = parsedJson["user"]["canConnect"].Value<bool>();
 
 			Console.WriteLine("******************************* In User *****************************");
 			// Console.WriteLine(parsedJson["user"]);

@@ -8,6 +8,7 @@ using System;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.CommunityToolkit.ObjectModel;
 using XCalendar.Core.Collections;
 
 namespace FindYourPath.Views.Private.Agenda.SaveAgenda
@@ -31,7 +32,12 @@ namespace FindYourPath.Views.Private.Agenda.SaveAgenda
 			//TODO: a proteger avec try and catch 
 			var jsonResponse = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-			App.Events = JsonConvert.DeserializeObject<ObservableRangeCollection<MyEvent>>(jsonResponse);
+
+            XCalendar.Core.Collections.ObservableRangeCollection<MyEvent> tmpCollection = JsonConvert.DeserializeObject<XCalendar.Core.Collections.ObservableRangeCollection<MyEvent>>(jsonResponse);
+			foreach (MyEvent ev in tmpCollection)
+			{
+				App.Events.Add(ev);
+			}
 
 			// TODO: à supprimer, seulement pour tests
 			foreach (var ev in App.Events)

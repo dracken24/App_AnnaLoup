@@ -30,7 +30,7 @@ namespace FindYourPath
 		{
 			InitializeComponent();
 			
-			_connectionString = "http://dracken24.duckdns.org/apiAnnaLoup/actions";
+			_connectionString = "http://dracken24.zapto.org/apiAnnaLoup/actions";
 
 			_userService = new UserService(_connectionString);
 			_ressourceService = new RessourceService(_connectionString);

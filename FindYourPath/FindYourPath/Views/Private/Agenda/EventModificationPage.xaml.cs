@@ -52,8 +52,8 @@ namespace FindYourPath.Views.Private.Agenda
 			var endTime = endTimePicker.Time;
 			var endDateTime = new DateTime(endDate.Year, endDate.Month, endDate.Day, endTime.Hours, endTime.Minutes, endTime.Seconds);
 
-			MyEvent existingEvent = App.Events.FirstOrDefault(x => x.id == _currentEvent.id);
-			Console.WriteLine("_currentEvent.MyId1: " + _currentEvent.id + " existingEvent: " + _currentEvent.id);
+			MyEvent existingEvent = _currentEvent;
+			Console.WriteLine("_currentEvent.MyId1: " + _currentEvent.id + " existingEvent: " + existingEvent.id);
 
 			if (existingEvent != null)
 			{
@@ -68,9 +68,19 @@ namespace FindYourPath.Views.Private.Agenda
 				existingEvent.Location = "Saint-Nean";
 				_currentEvent = existingEvent;
 
-				// Here you need to update the existingEvent in your data source (like database)
-				await _eventService.UpdateEventAsync(_currentEvent);
-			}
+				try
+				{
+					// Here you need to update the existingEvent in your data source (like database)
+					await _eventService.UpdateEventAsync(_currentEvent);
+					App.Events.Add(_currentEvent);
+                    
+                    //App.Events.Replace(_currentEvent);
+				}
+                catch (System.Exception ex)
+                {
+                    Console.WriteLine("Error updating event: " + ex.Message);
+                }
+            }
 
 			// Then navigate back to the previous page
 			await Navigation.PopToRootAsync();
